@@ -1,0 +1,56 @@
+2026-05-05 14:32:56,051 [main] INFO: v3 sim — ATL @ SEA on 2026-05-05
+2026-05-05 14:32:56,361 [orchestrator_v25] INFO: v2.5 simulating synthetic_ATL_SEA_2026-05-05
+2026-05-05 14:32:56,363 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 14:32:56,547 [mlb_api] INFO: Fetching odds for ATL@SEA — 2026-05-05 (STUB)
+2026-05-05 14:32:56,547 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-05 14:32:56,547 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-05 14:33:19,030 [main] INFO: v3 sim — ATL @ SEA on 2026-05-05
+2026-05-05 14:33:19,149 [orchestrator_v25] INFO: v2.5 simulating synthetic_ATL_SEA_2026-05-05
+2026-05-05 14:33:19,150 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 14:33:19,272 [mlb_api] INFO: Fetching odds for ATL@SEA — 2026-05-05 (STUB)
+2026-05-05 14:33:19,272 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-05 14:33:19,272 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-05 14:35:30,674 [main] INFO: v3 sim — BOS @ DET on 2026-05-05
+2026-05-05 14:35:30,931 [orchestrator_v25] INFO: v2.5 simulating 824281
+2026-05-05 14:35:30,934 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 14:35:31,132 [mlb_api] INFO: Fetching odds for BOS@DET — 2026-05-05 (STUB)
+2026-05-05 14:35:31,133 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-05 14:35:31,133 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-05 14:36:30,325 [main] INFO: v3 sim — BOS @ DET on 2026-05-05
+2026-05-05 14:36:30,598 [orchestrator_v25] INFO: v2.5 simulating 824281
+2026-05-05 14:36:30,601 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 14:36:30,794 [mlb_api] INFO: Fetching odds for BOS@DET — 2026-05-05 (STUB)
+2026-05-05 14:36:30,794 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-05 14:36:30,795 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-05 14:36:30,948 [main] INFO: v3 sim — BOS @ DET on 2026-05-05
+2026-05-05 14:36:31,059 [orchestrator_v25] INFO: v2.5 simulating 824281
+2026-05-05 14:36:31,062 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 14:36:31,224 [mlb_api] INFO: Fetching odds for BOS@DET — 2026-05-05 (STUB)
+2026-05-05 14:36:31,225 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-05 14:36:31,225 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-05 14:36:40,527 [orchestrator_v25] INFO: v2.5 simulating 776318
+2026-05-05 14:36:40,530 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 16:04:48,931 [main] INFO: v3 sim — BOS @ DET on 2026-05-05
+2026-05-05 16:04:49,206 [orchestrator_v25] INFO: v2.5 simulating 824281
+2026-05-05 16:04:49,211 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 16:04:49,404 [mlb_api] INFO: Fetching odds for BOS@DET — 2026-05-05 (STUB)
+2026-05-05 16:04:49,404 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-05 16:04:49,404 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-05 16:05:11,680 [main] INFO: v3 sim — BOS @ DET on 2026-05-05
+2026-05-05 16:05:11,823 [orchestrator_v25] INFO: v2.5 simulating 824281
+2026-05-05 16:05:11,825 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 16:05:12,096 [mlb_api] INFO: Fetching odds for BOS@DET — 2026-05-05 (STUB)
+2026-05-05 16:05:12,096 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-05 16:05:12,096 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-05 16:09:00,522 [main] INFO: v3 sim — BOS @ DET on 2026-05-05
+2026-05-05 16:09:00,789 [orchestrator_v25] INFO: v2.5 simulating 824281
+2026-05-05 16:09:00,792 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 16:09:00,983 [mlb_api] INFO: Fetching odds for BOS@DET — 2026-05-05 (STUB)
+2026-05-05 16:09:00,983 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-05 16:09:00,983 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-05 16:09:39,029 [main] INFO: v3 sim — BOS @ DET on 2026-05-05
+2026-05-05 16:09:39,153 [orchestrator_v25] INFO: v2.5 simulating 824281
+2026-05-05 16:09:39,155 [mlb_api] ERROR: Error fetching https://statsapi.mlb.com/api/v1/schedule: Invalid variable type: value should be str, int or float, got None of type <class 'NoneType'>
+2026-05-05 16:09:39,285 [mlb_api] INFO: Fetching odds for BOS@DET — 2026-05-05 (STUB)
+2026-05-05 16:09:39,285 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-05 16:09:39,285 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
