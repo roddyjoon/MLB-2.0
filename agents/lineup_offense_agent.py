@@ -143,29 +143,53 @@ class LineupOffenseAgent:
             return {"type": "neutral", "recent_ops": recent_ops, "recent_rpg": recent_rpg}
 
     def _extract_bvp_threats(self, bvp: Dict) -> List:
-        """Extract significant BvP matchups"""
+        """
+        Extract significant BvP matchups.
+
+        Note: keyed by batter NAME (not id) because get_bvp_data in
+        data/mlb_api.py returns name → {ab, h, hr, bb, k, ba, ops}.
+        v2.5 looked for 'pa' (always missing → always empty list); v3
+        uses the actual 'ab' field.
+
+        Thresholds were loosened in v3 (May 2026) because real BvP samples
+        are small (typically 3-15 ABs) and the strict (ab>=5, ops>=0.900)
+        rule filtered out everything. Now any ≥3-AB sample with HR or
+        meaningfully off-baseline OPS surfaces.
+        """
         threats = []
-        for player_id, data in bvp.items():
-            pa = data.get("pa", 0)
+        for name, data in bvp.items():
+            ab = data.get("ab", 0)
             ops = data.get("ops", 0)
-            if pa >= 5 and ops >= 0.900:
-                threats.append({
-                    "name": data.get("name"),
-                    "pa": pa,
-                    "ops": ops,
-                    "hr": data.get("hr", 0),
-                    "ba": data.get("ba", 0),
-                    "significance": "elite" if ops >= 1.200 else
-                                   "strong" if ops >= 1.000 else "moderate"
-                })
-            elif pa >= 5 and ops <= 0.400:
-                threats.append({
-                    "name": data.get("name"),
-                    "pa": pa,
-                    "ops": ops,
-                    "significance": "futile"  # Specific weakness
-                })
-        return sorted(threats, key=lambda x: x["ops"], reverse=True)
+            hr = data.get("hr", 0)
+            if ab < 3:
+                continue
+
+            # Significance tiers — biased toward inclusion for usable BvP
+            if ab >= 10 and ops >= 1.100:
+                sig = "elite"
+            elif ab >= 5 and ops >= 1.000:
+                sig = "elite"
+            elif ab >= 5 and ops >= 0.850:
+                sig = "strong"
+            elif hr >= 1 and ab >= 3:
+                sig = "homer_history"
+            elif ab >= 5 and ops >= 0.700:
+                sig = "moderate"
+            elif ab >= 5 and ops <= 0.300:
+                sig = "futile"
+            else:
+                continue
+
+            threats.append({
+                "name": name,
+                "ab": ab,
+                "h": data.get("h", 0),
+                "hr": hr,
+                "ba": data.get("ba", 0),
+                "ops": ops,
+                "significance": sig,
+            })
+        return sorted(threats, key=lambda x: (x["ab"], x["ops"]), reverse=True)
 
     def _get_handedness_breakdown(self, lineup: List) -> Dict:
         """Get L/R/S breakdown for platoon analysis"""

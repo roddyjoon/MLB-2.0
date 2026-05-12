@@ -96,10 +96,17 @@ class EdgeCalculator:
             return abs(odds) / (abs(odds) + 100)
 
     def _calc_total_wp(self, projection: float, line: float,
-                        direction: str, std_dev: float = 1.8) -> float:
+                        direction: str, std_dev: float = 3.0) -> float:
         """
-        Calculate Over/Under probability using normal distribution
-        
+        Calculate Over/Under probability using normal distribution.
+
+        std_dev=3.0 reflects observed MLB game-total dispersion (was 1.8,
+        which produced over-confident 80% probabilities at modest gaps).
+        Cap at 0.65 reflects empirical realization: the 6-day grading sample
+        showed model-implied 80% under-WPs realized as 61% — model is
+        directionally right but magnitude-overconfident. Capping at 0.65
+        prevents Kelly from over-betting on inflated probabilities.
+
         WP(Over line X) = 1 - CDF(X, projection, std_dev)
         WP(Under line X) = CDF(X, projection, std_dev)
         """
@@ -111,9 +118,9 @@ class EdgeCalculator:
         cdf = self._normal_cdf(z)
 
         if direction == "over":
-            return max(0.20, min(0.80, 1.0 - cdf))
+            return max(0.35, min(0.65, 1.0 - cdf))
         else:  # under
-            return max(0.20, min(0.80, cdf))
+            return max(0.35, min(0.65, cdf))
 
     def _normal_cdf(self, z: float) -> float:
         """Standard normal CDF approximation"""

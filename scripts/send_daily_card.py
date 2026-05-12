@@ -71,13 +71,62 @@ async def generate_card(date_str: str) -> Dict:
         await OddsScraper.close()
 
 
+def _format_bvp_inline(threats: list, vs_pitcher: str) -> str:
+    """Render top BvP threats for one side as a compact string."""
+    if not threats:
+        return ""
+    bits = []
+    for t in threats[:3]:
+        name = t.get("name", "?")
+        h = t.get("h", 0)
+        ab = t.get("ab", 0)
+        hr_str = f" {t['hr']}HR" if t.get("hr") else ""
+        sig = t.get("significance", "")
+        sig_dot = ("🔥 " if sig == "elite" else "● " if sig == "strong"
+                   else "○ " if sig == "moderate" else "✗ " if sig == "futile"
+                   else "")
+        bits.append(f"{sig_dot}{name} {h}/{ab}{hr_str} ({t.get('ops', 0):.3f})")
+    return f"vs <em>{vs_pitcher}</em>: " + " · ".join(bits)
+
+
 def _format_play_row(p: Dict, prefix: str) -> str:
     odds = p.get("odds", "?")
     sign = "+" if isinstance(odds, (int, float)) and odds > 0 else ""
     edge_pct = (p.get("edge", 0) or 0) * 100
     kelly = p.get("kelly_size", 0)
     matchup = p.get("matchup", "?")
-    return (f"<tr>"
+    home_sp = p.get("home_sp", "")
+    away_sp = p.get("away_sp", "")
+
+    sp_line = ""
+    if home_sp or away_sp:
+        sp_line = (f"<tr><td></td>"
+                   f"<td colspan='5' style='color:#666; font-size:12px; "
+                   f"padding:0 10px 4px 10px;'>"
+                   f"<strong>{away_sp or '?'}</strong> (A) vs "
+                   f"<strong>{home_sp or '?'}</strong> (H)"
+                   f"</td></tr>")
+
+    # BvP rows (only if there are threats to show)
+    bvp_rows = ""
+    bvp_home = p.get("bvp_home_vs_away_sp") or []
+    bvp_away = p.get("bvp_away_vs_home_sp") or []
+    proj_tag = (" <span style='color:#a16207;'>🔮 projected lineup</span>"
+                if p.get("lineup_projected") else "")
+    if bvp_home and away_sp:
+        bvp_rows += (f"<tr><td></td><td colspan='5' "
+                     f"style='color:#374151; font-size:11px; "
+                     f"padding:0 10px 2px 22px;'>"
+                     f"{_format_bvp_inline(bvp_home, away_sp)}{proj_tag}"
+                     f"</td></tr>")
+    if bvp_away and home_sp:
+        bvp_rows += (f"<tr><td></td><td colspan='5' "
+                     f"style='color:#374151; font-size:11px; "
+                     f"padding:0 10px 8px 22px;'>"
+                     f"{_format_bvp_inline(bvp_away, home_sp)}{proj_tag}"
+                     f"</td></tr>")
+
+    main = (f"<tr>"
             f"<td>{prefix}</td>"
             f"<td style='color:#555'>{matchup}</td>"
             f"<td><strong>{p.get('label', '?')}</strong></td>"
@@ -85,6 +134,7 @@ def _format_play_row(p: Dict, prefix: str) -> str:
             f"<td style='text-align:right'>${kelly}</td>"
             f"<td style='text-align:right'>{edge_pct:.1f}%</td>"
             f"</tr>")
+    return main + sp_line + bvp_rows
 
 
 def render_email_html(card: Dict) -> str:
@@ -207,7 +257,17 @@ async def main_async(date_str: str, dry_run: bool) -> int:
     out_path.write_text(json.dumps(card, indent=2, default=str))
 
     html = render_email_html(card)
-    subject = f"MLB v3 daily card — {date_str}"
+
+    # Differentiate morning (8 AM, projected lineups) from afternoon (3 PM,
+    # confirmed lineups) so they don't thread in Gmail.
+    hour = datetime.now().hour
+    if hour < 12:
+        tag = "forecast"  # ~8 AM, lineups mostly projected
+    elif hour < 17:
+        tag = "refresh"   # ~3 PM, lineups mostly confirmed
+    else:
+        tag = "late"
+    subject = f"MLB v3 daily card — {date_str} ({tag})"
 
     if dry_run:
         print("--- DRY RUN: HTML preview (first 1200 chars) ---")

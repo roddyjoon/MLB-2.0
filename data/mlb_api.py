@@ -231,12 +231,42 @@ class MLBDataAPI:
         Team offensive stats — wRC+, K%, BB%, ISO, OPS, BA, OBP, SLG, HR, RPG.
         Delegates to FanGraphs (step 3); falls back to MLB Stats API basic
         line if FanGraphs is unavailable.
+
+        wRC+ and RPG are blended 70% season / 30% rolling-11-day via
+        core.wrc_blender.WRCBlender. The blender silently falls back to
+        season-only if the rolling fetch returns None. Returned dict
+        includes `wrc_plus_season`, `wrc_plus_rolling`, `wrc_plus_blended`
+        for transparency.
         """
         from data.fangraphs_client import FanGraphsClient
+        from core.wrc_blender import WRCBlender
+
         fg = FanGraphsClient(as_of=self.as_of)
-        result = await fg.get_team_batting(team, self.as_of)
-        if result:
-            return result
+        season = await fg.get_team_batting(team, self.as_of)
+        if season:
+            # Try to enrich with rolling-11 data + blend
+            rolling = await fg.get_team_rolling11(team, self.as_of)
+            blender = WRCBlender()
+            season_wrc = season.get("wrc_plus")
+            rolling_wrc = (rolling or {}).get("wrc_plus") if rolling else None
+            if season_wrc is not None:
+                blended_wrc = blender.blend(season_wrc, rolling_wrc,
+                                             context=f"{team} offense")
+                season["wrc_plus_season"] = season_wrc
+                season["wrc_plus_rolling"] = rolling_wrc
+                season["wrc_plus_blended"] = blended_wrc
+                # Replace the active wrc_plus with the blended value so
+                # downstream agents/MC pick it up automatically.
+                season["wrc_plus"] = blended_wrc
+            # Blend RPG the same way (70 season / 30 rolling)
+            season_rpg = season.get("rpg", 0)
+            rolling_rpg = (rolling or {}).get("rpg") if rolling else None
+            if rolling_rpg is not None and season_rpg:
+                blended_rpg = round(season_rpg * 0.70 + rolling_rpg * 0.30, 2)
+                season["rpg_season"] = season_rpg
+                season["rpg_rolling"] = rolling_rpg
+                season["rpg"] = blended_rpg
+            return season
 
         # Fallback: MLB Stats API basic line (no wRC+, no K%/BB%).
         team_id = await self._get_team_id(team)
@@ -266,9 +296,10 @@ class MLBDataAPI:
 
     async def get_confirmed_lineup(self, team: str) -> List[Dict]:
         """
-        Confirmed batting order for `team` on self.as_of. Resolves the team's
-        game on that date, fetches both lineups, returns the matching side.
-        Empty list if game not found or lineup not yet posted (~90 min pre-game).
+        Batting order for `team` on self.as_of. Returns the confirmed lineup
+        if MLB has posted it (~90 min pre-game); otherwise falls back to a
+        PROJECTED lineup aggregated from the team's last 7 confirmed orders.
+        Players from the projected fallback carry `"projected": True`.
         """
         from data.lineup_fetcher import LineupFetcher
         games = await self.get_games_for_date(self.as_of)
@@ -281,7 +312,11 @@ class MLBDataAPI:
         fetcher = LineupFetcher()
         lineups = await fetcher.get_lineups_for_game(target["game_id"])
         side = "home" if target["home_team"] == team else "away"
-        return lineups.get(side, [])
+        confirmed = lineups.get(side, [])
+        if confirmed:
+            return confirmed
+        # Lineup not posted yet — fall back to recent-history projection
+        return await fetcher.get_probable_lineup(team, self.as_of)
 
     async def get_team_trends(self, team: str) -> Dict:
         """
@@ -506,12 +541,15 @@ class MLBDataAPI:
             for game in date_data.get("games", []):
                 if game.get("status", {}).get("detailedState") == "Final":
                     teams = game.get("teams", {})
+                    # MLB schedule endpoint returns team.{id,name,link} but
+                    # not abbreviation — derive via ID_TO_ABBR lookup (same
+                    # fix applied in _parse_game).
+                    h_id = teams.get("home", {}).get("team", {}).get("id")
+                    a_id = teams.get("away", {}).get("team", {}).get("id")
                     scores.append({
                         "game_pk": str(game.get("gamePk")),
-                        "home_team": teams.get("home", {}).get(
-                            "team", {}).get("abbreviation"),
-                        "away_team": teams.get("away", {}).get(
-                            "team", {}).get("abbreviation"),
+                        "home_team": ID_TO_ABBR.get(h_id, ""),
+                        "away_team": ID_TO_ABBR.get(a_id, ""),
                         "home_score": teams.get("home", {}).get("score", 0),
                         "away_score": teams.get("away", {}).get("score", 0)
                     })

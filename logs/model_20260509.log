@@ -1,0 +1,74 @@
+2026-05-09 08:07:45,390 [orchestrator_v25] INFO: v2.5 — Generating daily card for 2026-05-09
+2026-05-09 08:07:45,942 [orchestrator_v25] INFO: Found 15 games
+2026-05-09 08:07:45,942 [orchestrator_v25] INFO: v2.5 simulating 822820
+2026-05-09 08:07:45,943 [orchestrator_v25] INFO: v2.5 simulating 824847
+2026-05-09 08:07:45,943 [orchestrator_v25] INFO: v2.5 simulating 824523
+2026-05-09 08:07:45,943 [orchestrator_v25] INFO: v2.5 simulating 824766
+2026-05-09 08:07:45,944 [orchestrator_v25] INFO: v2.5 simulating 823869
+2026-05-09 08:07:45,944 [orchestrator_v25] INFO: v2.5 simulating 823468
+2026-05-09 08:07:45,944 [orchestrator_v25] INFO: v2.5 simulating 824444
+2026-05-09 08:07:45,944 [orchestrator_v25] INFO: v2.5 simulating 822905
+2026-05-09 08:07:45,945 [orchestrator_v25] INFO: v2.5 simulating 824115
+2026-05-09 08:07:45,945 [orchestrator_v25] INFO: v2.5 simulating 824606
+2026-05-09 08:07:45,945 [orchestrator_v25] INFO: v2.5 simulating 823792
+2026-05-09 08:07:45,946 [orchestrator_v25] INFO: v2.5 simulating 825089
+2026-05-09 08:07:45,946 [orchestrator_v25] INFO: v2.5 simulating 823304
+2026-05-09 08:07:45,946 [orchestrator_v25] INFO: v2.5 simulating 823224
+2026-05-09 08:07:45,947 [orchestrator_v25] INFO: v2.5 simulating 823955
+2026-05-09 08:07:48,123 [mlb_api] INFO: Odds COL@PHI 2026-05-09: ML -185/150 total 8.5 book=75
+2026-05-09 08:07:48,124 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Home ML = -9.0%
+2026-05-09 08:07:48,124 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-09 08:07:48,125 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-09 08:07:48,204 [mlb_api] INFO: Odds HOU@CIN 2026-05-09: ML -170/140 total 8.5 book=75
+2026-05-09 08:07:48,204 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Home ML = -22.6%
+2026-05-09 08:07:48,204 [edge_calculator] INFO: 🔥 Strong edge: Away ML = 17.9%
+2026-05-09 08:07:48,204 [edge_calculator] INFO: 🔥 Strong edge: Over = 23.0%
+2026-05-09 08:07:48,204 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Under = -27.7%
+2026-05-09 08:07:48,275 [mlb_api] INFO: Odds LAA@TOR 2026-05-09: ML -185/150 total 8.5 book=75
+2026-05-09 08:07:48,275 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Home ML = -12.0%
+2026-05-09 08:07:48,275 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -13.3%
+2026-05-09 08:07:48,365 [mlb_api] INFO: Odds NYM@AZ 2026-05-09: ML 100/-120 total 9 book=75
+2026-05-09 08:07:48,365 [edge_calculator] INFO: 🔥 Strong edge: Home ML = 18.0%
+2026-05-09 08:07:48,365 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Away ML = -22.5%
+2026-05-09 08:07:48,365 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -16.5%
+2026-05-09 08:07:48,365 [edge_calculator] INFO: 🔥 Strong edge: Under = 11.8%
+2026-05-09 08:07:48,374 [mlb_api] INFO: Odds STL@SD 2026-05-09: ML -140/115 total 8 book=75
+2026-05-09 08:07:48,374 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -26.0%
+2026-05-09 08:07:48,374 [edge_calculator] INFO: 🔥 Strong edge: Under = 21.3%
+2026-05-09 08:07:48,593 [mlb_api] INFO: Odds PIT@SF 2026-05-09: ML 100/-120 total 7.5 book=75
+2026-05-09 08:07:48,593 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -32.4%
+2026-05-09 08:07:48,593 [edge_calculator] INFO: 🔥 Strong edge: Under = 27.6%
+2026-05-09 08:07:48,602 [mlb_api] INFO: Odds NYY@MIL 2026-05-09: ML 115/-140 total 7.5 book=75
+2026-05-09 08:07:48,602 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -13.1%
+2026-05-09 08:07:48,645 [mlb_api] INFO: Odds MIN@CLE 2026-05-09: ML -120/100 total 8 book=75
+2026-05-09 08:07:48,645 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Away ML = -13.5%
+2026-05-09 08:07:48,645 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -19.5%
+2026-05-09 08:07:48,645 [edge_calculator] INFO: 🔥 Strong edge: Under = 14.8%
+2026-05-09 08:07:48,675 [mlb_api] INFO: Odds ATH@BAL 2026-05-09: ML -130/105 total 9.5 book=75
+2026-05-09 08:07:48,676 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -31.0%
+2026-05-09 08:07:48,676 [edge_calculator] INFO: 🔥 Strong edge: Under = 26.3%
+2026-05-09 08:07:48,683 [mlb_api] INFO: Odds TB@BOS 2026-05-09: ML -155/125 total 8 book=75
+2026-05-09 08:07:48,683 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Home ML = -15.3%
+2026-05-09 08:07:48,683 [edge_calculator] INFO: 🔥 Strong edge: Away ML = 10.1%
+2026-05-09 08:07:48,683 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -24.8%
+2026-05-09 08:07:48,683 [edge_calculator] INFO: 🔥 Strong edge: Under = 20.2%
+2026-05-09 08:07:48,730 [mlb_api] INFO: Odds SEA@CWS 2026-05-09: ML 110/-135 total 9.5 book=75
+2026-05-09 08:07:48,731 [edge_calculator] INFO: 🔥 Strong edge: Home ML = 10.4%
+2026-05-09 08:07:48,731 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Away ML = -15.4%
+2026-05-09 08:07:48,731 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -30.0%
+2026-05-09 08:07:48,731 [edge_calculator] INFO: 🔥 Strong edge: Under = 25.5%
+2026-05-09 08:07:48,743 [mlb_api] INFO: Odds WSH@MIA 2026-05-09: ML -165/135 total 8.5 book=75
+2026-05-09 08:07:48,743 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Home ML = -10.6%
+2026-05-09 08:07:48,743 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -33.5%
+2026-05-09 08:07:48,743 [edge_calculator] INFO: 🔥 Strong edge: Under = 28.8%
+2026-05-09 08:07:48,878 [mlb_api] INFO: Odds ATL@LAD 2026-05-09: ML -185/150 total 8.5 book=75
+2026-05-09 08:07:48,879 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Home ML = -10.8%
+2026-05-09 08:07:48,879 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -34.1%
+2026-05-09 08:07:48,879 [edge_calculator] INFO: 🔥 Strong edge: Under = 29.5%
+2026-05-09 08:07:49,046 [mlb_api] INFO: Odds CHC@TEX 2026-05-09: ML 115/-140 total 8.5 book=75
+2026-05-09 08:07:49,046 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -28.2%
+2026-05-09 08:07:49,046 [edge_calculator] INFO: 🔥 Strong edge: Under = 23.6%
+2026-05-09 08:07:50,253 [mlb_api] INFO: Odds DET@KC 2026-05-09: ML -145/118 total 9.5 book=75
+2026-05-09 08:07:50,253 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Home ML = -8.1%
+2026-05-09 08:07:50,254 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -31.0%
+2026-05-09 08:07:50,254 [edge_calculator] INFO: 🔥 Strong edge: Under = 26.3%

@@ -1,0 +1,26 @@
+2026-05-11 08:00:01,821 [orchestrator_v25] INFO: v2.5 — Generating daily card for 2026-05-11
+2026-05-11 08:00:02,168 [orchestrator_v25] INFO: Found 6 games
+2026-05-11 08:00:02,169 [orchestrator_v25] INFO: v2.5 simulating 824441
+2026-05-11 08:00:02,169 [orchestrator_v25] INFO: v2.5 simulating 824844
+2026-05-11 08:00:02,169 [orchestrator_v25] INFO: v2.5 simulating 822818
+2026-05-11 08:00:02,170 [orchestrator_v25] INFO: v2.5 simulating 822901
+2026-05-11 08:00:02,170 [orchestrator_v25] INFO: v2.5 simulating 824199
+2026-05-11 08:00:02,170 [orchestrator_v25] INFO: v2.5 simulating 823953
+2026-05-11 08:00:03,759 [mlb_api] INFO: Odds AZ@TEX 2026-05-11: ML -138/118 total 7.5 book=30
+2026-05-11 08:00:03,760 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Away ML = -9.1%
+2026-05-11 08:00:03,760 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -13.7%
+2026-05-11 08:00:03,824 [mlb_api] INFO: Odds SEA@HOU 2026-05-11: ML 116/-136 total 8.5 book=30
+2026-05-11 08:00:03,829 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Away ML = -10.7%
+2026-05-11 08:00:03,829 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -33.5%
+2026-05-11 08:00:03,830 [edge_calculator] INFO: 🔥 Strong edge: Under = 28.8%
+2026-05-11 08:00:03,836 [mlb_api] INFO: Odds NYY@BAL 2026-05-11: ML 120/-141 total 8.5 book=30
+2026-05-11 08:00:03,836 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -10.7%
+2026-05-11 08:00:03,898 [mlb_api] INFO: Odds SF@LAD 2026-05-11: ML -172/144 total 9.5 book=30
+2026-05-11 08:00:03,899 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Away ML = -9.9%
+2026-05-11 08:00:03,899 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -31.2%
+2026-05-11 08:00:03,899 [edge_calculator] INFO: 🔥 Strong edge: Under = 26.5%
+2026-05-11 08:00:04,236 [mlb_api] INFO: Odds TB@TOR 2026-05-11: ML -141/120 total 7.5 book=30
+2026-05-11 08:00:04,237 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -11.8%
+2026-05-11 08:00:05,777 [mlb_api] INFO: Odds LAA@CLE 2026-05-11: ML -167/140 total 7.5 book=30
+2026-05-11 08:00:05,781 [edge_calculator] WARNING: ⚠️  Deeply negative EV: Over = -26.6%
+2026-05-11 08:00:05,781 [edge_calculator] INFO: 🔥 Strong edge: Under = 19.1%

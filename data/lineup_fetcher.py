@@ -101,3 +101,112 @@ class LineupFetcher:
         if not game_pk:
             return {"home": [], "away": []}
         return await self._fetch(game_pk)
+
+    async def get_probable_lineup(self, team_abbr: str,
+                                  as_of: str,
+                                  lookback: int = 7) -> List[Dict]:
+        """
+        Predict today's starting 9 by aggregating the team's confirmed
+        batting orders from its last `lookback` completed games.
+
+        Returns up to 9 players ordered by their average batting-slot
+        position (cleanup hitters near slot 4, leadoff near 1, etc.).
+        Each player dict carries `"projected": True` so downstream consumers
+        can flag the lineup as estimated rather than confirmed.
+
+        Caveats:
+        - Doesn't filter by opposing-SP handedness (would improve accuracy
+          on platoon-heavy teams but adds API calls; skipped for now).
+        - Players returning from IL or recent call-ups won't appear until
+          they've started at least one of the lookback games.
+        """
+        from datetime import datetime, timedelta
+        from data.mlb_api import TEAM_IDS, MLB_STATS_API
+
+        team_id = TEAM_IDS.get(team_abbr)
+        if not team_id:
+            return []
+
+        try:
+            end_dt = datetime.strptime(as_of, "%Y-%m-%d")
+        except ValueError:
+            return []
+        start_dt = end_dt - timedelta(days=lookback + 3)  # extra slack for off days
+
+        session = await self._session()
+        params = {
+            "sportId": 1,
+            "teamId": team_id,
+            "startDate": start_dt.strftime("%Y-%m-%d"),
+            "endDate": (end_dt - timedelta(days=1)).strftime("%Y-%m-%d"),
+        }
+        try:
+            async with session.get(f"{MLB_STATS_API}/schedule",
+                                    params=params) as r:
+                if r.status != 200:
+                    return []
+                data = await r.json()
+        except (aiohttp.ClientError, asyncio.TimeoutError):
+            return []
+
+        # Collect (game_pk, side) pairs for completed games in chronological
+        # order (we'll iterate latest first when capping at `lookback`).
+        completed: List[tuple] = []  # [(date_str, game_pk, side), ...]
+        for date_data in data.get("dates", []):
+            for g in date_data.get("games", []):
+                if g.get("status", {}).get("detailedState") != "Final":
+                    continue
+                teams = g.get("teams", {})
+                h_id = teams.get("home", {}).get("team", {}).get("id")
+                a_id = teams.get("away", {}).get("team", {}).get("id")
+                pk = str(g.get("gamePk"))
+                date = (g.get("officialDate")
+                        or g.get("gameDate", "")[:10])
+                if h_id == team_id:
+                    completed.append((date, pk, "home"))
+                elif a_id == team_id:
+                    completed.append((date, pk, "away"))
+
+        completed.sort(reverse=True)  # most recent first
+        completed = completed[:lookback]
+
+        if not completed:
+            return []
+
+        # Aggregate batting orders. player_counts = how many of the last N
+        # games each player started; player_slots = their batting positions.
+        player_counts: Dict[str, int] = {}
+        player_slots: Dict[str, List[int]] = {}
+        player_info: Dict[str, Dict] = {}
+
+        for _date, pk, side in completed:
+            lineups = await self._fetch(pk)
+            team_lineup = lineups.get(side, [])
+            for idx, batter in enumerate(team_lineup):
+                pid = batter.get("player_id")
+                if not pid:
+                    continue
+                player_counts[pid] = player_counts.get(pid, 0) + 1
+                player_slots.setdefault(pid, []).append(idx + 1)
+                player_info[pid] = {
+                    "player_id": pid,
+                    "name": batter.get("name", ""),
+                    "position": batter.get("position", ""),
+                    "bats": batter.get("bats", ""),
+                }
+
+        if not player_counts:
+            return []
+
+        # Top 9 by start count, then sort by avg batting slot
+        ranked = sorted(player_counts.items(), key=lambda x: x[1],
+                        reverse=True)[:9]
+        ranked.sort(key=lambda x: sum(player_slots[x[0]]) / len(player_slots[x[0]]))
+
+        return [
+            {**player_info[pid],
+             "projected": True,
+             "starts_recent": cnt,
+             "avg_slot": round(sum(player_slots[pid]) / len(player_slots[pid]), 1)}
+            for pid, cnt in ranked
+        ]

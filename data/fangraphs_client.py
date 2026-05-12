@@ -173,12 +173,81 @@ class FanGraphsClient:
         """
         Last-11-day batting line for the wRC+ blender.
 
-        Currently returns None — FanGraphs URL date-range filtering is
-        inconsistent and an extra HTTP call per team isn't justified until
-        the backtest demonstrates rolling-11 wRC+ moves WP calibration.
-        wrc_blender.WRCBlender.blend handles None gracefully (season-only).
+        FanGraphs' month=1000 + startdate/enddate parameters return league-
+        wide aggregates over an arbitrary date range. One HTTP call per
+        as_of date returns all 30 teams. Cached per as_of date on disk.
+
+        Returns {wrc_plus, k_pct, bb_pct, ops, woba, xwoba, rpg} or None
+        if the fetch failed / team not present.
         """
-        return None
+        from datetime import datetime, timedelta
+        try:
+            end_dt = datetime.strptime(as_of or self.as_of, "%Y-%m-%d")
+        except ValueError:
+            return None
+        start_dt = end_dt - timedelta(days=11)
+
+        cache_file = self._disk / f"bat_rolling11_{as_of}.json"
+        league: Dict[str, Dict] = {}
+        if cache_file.exists():
+            try:
+                league = json.loads(cache_file.read_text())
+            except Exception:
+                league = {}
+
+        if not league:
+            year = end_dt.year
+            url = (f"{FG_BASE}/leaders/major-league"
+                   f"?stats=bat&season={year}&season1={year}"
+                   f"&pos=all&qual=0&type=8&team=0%2Cts&ind=0&month=1000"
+                   f"&startdate={start_dt:%Y-%m-%d}"
+                   f"&enddate={end_dt:%Y-%m-%d}")
+
+            session = await self._session()
+            try:
+                async with session.get(url) as resp:
+                    if resp.status != 200:
+                        return None
+                    html = await resp.text()
+            except (aiohttp.ClientError, asyncio.TimeoutError):
+                return None
+
+            m = NEXT_DATA_RE.search(html)
+            if not m:
+                return None
+            try:
+                payload = json.loads(m.group(1))
+                rows = (payload["props"]["pageProps"]["dehydratedState"]
+                        ["queries"][0]["state"]["data"]["data"])
+            except (KeyError, IndexError, json.JSONDecodeError):
+                return None
+
+            for row in rows:
+                abbr = row.get("TeamNameAbb")
+                if abbr:
+                    league[abbr] = row
+            try:
+                cache_file.write_text(json.dumps(league))
+            except OSError:
+                pass
+
+        row = league.get(to_fg_abbr(team))
+        if not row:
+            return None
+
+        pa = row.get("PA") or 0
+        team_games = pa / 38 if pa else 0
+        runs = row.get("R") or 0
+        return {
+            "wrc_plus": row.get("wRC+"),
+            "k_pct": row.get("K%"),
+            "bb_pct": row.get("BB%"),
+            "ops": row.get("OPS"),
+            "woba": row.get("wOBA"),
+            "xwoba": row.get("xwOBA"),
+            "rpg": round(runs / team_games, 2) if team_games else 0.0,
+            "pa": pa,
+        }
 
     async def get_bullpen(self, team: str, as_of: str) -> Dict:
         """

@@ -110,9 +110,9 @@ class V25Orchestrator:
         for r in valid:
             play = r.get("best_play")
             if play:
-                if play["edge"] >= 0.06:
+                if play["edge"] >= self.EDGE_PRIMARY_THRESHOLD:
                     primaries.append(play)
-                elif play["edge"] >= 0.04:
+                elif play["edge"] >= self.EDGE_SECONDARY_THRESHOLD:
                     secondaries.append(play)
                 else:
                     passes.append(r["game"])
@@ -278,6 +278,31 @@ class V25Orchestrator:
                 edges, wp_result, market, game_data, kelly_adjs
             )
 
+            # Enrich best_play with SP names + BvP threats so the email
+            # renderer / downstream consumers don't need to dig through
+            # game_details to find them.
+            if best_play is not None:
+                best_play["home_sp"] = game_data.get("home_sp_name", "")
+                best_play["away_sp"] = game_data.get("away_sp_name", "")
+                lineup_safe = lineup_data if isinstance(lineup_data, dict) else {}
+                home_pane = lineup_safe.get("home", {})
+                away_pane = lineup_safe.get("away", {})
+                best_play["bvp_home_vs_away_sp"] = (
+                    home_pane.get("bvp_threats", [])[:3]
+                )
+                best_play["bvp_away_vs_home_sp"] = (
+                    away_pane.get("bvp_threats", [])[:3]
+                )
+                # If any batter in either lineup is marked projected, the
+                # BvP analysis is based on a *predicted* lineup, not a
+                # confirmed one — surface that to the email renderer.
+                def _is_projected(pane):
+                    lu = pane.get("lineup", [])
+                    return any(p.get("projected") for p in lu if isinstance(p, dict))
+                best_play["lineup_projected"] = (
+                    _is_projected(home_pane) or _is_projected(away_pane)
+                )
+
             return {
                 "game": game_data,
                 "version": "v2.5",
@@ -309,6 +334,17 @@ class V25Orchestrator:
             logger.error(f"Error in v2.5 sim {game_id}: {e}")
             return {"game": game_data, "error": str(e), "version": "v2.5"}
 
+    # Edge thresholds (v3 tuning, post-grading May 2026):
+    #   Primary raised from 0.06 → 0.10 — the 5–10% bucket lost money on
+    #   the 6-day live sample (-24.6% ROI). 10%+ is consistently profitable.
+    # WP cap (v3 tuning): apply max(0.65) to Kelly inputs so we don't
+    # over-bet on model-overconfident probabilities (the model's 80%
+    # under-WPs realized as 61%).
+    EDGE_PRIMARY_THRESHOLD = 0.10
+    EDGE_SECONDARY_THRESHOLD = 0.04
+    EDGE_MIN_PLAY = 0.03
+    KELLY_WP_CAP = 0.65
+
     def _select_best_play_v25(self, edges: Dict, wp: Dict,
                                market: Dict, game: Dict,
                                kelly_adjs: Dict) -> Optional[Dict]:
@@ -333,8 +369,10 @@ class V25Orchestrator:
 
         for (ptype, team, label, odds, edge,
              model_wp, kelly_adj) in play_configs:
-            if edge > 0.03:
-                base_kelly = self.kelly.calculate(model_wp, odds, "ml")
+            if edge > self.EDGE_MIN_PLAY:
+                # Cap WP at 0.65 for Kelly sizing (over-confidence guard)
+                sized_wp = min(self.KELLY_WP_CAP, model_wp)
+                base_kelly = self.kelly.calculate(sized_wp, odds, "ml")
                 adjusted_kelly = min(int(base_kelly * kelly_adj), 220)
                 all_plays.append({
                     "type": ptype,
@@ -347,17 +385,24 @@ class V25Orchestrator:
                     "edge": edge,
                     "kelly_size": adjusted_kelly,
                     "kelly_adj": kelly_adj,
-                    "tier": "primary" if edge >= 0.06 else "secondary"
+                    "tier": ("primary" if edge >= self.EDGE_PRIMARY_THRESHOLD
+                             else "secondary")
                 })
 
         # Totals
         for total_type in ["over", "under"]:
             edge = edges.get(f"{total_type}_edge", 0)
-            if edge > 0.03:
-                model_wp = wp.get(f"{total_type}_wp", 0.5)
+            if edge > self.EDGE_MIN_PLAY:
+                # v3 fix: read real over/under WP from edge_calculator
+                # (which now uses normal CDF with std_dev=3.0 capped at 0.65),
+                # not the 0.5 placeholder in wp_result. Otherwise Kelly sizes
+                # at $0 even on huge edges, which is why most graded Unders
+                # had kelly_size=$0 despite +27% edges.
+                model_wp = edges.get(f"{total_type}_wp", 0.5)
+                sized_wp = min(self.KELLY_WP_CAP, model_wp)
                 odds = market.get(f"{total_type}_odds", -110)
                 k_adj = kelly_adjs.get(f"{total_type}_adj", 1.0)
-                base_kelly = self.kelly.calculate(model_wp, odds, "total")
+                base_kelly = self.kelly.calculate(sized_wp, odds, "total")
                 adj_kelly = min(int(base_kelly * k_adj), 220)
                 line = market.get("total_line", 8.5)
 
@@ -371,7 +416,8 @@ class V25Orchestrator:
                     "edge": edge,
                     "kelly_size": adj_kelly,
                     "kelly_adj": k_adj,
-                    "tier": "primary" if edge >= 0.06 else "secondary"
+                    "tier": ("primary" if edge >= self.EDGE_PRIMARY_THRESHOLD
+                             else "secondary")
                 })
 
         if not all_plays:
