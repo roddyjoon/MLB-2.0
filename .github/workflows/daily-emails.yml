@@ -14,9 +14,10 @@ name: Daily MLB v3 Emails
 
 on:
   schedule:
-    - cron: "0 15 * * *"   # 08:00 PDT — card forecast
-    - cron: "5 15 * * *"   # 08:05 PDT — MC report
-    - cron: "0 22 * * *"   # 15:00 PDT — card refresh
+    - cron: "0 15 * * *"    # 08:00 PDT — card forecast
+    - cron: "5 15 * * *"    # 08:05 PDT — MC report
+    - cron: "10 15 * * *"   # 08:10 PDT — grading report (yesterday + rolling)
+    - cron: "0 22 * * *"    # 15:00 PDT — card refresh
   workflow_dispatch:
     inputs:
       job:
@@ -27,6 +28,10 @@ on:
         options:
           - card
           - mc
+          - grade
+
+permissions:
+  contents: write  # needed to commit card/MC JSON back to the repo
 
 jobs:
   send-email:
@@ -34,6 +39,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Need full history + write token so we can push commits back
+          fetch-depth: 1
+          persist-credentials: true
 
       - name: Setup Python 3.11
         uses: actions/setup-python@v5
@@ -53,10 +62,13 @@ jobs:
           MANUAL_JOB: ${{ github.event.inputs.job }}
           SCHEDULE_CRON: ${{ github.event.schedule }}
         run: |
-          # Default to card. The MC schedule uses "5 15 * * *" — match that.
+          # Route to the right script based on manual input or cron minute.
           if [ "$MANUAL_JOB" = "mc" ] || [ "$SCHEDULE_CRON" = "5 15 * * *" ]; then
             echo "script=scripts/send_mc_report.py" >> "$GITHUB_OUTPUT"
             echo "label=MC report" >> "$GITHUB_OUTPUT"
+          elif [ "$MANUAL_JOB" = "grade" ] || [ "$SCHEDULE_CRON" = "10 15 * * *" ]; then
+            echo "script=scripts/send_grade_report.py" >> "$GITHUB_OUTPUT"
+            echo "label=grading report" >> "$GITHUB_OUTPUT"
           else
             echo "script=scripts/send_daily_card.py" >> "$GITHUB_OUTPUT"
             echo "label=daily card" >> "$GITHUB_OUTPUT"
@@ -76,7 +88,24 @@ jobs:
         run: |
           python "${{ steps.which.outputs.script }}" "${{ steps.date.outputs.today }}"
 
-      - name: Upload card/MC artifacts
+      - name: Commit outputs back to repo
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add outputs/cards/ outputs/mc_reports/ 2>/dev/null || true
+          if git diff --staged --quiet; then
+            echo "No new outputs to commit"
+          else
+            # Pull-rebase first to avoid push conflicts when card + MC fire
+            # 5 minutes apart on the same day (the earlier run may have
+            # pushed already).
+            git pull --rebase origin main || true
+            git commit -m "outputs: ${{ steps.which.outputs.label }} for ${{ steps.date.outputs.today }} [skip ci]"
+            git push origin main || git push --force-with-lease origin main
+          fi
+
+      - name: Upload card/MC artifacts (backup)
         if: always()
         uses: actions/upload-artifact@v4
         with:

@@ -4,6 +4,14 @@ __pycache__/
 *.pyc
 .DS_Store
 
-# Caches and outputs (regeneratable from MLB/FG/Savant/AN)
+# Caches — regeneratable from MLB/FG/Savant/AN
 cache/
-outputs/
+
+# Outputs: most are gitignored; cards + MC reports are committed so the
+# daily grading workflow can read historical days from the repo.
+outputs/backtest/
+outputs/grading/
+outputs/launchd*.log
+outputs/mc_launchd*.log
+outputs/sp_alerts.json
+outputs/morning_setup_*.json
