@@ -236,6 +236,14 @@ async def main_async(date_str: str, dry_run: bool) -> int:
         sys.path.insert(0, str(REPO_ROOT))
     _load_dotenv(REPO_ROOT / ".env")
 
+    # launchd fires this script as soon as the calendar interval hits, but
+    # if the Mac was asleep Wi-Fi/DNS may take 30-60s to come up after wake.
+    # Block until DNS resolves before doing any network work.
+    if not dry_run:
+        sys.path.insert(0, str(Path(__file__).parent))
+        from _net_wait import wait_for_network
+        wait_for_network(timeout_seconds=300, interval_seconds=10)
+
     api_key = os.environ.get("RESEND_API_KEY")
     to = os.environ.get("CARD_RECIPIENT_EMAIL")
     if not dry_run and (not api_key or not to):

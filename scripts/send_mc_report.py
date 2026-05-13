@@ -286,6 +286,12 @@ async def main_async(date_str: str, dry_run: bool) -> int:
               file=sys.stderr)
         return 2
 
+    # Block until DNS is up — covers cold-Wi-Fi launchd wakes.
+    if not dry_run:
+        sys.path.insert(0, str(Path(__file__).parent))
+        from _net_wait import wait_for_network
+        wait_for_network(timeout_seconds=300, interval_seconds=10)
+
     print(f"Generating MC report for {date_str} ({MC_TRIALS} trials/game)...")
     results = await run_all_games(date_str)
     print(f"  {len(results)} games simulated")
