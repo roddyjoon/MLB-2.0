@@ -1,0 +1,88 @@
+name: Daily MLB v3 Emails
+
+# Runs in GitHub's cloud — no dependency on user's Mac being awake.
+# Cron is in UTC. PDT = UTC-7, PST = UTC-8 (cron will fire 1 hr earlier
+# in winter; common GitHub Actions quirk, document in commit msg).
+#
+# Schedule:
+#   15:00 UTC = 08:00 PDT — daily betting card (forecast / projected lineups)
+#   15:05 UTC = 08:05 PDT — Monte Carlo win-probability report
+#   22:00 UTC = 15:00 PDT — daily betting card (refresh / confirmed lineups)
+#
+# Note: GitHub Actions cron can be delayed by up to 15 minutes under load.
+# This is acceptable for morning forecast / afternoon refresh purposes.
+
+on:
+  schedule:
+    - cron: "0 15 * * *"   # 08:00 PDT — card forecast
+    - cron: "5 15 * * *"   # 08:05 PDT — MC report
+    - cron: "0 22 * * *"   # 15:00 PDT — card refresh
+  workflow_dispatch:
+    inputs:
+      job:
+        description: "Which job to run manually"
+        required: true
+        type: choice
+        default: card
+        options:
+          - card
+          - mc
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Determine which script to run
+        id: which
+        env:
+          MANUAL_JOB: ${{ github.event.inputs.job }}
+          SCHEDULE_CRON: ${{ github.event.schedule }}
+        run: |
+          # Default to card. The MC schedule uses "5 15 * * *" — match that.
+          if [ "$MANUAL_JOB" = "mc" ] || [ "$SCHEDULE_CRON" = "5 15 * * *" ]; then
+            echo "script=scripts/send_mc_report.py" >> "$GITHUB_OUTPUT"
+            echo "label=MC report" >> "$GITHUB_OUTPUT"
+          else
+            echo "script=scripts/send_daily_card.py" >> "$GITHUB_OUTPUT"
+            echo "label=daily card" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Compute today's date in America/Los_Angeles
+        id: date
+        run: |
+          # Run scripts using LA local date — covers DST.
+          echo "today=$(TZ=America/Los_Angeles date +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+
+      - name: Run ${{ steps.which.outputs.label }} for ${{ steps.date.outputs.today }}
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          CARD_RECIPIENT_EMAIL: ${{ secrets.CARD_RECIPIENT_EMAIL }}
+          CARD_FROM_EMAIL: ${{ secrets.CARD_FROM_EMAIL }}
+        run: |
+          python "${{ steps.which.outputs.script }}" "${{ steps.date.outputs.today }}"
+
+      - name: Upload card/MC artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: outputs-${{ steps.date.outputs.today }}-${{ github.run_id }}
+          path: |
+            outputs/cards/card_*.json
+            outputs/mc_reports/mc_*.json
+          if-no-files-found: ignore
+          retention-days: 14
