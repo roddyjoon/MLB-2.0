@@ -349,6 +349,13 @@ class V25Orchestrator:
                                market: Dict, game: Dict,
                                kelly_adjs: Dict) -> Optional[Dict]:
         """Select best play with v2.5 Kelly adjustments"""
+        # Guard: if no real market data, don't fabricate -110 plays.
+        # (May 16 2026: AN scoreboard had no games at 8 AM PT → every
+        # primary came back as -110 with inflated synthetic edges. Now
+        # bail and let the game land in passes.)
+        if not market or "home_ml_odds" not in market:
+            return None
+
         all_plays = []
         home = game.get("home_team")
         away = game.get("away_team")

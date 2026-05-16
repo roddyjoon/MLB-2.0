@@ -89,26 +89,43 @@ class OddsScraper:
             cls._shared_session = None
 
     async def _scoreboard(self, date: str) -> dict:
-        """Fetch the MLB scoreboard for `date`, cached per-date in-process."""
+        """
+        Fetch the MLB scoreboard for `date`, cached per-date in-process.
+
+        AN's MLB feed may not have today's games populated at 8 AM PT
+        (the first morning card fire is right when books are still
+        posting lines). Retry with backoff if we get 0 games: 60s, 90s,
+        120s — cumulative ~4.5 min, well under launchd's tolerance.
+        """
         if date in type(self)._scoreboard_cache:
             return type(self)._scoreboard_cache[date]
         if self._jitter > 0:
             await asyncio.sleep(self._jitter)
             self._jitter = 0
-        session = await self._session()
-        # AN expects date as YYYYMMDD (no dashes); ISO YYYY-MM-DD silently
-        # returns 0 games.
+
         an_date = date.replace("-", "")
         url = (f"{AN_BASE}/scoreboard/mlb"
                f"?bookIds={','.join(map(str, DEFAULT_BOOK_IDS))}"
                f"&date={an_date}")
-        try:
-            async with session.get(url) as r:
-                if r.status != 200:
-                    return {}
-                data = await r.json()
-        except (aiohttp.ClientError, asyncio.TimeoutError):
-            return {}
+        session = await self._session()
+
+        # Retry pattern: try immediately, then wait 60s, 90s, 120s if empty.
+        delays = [0, 60, 90, 120]
+        data: dict = {}
+        for attempt, delay in enumerate(delays, start=1):
+            if delay > 0:
+                await asyncio.sleep(delay)
+            try:
+                async with session.get(url) as r:
+                    if r.status == 200:
+                        data = await r.json()
+                    else:
+                        data = {}
+            except (aiohttp.ClientError, asyncio.TimeoutError):
+                data = {}
+            if data.get("games"):
+                break
+
         type(self)._scoreboard_cache[date] = data
         return data
 
