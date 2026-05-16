@@ -291,13 +291,18 @@ def _rows_to_csv_bytes(rows: List[Dict]) -> bytes:
     return buf.getvalue().encode("utf-8")
 
 
+def _parse_recipients(to_value: str) -> List[str]:
+    """Allow CARD_RECIPIENT_EMAIL to be a comma-separated list."""
+    return [e.strip() for e in (to_value or "").split(",") if e.strip()]
+
+
 async def send_via_resend(api_key: str, to: str, subject: str,
                           html: str, csv_bytes: bytes,
                           csv_name: str) -> Dict:
     payload = {
         "from": os.environ.get("CARD_FROM_EMAIL",
                                 "MLB v3 <onboarding@resend.dev>"),
-        "to": [to],
+        "to": _parse_recipients(to),
         "subject": subject,
         "html": html,
         "attachments": [{
