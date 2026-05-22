@@ -209,6 +209,13 @@ def _parse_recipients(to_value: str) -> List[str]:
 async def send_via_resend(api_key: str, to: str, subject: str,
                           html: str, attachments: Optional[List[Dict]] = None
                           ) -> Dict:
+    """Send via Resend with retry-on-transient-error.
+
+    Broken pipe / connection reset / timeouts on the first attempt are
+    surprisingly common in launchd-fired runs (Mac mid-wake, DNS not warm).
+    Retry up to 4 times with exponential backoff: 0, 2, 6, 18 seconds.
+    HTTP 4xx (auth, validation) is non-retryable.
+    """
     payload = {
         "from": os.environ.get("CARD_FROM_EMAIL",
                                "MLB v3 <onboarding@resend.dev>"),
@@ -223,16 +230,38 @@ async def send_via_resend(api_key: str, to: str, subject: str,
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
     }
-    async with aiohttp.ClientSession() as s:
-        async with s.post(RESEND_ENDPOINT, json=payload,
-                          headers=headers,
-                          timeout=aiohttp.ClientTimeout(total=30)) as r:
-            body = await r.text()
-            if r.status >= 300:
-                raise RuntimeError(
-                    f"Resend returned {r.status}: {body[:500]}"
-                )
-            return json.loads(body) if body else {}
+
+    backoffs = [0, 2, 6, 18]
+    last_err: Optional[Exception] = None
+    for attempt, wait in enumerate(backoffs):
+        if wait:
+            await asyncio.sleep(wait)
+        try:
+            async with aiohttp.ClientSession() as s:
+                async with s.post(RESEND_ENDPOINT, json=payload,
+                                  headers=headers,
+                                  timeout=aiohttp.ClientTimeout(total=30)) as r:
+                    body = await r.text()
+                    if 400 <= r.status < 500:
+                        # Auth / validation — don't retry
+                        raise RuntimeError(
+                            f"Resend {r.status}: {body[:500]}"
+                        )
+                    if r.status >= 500:
+                        # Server-side, retryable
+                        raise RuntimeError(
+                            f"Resend {r.status} (will retry): {body[:200]}"
+                        )
+                    return json.loads(body) if body else {}
+        except (aiohttp.ClientError, asyncio.TimeoutError, OSError,
+                RuntimeError) as e:
+            last_err = e
+            # Non-retryable: RuntimeError without "(will retry)" marker
+            if isinstance(e, RuntimeError) and "(will retry)" not in str(e):
+                raise
+            print(f"  Resend attempt {attempt + 1}/{len(backoffs)} failed: {e}",
+                  file=sys.stderr)
+    raise RuntimeError(f"Resend send failed after {len(backoffs)} attempts: {last_err}")
 
 
 async def main_async(date_str: str, dry_run: bool) -> int:

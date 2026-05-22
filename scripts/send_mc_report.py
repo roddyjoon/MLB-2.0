@@ -256,6 +256,38 @@ def _parse_recipients(to_value: str) -> list:
     return [e.strip() for e in (to_value or "").split(",") if e.strip()]
 
 
+async def _post_resend_with_retry(payload: Dict, api_key: str) -> Dict:
+    """POST to Resend with retry-on-transient-error (broken pipe, timeout,
+    5xx). Matches send_daily_card.py's helper. Non-retryable 4xx raises."""
+    import asyncio as _asyncio
+    headers = {"Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json"}
+    backoffs = [0, 2, 6, 18]
+    last_err = None
+    for attempt, wait in enumerate(backoffs):
+        if wait:
+            await _asyncio.sleep(wait)
+        try:
+            async with aiohttp.ClientSession() as s:
+                async with s.post(RESEND_ENDPOINT, json=payload,
+                                  headers=headers,
+                                  timeout=aiohttp.ClientTimeout(total=30)) as r:
+                    body = await r.text()
+                    if 400 <= r.status < 500:
+                        raise RuntimeError(f"Resend {r.status}: {body[:500]}")
+                    if r.status >= 500:
+                        raise RuntimeError(f"Resend {r.status} (will retry): {body[:200]}")
+                    return json.loads(body) if body else {}
+        except (aiohttp.ClientError, _asyncio.TimeoutError, OSError,
+                RuntimeError) as e:
+            last_err = e
+            if isinstance(e, RuntimeError) and "(will retry)" not in str(e):
+                raise
+            print(f"  Resend attempt {attempt + 1}/{len(backoffs)} failed: {e}",
+                  file=sys.stderr)
+    raise RuntimeError(f"Resend send failed after {len(backoffs)} attempts: {last_err}")
+
+
 async def send_via_resend(api_key: str, to: str, subject: str,
                           html: str, attachment_bytes: bytes = None,
                           attachment_name: str = None) -> Dict:
@@ -271,15 +303,7 @@ async def send_via_resend(api_key: str, to: str, subject: str,
             "filename": attachment_name,
             "content": base64.b64encode(attachment_bytes).decode(),
         }]
-    headers = {"Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json"}
-    async with aiohttp.ClientSession() as s:
-        async with s.post(RESEND_ENDPOINT, json=payload, headers=headers,
-                          timeout=aiohttp.ClientTimeout(total=30)) as r:
-            body = await r.text()
-            if r.status >= 300:
-                raise RuntimeError(f"Resend {r.status}: {body[:500]}")
-            return json.loads(body) if body else {}
+    return await _post_resend_with_retry(payload, api_key)
 
 
 async def main_async(date_str: str, dry_run: bool) -> int:
