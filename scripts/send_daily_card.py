@@ -300,13 +300,16 @@ async def main_async(date_str: str, dry_run: bool) -> int:
 
     html = render_email_html(card)
 
-    # Differentiate morning (8 AM, projected lineups) from afternoon (3 PM,
-    # confirmed lineups) so they don't thread in Gmail.
+    # Subject tagging — keeps morning, midday, and afternoon emails from
+    # threading together in Gmail and tells you which lineup state they're
+    # based on at a glance.
     hour = datetime.now().hour
-    if hour < 12:
-        tag = "forecast"  # ~8 AM, lineups mostly projected
+    if hour < 10:
+        tag = "forecast"          # ~8 AM, projected lineups
+    elif hour < 13:
+        tag = "midday refresh"    # ~11:30 (weekends), confirmed early-game lineups
     elif hour < 17:
-        tag = "refresh"   # ~3 PM, lineups mostly confirmed
+        tag = "refresh"           # ~3 PM, confirmed evening-game lineups
     else:
         tag = "late"
     subject = f"MLB v3 daily card — {date_str} ({tag})"

@@ -14,10 +14,11 @@ name: Daily MLB v3 Emails
 
 on:
   schedule:
-    - cron: "0 15 * * *"    # 08:00 PDT — card forecast
-    - cron: "5 15 * * *"    # 08:05 PDT — MC report
-    - cron: "10 15 * * *"   # 08:10 PDT — grading report (yesterday + rolling)
-    - cron: "0 22 * * *"    # 15:00 PDT — card refresh
+    - cron: "0 15 * * *"    # 08:00 PDT — card forecast (daily)
+    - cron: "5 15 * * *"    # 08:05 PDT — MC report (daily)
+    - cron: "10 15 * * *"   # 08:10 PDT — grading report (daily)
+    - cron: "30 18 * * 0,6" # 11:30 PDT — midday card refresh (Sat + Sun only)
+    - cron: "0 22 * * *"    # 15:00 PDT — card refresh (daily)
   workflow_dispatch:
     inputs:
       job:
