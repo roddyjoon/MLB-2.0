@@ -283,8 +283,18 @@ def render_email(end_date: str, grading: Dict) -> str:
 def _rows_to_csv_bytes(rows: List[Dict]) -> bytes:
     if not rows:
         return b""
+    # Use union of all row keys for fieldnames so a row with extra fields
+    # (e.g., sim_new_pnl present on grade-able rows but missing on NO_GAME
+    # early-return rows pre-fix) doesn't crash the writer.
+    fieldnames: List[str] = []
+    seen = set()
+    for r in rows:
+        for k in r:
+            if k not in seen:
+                fieldnames.append(k)
+                seen.add(k)
     buf = io.StringIO()
-    w = csv.DictWriter(buf, fieldnames=list(rows[0].keys()))
+    w = csv.DictWriter(buf, fieldnames=fieldnames, extrasaction="ignore")
     w.writeheader()
     for r in rows:
         w.writerow(r)

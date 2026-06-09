@@ -1,0 +1,350 @@
+[
+  {
+    "game": {
+      "game_id": "824272",
+      "home_team": "DET",
+      "away_team": "LAA",
+      "home_team_id": 116,
+      "away_team_id": 108,
+      "home_sp_name": "Jack Flaherty",
+      "away_sp_name": "Grayson Rodriguez",
+      "home_sp_id": "656427",
+      "away_sp_id": "680570",
+      "game_time": "2026-05-28T17:10:00Z",
+      "venue": "Comerica Park",
+      "status": "Pre-Game"
+    },
+    "mc": {
+      "home_wp": 0.3257,
+      "away_wp": 0.6721,
+      "pushes": 15,
+      "projected_total_mean": 9.25,
+      "projected_total_ci95_lo": 4,
+      "projected_total_ci95_hi": 16,
+      "home_runline_win_wp": 0.176,
+      "away_runline_win_wp": 0.5053,
+      "mean_home_runs": 3.9,
+      "mean_away_runs": 5.35,
+      "inputs": {
+        "home_team_rpg": 4.07,
+        "away_team_rpg": 4.36,
+        "home_sp_rate": 6.07,
+        "away_sp_rate": 3.6,
+        "home_bp_rate": 3.8762382185234507,
+        "away_bp_rate": 5.348449673781389,
+        "park_runs_factor": 0.97,
+        "weather_run_adj": -0.27,
+        "home_bvp_elite_count": 0,
+        "away_bvp_elite_count": 0
+      }
+    },
+    "drivers": [
+      {
+        "name": "SP matchup",
+        "impact_pct": "-12.4%",
+        "explanation": "Jack Flaherty 6.07 vs Grayson Rodriguez 3.60 (away edge 2.47 runs)"
+      },
+      {
+        "name": "Bullpen depth",
+        "impact_pct": "+2.9%",
+        "explanation": "home BP 3.88 ERA vs away BP 5.35"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "-1.5%",
+        "explanation": "Comerica Park: runs factor 0.97 (-3% vs league avg)"
+      }
+    ],
+    "lineup_projected": false
+  },
+  {
+    "game": {
+      "game_id": "824595",
+      "home_team": "CWS",
+      "away_team": "MIN",
+      "home_team_id": 145,
+      "away_team_id": 142,
+      "home_sp_name": "Davis Martin",
+      "away_sp_name": "Kendry Rojas",
+      "home_sp_id": "663436",
+      "away_sp_id": "696070",
+      "game_time": "2026-05-28T18:10:00Z",
+      "venue": "Rate Field",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.5466,
+      "away_wp": 0.4513,
+      "pushes": 15,
+      "projected_total_mean": 8.53,
+      "projected_total_ci95_lo": 3,
+      "projected_total_ci95_hi": 15,
+      "home_runline_win_wp": 0.3544,
+      "away_runline_win_wp": 0.2611,
+      "mean_home_runs": 4.46,
+      "mean_away_runs": 4.07,
+      "inputs": {
+        "home_team_rpg": 4.51,
+        "away_team_rpg": 4.67,
+        "home_sp_rate": 3.13,
+        "away_sp_rate": 3.6,
+        "home_bp_rate": 4.6111118440276,
+        "away_bp_rate": 5.257895871661952,
+        "park_runs_factor": 0.98,
+        "weather_run_adj": -0.18,
+        "home_bvp_elite_count": 0,
+        "away_bvp_elite_count": 2
+      }
+    },
+    "drivers": [
+      {
+        "name": "SP matchup",
+        "impact_pct": "+2.4%",
+        "explanation": "Davis Martin 3.13 vs Kendry Rojas 3.60 (home edge 0.47 runs)"
+      },
+      {
+        "name": "Bullpen depth",
+        "impact_pct": "+1.3%",
+        "explanation": "home BP 4.61 ERA vs away BP 5.26"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "-1.0%",
+        "explanation": "Guaranteed Rate Field: runs factor 0.98 (-2% vs league avg)"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "824757",
+      "home_team": "BOS",
+      "away_team": "ATL",
+      "home_team_id": 111,
+      "away_team_id": 144,
+      "home_sp_name": "Payton Tolle",
+      "away_sp_name": "Chris Sale",
+      "home_sp_id": "801139",
+      "away_sp_id": "519242",
+      "game_time": "2026-05-28T20:10:00Z",
+      "venue": "Fenway Park",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.3863,
+      "away_wp": 0.61,
+      "pushes": 26,
+      "projected_total_mean": 6.62,
+      "projected_total_ci95_lo": 2,
+      "projected_total_ci95_hi": 12,
+      "home_runline_win_wp": 0.2044,
+      "away_runline_win_wp": 0.3834,
+      "mean_home_runs": 2.95,
+      "mean_away_runs": 3.67,
+      "inputs": {
+        "home_team_rpg": 4.2,
+        "away_team_rpg": 5.35,
+        "home_sp_rate": 2.06,
+        "away_sp_rate": 2.22,
+        "home_bp_rate": 3.3990504317659798,
+        "away_bp_rate": 3.2126585458658927,
+        "park_runs_factor": 1.04,
+        "weather_run_adj": 0.36,
+        "home_bvp_elite_count": 1,
+        "away_bvp_elite_count": 0
+      }
+    },
+    "drivers": [
+      {
+        "name": "Lineup strength",
+        "impact_pct": "-4.6%",
+        "explanation": "home wRC+ 98 (RPG 4.20) vs away wRC+ 113 (RPG 5.35)"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "+2.0%",
+        "explanation": "Fenway Park: runs factor 1.04 (+4% vs league avg)"
+      },
+      {
+        "name": "SP matchup",
+        "impact_pct": "+0.8%",
+        "explanation": "Payton Tolle 2.06 vs Chris Sale 2.22 (home edge 0.16 runs)"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "824834",
+      "home_team": "BAL",
+      "away_team": "TOR",
+      "home_team_id": 110,
+      "away_team_id": 141,
+      "home_sp_name": "Chris Bassitt",
+      "away_sp_name": "Patrick Corbin",
+      "home_sp_id": "605135",
+      "away_sp_id": "571578",
+      "game_time": "2026-05-28T22:35:00Z",
+      "venue": "Oriole Park at Camden Yards",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.4453,
+      "away_wp": 0.5521,
+      "pushes": 18,
+      "projected_total_mean": 11.07,
+      "projected_total_ci95_lo": 5,
+      "projected_total_ci95_hi": 18,
+      "home_runline_win_wp": 0.2894,
+      "away_runline_win_wp": 0.3756,
+      "mean_home_runs": 5.31,
+      "mean_away_runs": 5.76,
+      "inputs": {
+        "home_team_rpg": 4.83,
+        "away_team_rpg": 4.07,
+        "home_sp_rate": 5.93,
+        "away_sp_rate": 4.18,
+        "home_bp_rate": 4.86131475057404,
+        "away_bp_rate": 4.27901877486523,
+        "park_runs_factor": 1.01,
+        "weather_run_adj": 0.09,
+        "home_bvp_elite_count": 4,
+        "away_bvp_elite_count": 3
+      }
+    },
+    "drivers": [
+      {
+        "name": "SP matchup",
+        "impact_pct": "-8.8%",
+        "explanation": "Chris Bassitt 5.93 vs Patrick Corbin 4.18 (away edge 1.75 runs)"
+      },
+      {
+        "name": "Lineup strength",
+        "impact_pct": "+3.0%",
+        "explanation": "home wRC+ 104 (RPG 4.83) vs away wRC+ 96 (RPG 4.07)"
+      },
+      {
+        "name": "Bullpen depth",
+        "impact_pct": "-1.2%",
+        "explanation": "home BP 4.86 ERA vs away BP 4.28"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "823378",
+      "home_team": "PIT",
+      "away_team": "CHC",
+      "home_team_id": 134,
+      "away_team_id": 112,
+      "home_sp_name": "Paul Skenes",
+      "away_sp_name": "Colin Rea",
+      "home_sp_id": "694973",
+      "away_sp_id": "607067",
+      "game_time": "2026-05-28T22:40:00Z",
+      "venue": "PNC Park",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.644,
+      "away_wp": 0.3517,
+      "pushes": 30,
+      "projected_total_mean": 6.86,
+      "projected_total_ci95_lo": 2,
+      "projected_total_ci95_hi": 13,
+      "home_runline_win_wp": 0.4233,
+      "away_runline_win_wp": 0.1696,
+      "mean_home_runs": 3.93,
+      "mean_away_runs": 2.93,
+      "inputs": {
+        "home_team_rpg": 4.71,
+        "away_team_rpg": 4.54,
+        "home_sp_rate": 2.09,
+        "away_sp_rate": 3.58,
+        "home_bp_rate": 4.050000570579089,
+        "away_bp_rate": 3.7193883161206043,
+        "park_runs_factor": 0.96,
+        "weather_run_adj": -0.36,
+        "home_bvp_elite_count": 3,
+        "away_bvp_elite_count": 4
+      }
+    },
+    "drivers": [
+      {
+        "name": "SP matchup",
+        "impact_pct": "+7.5%",
+        "explanation": "Paul Skenes 2.09 vs Colin Rea 3.58 (home edge 1.49 runs)"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "-2.0%",
+        "explanation": "PNC Park: runs factor 0.96 (-4% vs league avg)"
+      },
+      {
+        "name": "Weather",
+        "impact_pct": "-0.7%",
+        "explanation": "71\u00b0F, 10 mph N (-0.7% run env)"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "822896",
+      "home_team": "TEX",
+      "away_team": "HOU",
+      "home_team_id": 140,
+      "away_team_id": 117,
+      "home_sp_name": "Nathan Eovaldi",
+      "away_sp_name": "Spencer Arrighetti",
+      "home_sp_id": "543135",
+      "away_sp_id": "681293",
+      "game_time": "2026-05-29T00:05:00Z",
+      "venue": "Globe Life Field",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.7069,
+      "away_wp": 0.2914,
+      "pushes": 12,
+      "projected_total_mean": 9.77,
+      "projected_total_ci95_lo": 4,
+      "projected_total_ci95_hi": 17,
+      "home_runline_win_wp": 0.5137,
+      "away_runline_win_wp": 0.1679,
+      "mean_home_runs": 5.66,
+      "mean_away_runs": 4.11,
+      "inputs": {
+        "home_team_rpg": 4.18,
+        "away_team_rpg": 4.64,
+        "home_sp_rate": 3.71,
+        "away_sp_rate": 4.82,
+        "home_bp_rate": 2.78048814981205,
+        "away_bp_rate": 6.195790381768273,
+        "park_runs_factor": 1.02,
+        "weather_run_adj": 0.18,
+        "home_bvp_elite_count": 1,
+        "away_bvp_elite_count": 3
+      }
+    },
+    "drivers": [
+      {
+        "name": "Bullpen depth",
+        "impact_pct": "+6.8%",
+        "explanation": "home BP 2.78 ERA vs away BP 6.20"
+      },
+      {
+        "name": "SP matchup",
+        "impact_pct": "+5.6%",
+        "explanation": "Nathan Eovaldi 3.71 vs Spencer Arrighetti 4.82 (home edge 1.11 runs)"
+      },
+      {
+        "name": "Lineup strength",
+        "impact_pct": "-1.8%",
+        "explanation": "home wRC+ 100 (RPG 4.18) vs away wRC+ 108 (RPG 4.64)"
+      }
+    ],
+    "lineup_projected": true
+  }
+]

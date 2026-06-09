@@ -1,0 +1,640 @@
+[
+  {
+    "game": {
+      "game_id": "823383",
+      "home_team": "PIT",
+      "away_team": "COL",
+      "home_team_id": 134,
+      "away_team_id": 115,
+      "home_sp_name": "Mason Montgomery",
+      "away_sp_name": "Chase Dollander",
+      "home_sp_id": "682254",
+      "away_sp_id": "801403",
+      "game_time": "2026-05-14T16:35:00Z",
+      "venue": "PNC Park",
+      "status": "Pre-Game"
+    },
+    "mc": {
+      "home_wp": 0.5413,
+      "away_wp": 0.4543,
+      "pushes": 31,
+      "projected_total_mean": 6.39,
+      "projected_total_ci95_lo": 2,
+      "projected_total_ci95_hi": 12,
+      "home_runline_win_wp": 0.317,
+      "away_runline_win_wp": 0.2456,
+      "mean_home_runs": 3.33,
+      "mean_away_runs": 3.06,
+      "inputs": {
+        "home_team_rpg": 4.49,
+        "away_team_rpg": 4.38,
+        "home_sp_rate": 2.63,
+        "away_sp_rate": 2.75,
+        "home_bp_rate": 4.050000570579089,
+        "away_bp_rate": 4.3373500205450775,
+        "park_runs_factor": 0.96,
+        "weather_run_adj": -0.36,
+        "home_bvp_elite_count": 0,
+        "away_bvp_elite_count": 0
+      }
+    },
+    "drivers": [
+      {
+        "name": "Park environment",
+        "impact_pct": "-2.0%",
+        "explanation": "PNC Park: runs factor 0.96 (-4% vs league avg)"
+      },
+      {
+        "name": "Weather",
+        "impact_pct": "-0.7%",
+        "explanation": "57\u00b0F, 12 mph NW (-0.7% run env)"
+      },
+      {
+        "name": "SP matchup",
+        "impact_pct": "+0.6%",
+        "explanation": "Mason Montgomery 2.63 vs Chase Dollander 2.75 (home edge 0.12 runs)"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "824517",
+      "home_team": "CIN",
+      "away_team": "WSH",
+      "home_team_id": 113,
+      "away_team_id": 120,
+      "home_sp_name": "Chase Burns",
+      "away_sp_name": "Foster Griffin",
+      "home_sp_id": "695505",
+      "away_sp_id": "656492",
+      "game_time": "2026-05-14T16:40:00Z",
+      "venue": "Great American Ball Park",
+      "status": "Pre-Game"
+    },
+    "mc": {
+      "home_wp": 0.443,
+      "away_wp": 0.5563,
+      "pushes": 5,
+      "projected_total_mean": 10.37,
+      "projected_total_ci95_lo": 5,
+      "projected_total_ci95_hi": 17,
+      "home_runline_win_wp": 0.2881,
+      "away_runline_win_wp": 0.3806,
+      "mean_home_runs": 4.97,
+      "mean_away_runs": 5.4,
+      "inputs": {
+        "home_team_rpg": 3.9,
+        "away_team_rpg": 5.4,
+        "home_sp_rate": 2.96,
+        "away_sp_rate": 4.1,
+        "home_bp_rate": 4.208633757656951,
+        "away_bp_rate": 4.774067379054722,
+        "park_runs_factor": 1.1,
+        "weather_run_adj": 0.9,
+        "home_bvp_elite_count": 0,
+        "away_bvp_elite_count": 0
+      }
+    },
+    "drivers": [
+      {
+        "name": "Lineup strength",
+        "impact_pct": "-6.0%",
+        "explanation": "home wRC+ 86 (RPG 3.90) vs away wRC+ 108 (RPG 5.40)"
+      },
+      {
+        "name": "SP matchup",
+        "impact_pct": "+5.7%",
+        "explanation": "Chase Burns 2.96 vs Foster Griffin 4.10 (home edge 1.14 runs)"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "+5.0%",
+        "explanation": "Great American Ball Park: runs factor 1.10 (+10% vs league avg)"
+      }
+    ],
+    "lineup_projected": false
+  },
+  {
+    "game": {
+      "game_id": "823630",
+      "home_team": "NYM",
+      "away_team": "DET",
+      "home_team_id": 121,
+      "away_team_id": 116,
+      "home_sp_name": "Nolan McLean",
+      "away_sp_name": "Keider Montero",
+      "home_sp_id": "690997",
+      "away_sp_id": "672456",
+      "game_time": "2026-05-14T17:10:00Z",
+      "venue": "Citi Field",
+      "status": "Pre-Game"
+    },
+    "mc": {
+      "home_wp": 0.6086,
+      "away_wp": 0.3834,
+      "pushes": 56,
+      "projected_total_mean": 5.34,
+      "projected_total_ci95_lo": 1,
+      "projected_total_ci95_hi": 10,
+      "home_runline_win_wp": 0.3647,
+      "away_runline_win_wp": 0.1733,
+      "mean_home_runs": 3.01,
+      "mean_away_runs": 2.34,
+      "inputs": {
+        "home_team_rpg": 3.84,
+        "away_team_rpg": 4.1,
+        "home_sp_rate": 1.98,
+        "away_sp_rate": 3.28,
+        "home_bp_rate": 3.6126765901195164,
+        "away_bp_rate": 3.8762382185234507,
+        "park_runs_factor": 0.96,
+        "weather_run_adj": -0.36,
+        "home_bvp_elite_count": 0,
+        "away_bvp_elite_count": 0
+      }
+    },
+    "drivers": [
+      {
+        "name": "SP matchup",
+        "impact_pct": "+6.5%",
+        "explanation": "Nolan McLean 1.98 vs Keider Montero 3.28 (home edge 1.30 runs)"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "-2.0%",
+        "explanation": "Citi Field: runs factor 0.96 (-4% vs league avg)"
+      },
+      {
+        "name": "Lineup strength",
+        "impact_pct": "-1.0%",
+        "explanation": "home wRC+ 81 (RPG 3.84) vs away wRC+ 94 (RPG 4.10)"
+      }
+    ],
+    "lineup_projected": false
+  },
+  {
+    "game": {
+      "game_id": "823709",
+      "home_team": "MIN",
+      "away_team": "MIA",
+      "home_team_id": 142,
+      "away_team_id": 146,
+      "home_sp_name": "Zebby Matthews",
+      "away_sp_name": "Braxton Garrett",
+      "home_sp_id": "805673",
+      "away_sp_id": "666129",
+      "game_time": "2026-05-14T17:40:00Z",
+      "venue": "Target Field",
+      "status": "Pre-Game"
+    },
+    "mc": {
+      "home_wp": 0.4599,
+      "away_wp": 0.5369,
+      "pushes": 23,
+      "projected_total_mean": 8.71,
+      "projected_total_ci95_lo": 3,
+      "projected_total_ci95_hi": 15,
+      "home_runline_win_wp": 0.2893,
+      "away_runline_win_wp": 0.3364,
+      "mean_home_runs": 4.24,
+      "mean_away_runs": 4.47,
+      "inputs": {
+        "home_team_rpg": 4.74,
+        "away_team_rpg": 4.3,
+        "home_sp_rate": 4.2,
+        "away_sp_rate": 4.2,
+        "home_bp_rate": 5.257895871661952,
+        "away_bp_rate": 3.4195255908388855,
+        "park_runs_factor": 0.96,
+        "weather_run_adj": -0.36,
+        "home_bvp_elite_count": 0,
+        "away_bvp_elite_count": 0
+      }
+    },
+    "drivers": [
+      {
+        "name": "Bullpen depth",
+        "impact_pct": "-3.7%",
+        "explanation": "home BP 5.26 ERA vs away BP 3.42"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "-2.0%",
+        "explanation": "Target Field: runs factor 0.96 (-4% vs league avg)"
+      },
+      {
+        "name": "Lineup strength",
+        "impact_pct": "+1.8%",
+        "explanation": "home wRC+ 100 (RPG 4.74) vs away wRC+ 94 (RPG 4.30)"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "823789",
+      "home_team": "MIL",
+      "away_team": "SD",
+      "home_team_id": 158,
+      "away_team_id": 135,
+      "home_sp_name": "Kyle Harrison",
+      "away_sp_name": "Griffin Canning",
+      "home_sp_id": "690986",
+      "away_sp_id": "656288",
+      "game_time": "2026-05-14T17:40:00Z",
+      "venue": "American Family Field",
+      "status": "Pre-Game"
+    },
+    "mc": {
+      "home_wp": 0.613,
+      "away_wp": 0.383,
+      "pushes": 28,
+      "projected_total_mean": 8.26,
+      "projected_total_ci95_lo": 3,
+      "projected_total_ci95_hi": 14,
+      "home_runline_win_wp": 0.4074,
+      "away_runline_win_wp": 0.2209,
+      "mean_home_runs": 4.53,
+      "mean_away_runs": 3.72,
+      "inputs": {
+        "home_team_rpg": 4.73,
+        "away_team_rpg": 4.39,
+        "home_sp_rate": 2.91,
+        "away_sp_rate": 3.6,
+        "home_bp_rate": 3.67303161981907,
+        "away_bp_rate": 3.903615139592988,
+        "park_runs_factor": 1.02,
+        "weather_run_adj": 0.18,
+        "home_bvp_elite_count": 1,
+        "away_bvp_elite_count": 4
+      }
+    },
+    "drivers": [
+      {
+        "name": "SP matchup",
+        "impact_pct": "+3.4%",
+        "explanation": "Kyle Harrison 2.91 vs Griffin Canning 3.60 (home edge 0.69 runs)"
+      },
+      {
+        "name": "BvP history",
+        "impact_pct": "-1.5%",
+        "explanation": "1 elite home threat(s) vs Griffin Canning, 4 vs Kyle Harrison"
+      },
+      {
+        "name": "Lineup strength",
+        "impact_pct": "+1.4%",
+        "explanation": "home wRC+ 95 (RPG 4.73) vs away wRC+ 89 (RPG 4.39)"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "824196",
+      "home_team": "HOU",
+      "away_team": "SEA",
+      "home_team_id": 117,
+      "away_team_id": 136,
+      "home_sp_name": "Mike Burrows",
+      "away_sp_name": "Luis Castillo",
+      "home_sp_id": "681347",
+      "away_sp_id": "622491",
+      "game_time": "2026-05-14T18:10:00Z",
+      "venue": "Daikin Park",
+      "status": "Pre-Game"
+    },
+    "mc": {
+      "home_wp": 0.3991,
+      "away_wp": 0.5984,
+      "pushes": 17,
+      "projected_total_mean": 8.72,
+      "projected_total_ci95_lo": 3,
+      "projected_total_ci95_hi": 15,
+      "home_runline_win_wp": 0.2373,
+      "away_runline_win_wp": 0.3951,
+      "mean_home_runs": 4.05,
+      "mean_away_runs": 4.68,
+      "inputs": {
+        "home_team_rpg": 4.27,
+        "away_team_rpg": 4.1,
+        "home_sp_rate": 4.05,
+        "away_sp_rate": 4.45,
+        "home_bp_rate": 6.195790381768273,
+        "away_bp_rate": 3.1448868578223688,
+        "park_runs_factor": 0.97,
+        "weather_run_adj": -0.27,
+        "home_bvp_elite_count": 3,
+        "away_bvp_elite_count": 3
+      }
+    },
+    "drivers": [
+      {
+        "name": "Bullpen depth",
+        "impact_pct": "-6.1%",
+        "explanation": "home BP 6.20 ERA vs away BP 3.14"
+      },
+      {
+        "name": "SP matchup",
+        "impact_pct": "+2.0%",
+        "explanation": "Mike Burrows 4.05 vs Luis Castillo 4.45 (home edge 0.40 runs)"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "-1.5%",
+        "explanation": "Minute Maid Park: runs factor 0.97 (-3% vs league avg)"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "825008",
+      "home_team": "ATH",
+      "away_team": "STL",
+      "home_team_id": 133,
+      "away_team_id": 138,
+      "home_sp_name": "Jacob Lopez",
+      "away_sp_name": "Michael McGreevy",
+      "home_sp_id": "682052",
+      "away_sp_id": "700241",
+      "game_time": "2026-05-14T19:05:00Z",
+      "venue": "Sutter Health Park",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.3773,
+      "away_wp": 0.6207,
+      "pushes": 14,
+      "projected_total_mean": 9.4,
+      "projected_total_ci95_lo": 4,
+      "projected_total_ci95_hi": 16,
+      "home_runline_win_wp": 0.2196,
+      "away_runline_win_wp": 0.4351,
+      "mean_home_runs": 4.23,
+      "mean_away_runs": 5.17,
+      "inputs": {
+        "home_team_rpg": 4.42,
+        "away_team_rpg": 4.36,
+        "home_sp_rate": 5.92,
+        "away_sp_rate": 4.31,
+        "home_bp_rate": 4.819071927188475,
+        "away_bp_rate": 4.915213115651436,
+        "park_runs_factor": 0.93,
+        "weather_run_adj": -0.63,
+        "home_bvp_elite_count": 0,
+        "away_bvp_elite_count": 0
+      }
+    },
+    "drivers": [
+      {
+        "name": "SP matchup",
+        "impact_pct": "-8.1%",
+        "explanation": "Jacob Lopez 5.92 vs Michael McGreevy 4.31 (away edge 1.61 runs)"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "-3.5%",
+        "explanation": "Sutter Health Park: runs factor 0.93 (-7% vs league avg)"
+      },
+      {
+        "name": "Weather",
+        "impact_pct": "-1.3%",
+        "explanation": "70\u00b0F, 7 mph SW (-1.3% run env)"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "824762",
+      "home_team": "BOS",
+      "away_team": "PHI",
+      "home_team_id": 111,
+      "away_team_id": 143,
+      "home_sp_name": "Ranger Suarez",
+      "away_sp_name": "Jes\u00fas Luzardo",
+      "home_sp_id": "624133",
+      "away_sp_id": "666200",
+      "game_time": "2026-05-14T22:45:00Z",
+      "venue": "Fenway Park",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.3216,
+      "away_wp": 0.674,
+      "pushes": 31,
+      "projected_total_mean": 6.71,
+      "projected_total_ci95_lo": 2,
+      "projected_total_ci95_hi": 12,
+      "home_runline_win_wp": 0.1561,
+      "away_runline_win_wp": 0.46,
+      "mean_home_runs": 2.76,
+      "mean_away_runs": 3.95,
+      "inputs": {
+        "home_team_rpg": 3.88,
+        "away_team_rpg": 4.25,
+        "home_sp_rate": 3.73,
+        "away_sp_rate": 1.97,
+        "home_bp_rate": 3.3990504317659798,
+        "away_bp_rate": 4.2208442817467935,
+        "park_runs_factor": 1.04,
+        "weather_run_adj": 0.0,
+        "home_bvp_elite_count": 2,
+        "away_bvp_elite_count": 1
+      }
+    },
+    "drivers": [
+      {
+        "name": "SP matchup",
+        "impact_pct": "-8.8%",
+        "explanation": "Ranger Suarez 3.73 vs Jes\u00fas Luzardo 1.97 (away edge 1.76 runs)"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "+2.0%",
+        "explanation": "Fenway Park: runs factor 1.04 (+4% vs league avg)"
+      },
+      {
+        "name": "Bullpen depth",
+        "impact_pct": "+1.6%",
+        "explanation": "home BP 3.40 ERA vs away BP 4.22"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "824926",
+      "home_team": "ATL",
+      "away_team": "CHC",
+      "home_team_id": 144,
+      "away_team_id": 112,
+      "home_sp_name": "Chris Sale",
+      "away_sp_name": "Ben Brown",
+      "home_sp_id": "519242",
+      "away_sp_id": "676962",
+      "game_time": "2026-05-14T23:15:00Z",
+      "venue": "Truist Park",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.6366,
+      "away_wp": 0.3594,
+      "pushes": 28,
+      "projected_total_mean": 7.91,
+      "projected_total_ci95_lo": 3,
+      "projected_total_ci95_hi": 14,
+      "home_runline_win_wp": 0.4337,
+      "away_runline_win_wp": 0.1936,
+      "mean_home_runs": 4.43,
+      "mean_away_runs": 3.48,
+      "inputs": {
+        "home_team_rpg": 5.45,
+        "away_team_rpg": 4.82,
+        "home_sp_rate": 2.62,
+        "away_sp_rate": 3.04,
+        "home_bp_rate": 3.2126585458658927,
+        "away_bp_rate": 3.7193883161206043,
+        "park_runs_factor": 1.01,
+        "weather_run_adj": 0.09,
+        "home_bvp_elite_count": 0,
+        "away_bvp_elite_count": 1
+      }
+    },
+    "drivers": [
+      {
+        "name": "Lineup strength",
+        "impact_pct": "+2.5%",
+        "explanation": "home wRC+ 119 (RPG 5.45) vs away wRC+ 112 (RPG 4.82)"
+      },
+      {
+        "name": "SP matchup",
+        "impact_pct": "+2.1%",
+        "explanation": "Chris Sale 2.62 vs Ben Brown 3.04 (home edge 0.42 runs)"
+      },
+      {
+        "name": "Bullpen depth",
+        "impact_pct": "+1.0%",
+        "explanation": "home BP 3.21 ERA vs away BP 3.72"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "824602",
+      "home_team": "CWS",
+      "away_team": "KC",
+      "home_team_id": 145,
+      "away_team_id": 118,
+      "home_sp_name": "Anthony Kay",
+      "away_sp_name": "Kris Bubic",
+      "home_sp_id": "641743",
+      "away_sp_id": "663460",
+      "game_time": "2026-05-14T23:40:00Z",
+      "venue": "Rate Field",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.32,
+      "away_wp": 0.6781,
+      "pushes": 13,
+      "projected_total_mean": 9.68,
+      "projected_total_ci95_lo": 4,
+      "projected_total_ci95_hi": 16,
+      "home_runline_win_wp": 0.1817,
+      "away_runline_win_wp": 0.5001,
+      "mean_home_runs": 4.11,
+      "mean_away_runs": 5.57,
+      "inputs": {
+        "home_team_rpg": 4.35,
+        "away_team_rpg": 4.31,
+        "home_sp_rate": 6.27,
+        "away_sp_rate": 3.83,
+        "home_bp_rate": 4.6111118440276,
+        "away_bp_rate": 4.818697421265332,
+        "park_runs_factor": 0.98,
+        "weather_run_adj": -0.54,
+        "home_bvp_elite_count": 1,
+        "away_bvp_elite_count": 0
+      }
+    },
+    "drivers": [
+      {
+        "name": "SP matchup",
+        "impact_pct": "-12.2%",
+        "explanation": "Anthony Kay 6.27 vs Kris Bubic 3.83 (away edge 2.44 runs)"
+      },
+      {
+        "name": "Weather",
+        "impact_pct": "-1.1%",
+        "explanation": "55\u00b0F, 10 mph ESE (-1.1% run env)"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "-1.0%",
+        "explanation": "Guaranteed Rate Field: runs factor 0.98 (-2% vs league avg)"
+      }
+    ],
+    "lineup_projected": true
+  },
+  {
+    "game": {
+      "game_id": "823950",
+      "home_team": "LAD",
+      "away_team": "SF",
+      "home_team_id": 119,
+      "away_team_id": 137,
+      "home_sp_name": "Emmet Sheehan",
+      "away_sp_name": "Landen Roupp",
+      "home_sp_id": "686218",
+      "away_sp_id": "694738",
+      "game_time": "2026-05-15T02:10:00Z",
+      "venue": "UNIQLO Field at Dodger Stadium",
+      "status": "Scheduled"
+    },
+    "mc": {
+      "home_wp": 0.611,
+      "away_wp": 0.3793,
+      "pushes": 68,
+      "projected_total_mean": 6.01,
+      "projected_total_ci95_lo": 2,
+      "projected_total_ci95_hi": 11,
+      "home_runline_win_wp": 0.3711,
+      "away_runline_win_wp": 0.188,
+      "mean_home_runs": 3.35,
+      "mean_away_runs": 2.66,
+      "inputs": {
+        "home_team_rpg": 4.76,
+        "away_team_rpg": 3.53,
+        "home_sp_rate": 3.3,
+        "away_sp_rate": 2.99,
+        "home_bp_rate": 3.685714620473464,
+        "away_bp_rate": 3.212465130580417,
+        "park_runs_factor": 0.96,
+        "weather_run_adj": -0.36,
+        "home_bvp_elite_count": 2,
+        "away_bvp_elite_count": 0
+      }
+    },
+    "drivers": [
+      {
+        "name": "Lineup strength",
+        "impact_pct": "+4.9%",
+        "explanation": "home wRC+ 116 (RPG 4.76) vs away wRC+ 85 (RPG 3.53)"
+      },
+      {
+        "name": "Park environment",
+        "impact_pct": "-2.0%",
+        "explanation": "Dodger Stadium: runs factor 0.96 (-4% vs league avg)"
+      },
+      {
+        "name": "SP matchup",
+        "impact_pct": "-1.5%",
+        "explanation": "Emmet Sheehan 3.30 vs Landen Roupp 2.99 (away edge 0.31 runs)"
+      }
+    ],
+    "lineup_projected": true
+  }
+]

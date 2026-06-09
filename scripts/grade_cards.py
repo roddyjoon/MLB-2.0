@@ -53,6 +53,10 @@ def parse_total_line(label: str) -> Optional[float]:
 def grade_play(play: Dict, finals_by_matchup: Dict[str, Dict]) -> Dict:
     matchup = play.get("matchup", "")
     final = finals_by_matchup.get(matchup)
+    # Initialize ALL fields up-front so every grade row has the same schema —
+    # downstream CSV writers use the first row's keys as fieldnames and a
+    # missing sim_new_* (from the NO_GAME early-return path) crashed the
+    # 2026-06-09 grade_launchd run.
     out = {
         "matchup": matchup,
         "label": play.get("label"),
@@ -65,9 +69,11 @@ def grade_play(play: Dict, finals_by_matchup: Dict[str, Dict]) -> Dict:
         "home_score": None,
         "away_score": None,
         "total": None,
-        "outcome": None,  # WIN / LOSS / PUSH / NO_GAME
+        "outcome": None,  # WIN / LOSS / PUSH / NO_GAME / UNGRADABLE
         "realized_pnl": 0.0,
         "unit_pnl": 0.0,
+        "sim_new_stake": 0.0,
+        "sim_new_pnl": 0.0,
     }
     if not final:
         out["outcome"] = "NO_GAME"
