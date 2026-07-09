@@ -214,6 +214,48 @@ def render_email(end_date: str, grading: Dict) -> str:
           <td style="text-align:right; padding:4px 10px;">{_fmt_pnl(gp)}</td>
         </tr>"""
 
+    # By-fire aggregate — each play now carries r['fire'] ∈ {am, midday, pm, legacy}
+    fire_groups: Dict[str, List[Dict]] = {}
+    for r in graded:
+        fire_groups.setdefault(r.get("fire", "legacy"), []).append(r)
+    fire_rows = ""
+    fire_order = ["am", "midday", "pm", "late", "legacy"]
+    for fire in fire_order:
+        if fire not in fire_groups:
+            continue
+        g = fire_groups[fire]
+        fw = sum(1 for r in g if r["outcome"] == "WIN")
+        fl = sum(1 for r in g if r["outcome"] == "LOSS")
+        fp = sum(1 for r in g if r["outcome"] == "PUSH")
+        f_unit = sum(r["unit_pnl"] for r in g)
+        f_real = sum(r["realized_pnl"] for r in g)
+        f_risked = sum(r["kelly_size"] for r in g if r["outcome"] != "PUSH")
+        f_unit_risk = (fw + fl) * UNIT
+        rec = f"{fw}-{fl}{'-'+str(fp)+'P' if fp else ''}"
+        label_map = {"am": "8 AM (forecast)",
+                     "midday": "11:30 (midday refresh, weekends)",
+                     "pm": "3 PM (refresh)",
+                     "late": "late",
+                     "legacy": "legacy (pre-per-fire split)"}
+        fire_rows += (f"<tr>"
+                      f"<td style='padding:4px 10px;'>{label_map[fire]}</td>"
+                      f"<td style='text-align:right; padding:4px 10px;'>{len(g)}</td>"
+                      f"<td style='text-align:right; padding:4px 10px;'>{rec}</td>"
+                      f"<td style='text-align:right; padding:4px 10px;'>{_fmt_wr(fw,fl)}</td>"
+                      f"<td style='text-align:right; padding:4px 10px;'>{_fmt_pnl(f_real)}</td>"
+                      f"<td style='text-align:right; padding:4px 10px;'>{_fmt_pnl(f_unit)}</td>"
+                      f"</tr>")
+    by_fire_html = ("<table style='border-collapse:collapse; font-size:12px; "
+                    "font-variant-numeric:tabular-nums;'>"
+                    "<thead><tr style='background:#f3f4f6;'>"
+                    "<th style='text-align:left; padding:4px 10px;'>Fire</th>"
+                    "<th style='text-align:right; padding:4px 10px;'>Plays</th>"
+                    "<th style='text-align:right; padding:4px 10px;'>W-L</th>"
+                    "<th style='text-align:right; padding:4px 10px;'>WR</th>"
+                    "<th style='text-align:right; padding:4px 10px;'>Realized</th>"
+                    "<th style='text-align:right; padding:4px 10px;'>Unit</th>"
+                    "</tr></thead><tbody>" + fire_rows + "</tbody></table>")
+
     n_days = len(summaries)
     return f"""<!doctype html>
 <html><body style="font-family: ui-sans-serif, system-ui, sans-serif;
@@ -239,6 +281,11 @@ def render_email(end_date: str, grading: Dict) -> str:
   </div>
 
   {yesterday_html}
+
+  <h3 style="border-bottom:2px solid #6b7280; padding-bottom:4px; margin-top:24px;">
+    By fire (am / midday / pm — one row per fire the card was generated for)
+  </h3>
+  {by_fire_html}
 
   <h3 style="border-bottom:2px solid #6b7280; padding-bottom:4px; margin-top:24px;">
     Daily rolling (last 14)

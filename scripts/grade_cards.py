@@ -152,53 +152,97 @@ def edge_bucket(edge: float) -> str:
     return "20%+"
 
 
+def _card_files_for_date(date: str) -> List[Tuple[str, Path]]:
+    """
+    Return list of (fire_tag, path) for all card files matching the date.
+
+    Includes:
+      - Tagged files: card_<date>_am.json, card_<date>_midday.json,
+        card_<date>_pm.json (new convention, post 2026-07)
+      - Legacy untagged: card_<date>.json (marked fire='legacy')
+
+    We deliberately grade tagged files ALONGSIDE legacy ones so cards
+    generated before the split-per-fire migration still count in totals.
+    Legacy cards were written by whichever fire ran LAST on that day —
+    usually the 3 PM refresh — so treat them as approximating "pm".
+    """
+    cards_dir = REPO_ROOT / "outputs" / "cards"
+    files: List[Tuple[str, Path]] = []
+    for tag in ("am", "midday", "pm", "late"):
+        p = cards_dir / f"card_{date}_{tag}.json"
+        if p.exists():
+            files.append((tag, p))
+    legacy = cards_dir / f"card_{date}.json"
+    if legacy.exists():
+        files.append(("legacy", legacy))
+    return files
+
+
 def grade_day(date: str, finals: Dict[str, Dict]) -> Tuple[List[Dict], Dict]:
-    card_path = REPO_ROOT / "outputs" / "cards" / f"card_{date}.json"
-    if not card_path.exists():
+    card_files = _card_files_for_date(date)
+    if not card_files:
         return [], {}
-    card = json.loads(card_path.read_text())
-
-    # Backfill matchup for older cards (pre-orchestrator-matchup-field).
-    # The best_play in each game_detail is the same object as the play in
-    # primaries/secondaries (carried by reference at card-build time, then
-    # serialized). For older serialized cards we have to reconstruct from
-    # game_details order — primaries+secondaries are derived from
-    # game_details in the same iteration order.
-    def _backfill_matchups(plays_list: List[Dict]) -> None:
-        details = card.get("game_details", [])
-        for play in plays_list:
-            if play.get("matchup"):
-                continue
-            # Try matching label/odds/edge against each game_detail.best_play
-            for gd in details:
-                bp = gd.get("best_play")
-                if not bp:
-                    continue
-                if (bp.get("label") == play.get("label")
-                        and bp.get("odds") == play.get("odds")
-                        and bp.get("edge") == play.get("edge")):
-                    g = gd.get("game", {})
-                    play["matchup"] = (f"{g.get('away_team', '?')} @ "
-                                       f"{g.get('home_team', '?')}")
-                    break
-
-    primaries = card.get("primaries", [])
-    secondaries = card.get("secondaries", [])
-    _backfill_matchups(primaries)
-    _backfill_matchups(secondaries)
 
     rows: List[Dict] = []
-    for p in primaries:
-        r = grade_play(p, finals)
-        r["date"] = date
-        r["tier"] = "primary"
-        rows.append(r)
-    for p in secondaries:
-        r = grade_play(p, finals)
-        r["date"] = date
-        r["tier"] = "secondary"
-        rows.append(r)
+    per_fire_summary: Dict[str, Dict] = {}
 
+    for fire_tag, card_path in card_files:
+        card = json.loads(card_path.read_text())
+
+        # Backfill matchup for older cards (pre-orchestrator-matchup-field).
+        def _backfill_matchups(plays_list: List[Dict]) -> None:
+            details = card.get("game_details", [])
+            for play in plays_list:
+                if play.get("matchup"):
+                    continue
+                for gd in details:
+                    bp = gd.get("best_play")
+                    if not bp:
+                        continue
+                    if (bp.get("label") == play.get("label")
+                            and bp.get("odds") == play.get("odds")
+                            and bp.get("edge") == play.get("edge")):
+                        g = gd.get("game", {})
+                        play["matchup"] = (f"{g.get('away_team', '?')} @ "
+                                           f"{g.get('home_team', '?')}")
+                        break
+
+        primaries = card.get("primaries", [])
+        secondaries = card.get("secondaries", [])
+        _backfill_matchups(primaries)
+        _backfill_matchups(secondaries)
+
+        fire_rows: List[Dict] = []
+        for p in primaries:
+            r = grade_play(p, finals)
+            r["date"] = date
+            r["fire"] = fire_tag
+            r["tier"] = "primary"
+            fire_rows.append(r)
+        for p in secondaries:
+            r = grade_play(p, finals)
+            r["date"] = date
+            r["fire"] = fire_tag
+            r["tier"] = "secondary"
+            fire_rows.append(r)
+        rows.extend(fire_rows)
+
+        fg = [r for r in fire_rows if r["outcome"] in ("WIN", "LOSS", "PUSH")]
+        fw = sum(1 for r in fg if r["outcome"] == "WIN")
+        fl = sum(1 for r in fg if r["outcome"] == "LOSS")
+        fpu = sum(1 for r in fg if r["outcome"] == "PUSH")
+        per_fire_summary[fire_tag] = {
+            "n_plays": len(fire_rows),
+            "n_graded": len(fg),
+            "wins": fw,
+            "losses": fl,
+            "pushes": fpu,
+            "win_rate": fw / (fw + fl) if (fw + fl) else None,
+            "realized_pnl": round(sum(r["realized_pnl"] for r in fg), 2),
+            "unit_pnl": round(sum(r["unit_pnl"] for r in fg), 2),
+        }
+
+    # Aggregate summary across all fires
     graded = [r for r in rows if r["outcome"] in ("WIN", "LOSS", "PUSH")]
     wins = sum(1 for r in graded if r["outcome"] == "WIN")
     losses = sum(1 for r in graded if r["outcome"] == "LOSS")
@@ -213,6 +257,7 @@ def grade_day(date: str, finals: Dict[str, Dict]) -> Tuple[List[Dict], Dict]:
         "win_rate": wins / (wins + losses) if (wins + losses) else None,
         "realized_pnl": round(sum(r["realized_pnl"] for r in graded), 2),
         "unit_pnl": round(sum(r["unit_pnl"] for r in graded), 2),
+        "per_fire": per_fire_summary,
     }
     return rows, summary
 
@@ -220,8 +265,18 @@ def grade_day(date: str, finals: Dict[str, Dict]) -> Tuple[List[Dict], Dict]:
 async def main_async(dates: Optional[List[str]]) -> int:
     cards_dir = REPO_ROOT / "outputs" / "cards"
     if not dates:
-        dates = sorted(p.stem.replace("card_", "")
-                       for p in cards_dir.glob("card_*.json"))
+        # Extract YYYY-MM-DD from both `card_<date>.json` and
+        # `card_<date>_<fire>.json` filename patterns.
+        found = set()
+        for p in cards_dir.glob("card_*.json"):
+            stem = p.stem.replace("card_", "")
+            # Trim fire suffix like "_am" / "_pm" / "_midday" / "_late"
+            for suf in ("_am", "_pm", "_midday", "_late"):
+                if stem.endswith(suf):
+                    stem = stem[:-len(suf)]
+                    break
+            found.add(stem)
+        dates = sorted(found)
 
     all_rows: List[Dict] = []
     day_summaries: List[Dict] = []

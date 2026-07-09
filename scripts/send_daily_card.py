@@ -286,33 +286,79 @@ async def main_async(date_str: str, dry_run: bool) -> int:
               file=sys.stderr)
         return 2
 
-    print(f"Generating card for {date_str}...")
+    # Determine which "fire" this is FIRST — used for both the filename tag
+    # and the subject line. Slug goes on disk, human tag in the subject.
+    hour = datetime.now().hour
+    if hour < 10:
+        fire_slug, subject_tag = "am", "forecast"
+    elif hour < 13:
+        fire_slug, subject_tag = "midday", "midday refresh"
+    elif hour < 17:
+        fire_slug, subject_tag = "pm", "refresh"
+    else:
+        fire_slug, subject_tag = "late", "late"
+    is_refresh = fire_slug in ("midday", "pm")
+
+    print(f"Generating card for {date_str}  (fire: {fire_slug})...")
     card = await generate_card(date_str)
+    card["fire"] = fire_slug  # persist so grader/downstream can see it
+
+    if is_refresh:
+        # Filter out games that have already started (or finished). The MLB
+        # Stats API returns every game on the schedule regardless of state,
+        # so the 11:30 and 3 PM refreshes were including live/completed
+        # games. We only want plays you can actually still bet.
+        NOT_STARTED = {"Scheduled", "Pre-Game", "Warmup", "Delayed Start"}
+        matchup_ok = set()
+        details_after = []
+        for gd in card.get("game_details", []) or []:
+            status = (gd.get("game") or {}).get("status", "")
+            if status in NOT_STARTED:
+                matchup_ok.add(
+                    f"{(gd.get('game') or {}).get('away_team','')} @ "
+                    f"{(gd.get('game') or {}).get('home_team','')}"
+                )
+                details_after.append(gd)
+        removed_primaries = [p for p in card.get("primaries", [])
+                              if p.get("matchup") not in matchup_ok]
+        removed_secondaries = [p for p in card.get("secondaries", [])
+                                if p.get("matchup") not in matchup_ok]
+        card["primaries"] = [p for p in card.get("primaries", [])
+                              if p.get("matchup") in matchup_ok]
+        card["secondaries"] = [p for p in card.get("secondaries", [])
+                                if p.get("matchup") in matchup_ok]
+        card["passes"] = [g for g in card.get("passes", []) or []
+                          if isinstance(g, dict)
+                          and (f"{g.get('away_team','')} @ "
+                               f"{g.get('home_team','')}") in matchup_ok]
+        card["game_details"] = details_after
+        card["total_games"] = len(details_after)
+        card["total_primary_risk"] = sum(p.get("kelly_size", 0)
+                                        for p in card["primaries"])
+        card["refresh_filtered"] = {
+            "removed_primaries": len(removed_primaries),
+            "removed_secondaries": len(removed_secondaries),
+        }
+        print(f"  refresh filter: dropped "
+              f"{len(removed_primaries)} primaries, "
+              f"{len(removed_secondaries)} secondaries "
+              f"(games already started)")
+
     print(f"  {card.get('total_games')} games, "
           f"{len(card.get('primaries', []))} primaries, "
           f"{len(card.get('secondaries', []))} secondaries, "
           f"primary risk ${card.get('total_primary_risk', 0):.0f}")
 
-    # Save to disk (the orchestrator already does this, but be explicit)
-    out_path = REPO_ROOT / "outputs" / "cards" / f"card_{date_str}.json"
+    # Save to disk under a tagged filename so each fire keeps its own record
+    # and grade_cards.py can grade them separately. Old convention
+    # `card_<date>.json` is still readable by the grader for backward compat.
+    out_path = (REPO_ROOT / "outputs" / "cards"
+                / f"card_{date_str}_{fire_slug}.json")
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(card, indent=2, default=str))
 
     html = render_email_html(card)
-
-    # Subject tagging — keeps morning, midday, and afternoon emails from
-    # threading together in Gmail and tells you which lineup state they're
-    # based on at a glance.
-    hour = datetime.now().hour
-    if hour < 10:
-        tag = "forecast"          # ~8 AM, projected lineups
-    elif hour < 13:
-        tag = "midday refresh"    # ~11:30 (weekends), confirmed early-game lineups
-    elif hour < 17:
-        tag = "refresh"           # ~3 PM, confirmed evening-game lineups
-    else:
-        tag = "late"
-    subject = f"MLB v3 daily card — {date_str} ({tag})"
+    subject = f"MLB v3 daily card — {date_str} ({subject_tag})"
 
     if dry_run:
         print("--- DRY RUN: HTML preview (first 1200 chars) ---")
@@ -320,9 +366,9 @@ async def main_async(date_str: str, dry_run: bool) -> int:
         print("...")
         return 0
 
-    # Attach the JSON
+    # Attach the JSON with tagged filename so recipients can save both
     attachments = [{
-        "filename": f"card_{date_str}.json",
+        "filename": f"card_{date_str}_{fire_slug}.json",
         "content": base64.b64encode(out_path.read_bytes()).decode(),
     }]
 
