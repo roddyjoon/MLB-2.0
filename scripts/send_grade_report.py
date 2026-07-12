@@ -61,10 +61,20 @@ async def grade_all_days(end_date: str) -> Dict:
     from grade_cards import grade_day, fetch_finals
 
     cards_dir = REPO_ROOT / "outputs" / "cards"
-    dates = sorted(p.stem.replace("card_", "")
-                   for p in cards_dir.glob("card_*.json"))
-    # Only grade dates STRICTLY BEFORE end_date — today's games aren't done
-    dates = [d for d in dates if d < end_date]
+    # Extract YYYY-MM-DD from both legacy `card_<date>.json` and tagged
+    # `card_<date>_<fire>.json` filename patterns. Previously we naively
+    # stripped just the "card_" prefix, which produced bogus "dates" like
+    # "2026-07-11_am" for tagged files — those then 400'd MLB API and were
+    # silently dropped from the report.
+    found = set()
+    for p in cards_dir.glob("card_*.json"):
+        stem = p.stem.replace("card_", "")
+        for suf in ("_am", "_pm", "_midday", "_late"):
+            if stem.endswith(suf):
+                stem = stem[:-len(suf)]
+                break
+        found.add(stem)
+    dates = sorted(d for d in found if d < end_date)
 
     all_rows: List[Dict] = []
     day_summaries: List[Dict] = []
