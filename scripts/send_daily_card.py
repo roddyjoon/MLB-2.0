@@ -143,6 +143,34 @@ def render_email_html(card: Dict) -> str:
     passes = card.get("passes", [])
     total_risk = card.get("total_primary_risk", 0)
 
+    # Empty-slate short-circuit — MLB has 0 games (All-Star Break, off day,
+    # rain-out cluster). Render a friendly "no games" body instead of empty
+    # tables that read like an outage.
+    if card.get("total_games", 0) == 0:
+        hint = card.get("next_slate_hint") or {}
+        next_line = ""
+        if hint.get("date") and hint.get("count"):
+            next_line = (f"<div style='margin-top:12px; color:#555;'>"
+                         f"Next slate: <strong>{hint['date']}</strong> "
+                         f"({hint['count']} games)</div>")
+        return f"""<!doctype html>
+<html><body style="font-family: ui-sans-serif, system-ui, sans-serif;
+                  max-width: 720px; margin: 0 auto; color: #111;">
+  <h2 style="margin-bottom:4px;">MLB v3 daily card &mdash; {card.get('date')}</h2>
+  <div style="color:#555; margin-bottom:16px;">
+    Generated {card.get('generated_at', '')[:19].replace('T', ' ')}
+  </div>
+  <div style="background:#f3f4f6; padding:24px; border-radius:6px;
+              text-align:center; margin-top:16px;">
+    <div style="font-size:16px;"><strong>No MLB games scheduled today.</strong></div>
+    <div style="color:#666; margin-top:6px; font-size:13px;">
+      MLB Stats API returned 0 games for {card.get('date')} — most likely
+      All-Star Break, an off day, or a weather-cluster wipeout.
+    </div>
+    {next_line}
+  </div>
+</body></html>"""
+
     p_rows = "".join(_format_play_row(p, f"P{i+1}")
                      for i, p in enumerate(primaries)) or \
         "<tr><td colspan='6' style='color:#888'>(none)</td></tr>"
@@ -349,6 +377,28 @@ async def main_async(date_str: str, dry_run: bool) -> int:
           f"{len(card.get('secondaries', []))} secondaries, "
           f"primary risk ${card.get('total_primary_risk', 0):.0f}")
 
+    # If no games today, look ahead up to 14 days for the next slate so the
+    # email can tell you when MLB resumes instead of leaving you to guess.
+    if card.get("total_games", 0) == 0:
+        from datetime import datetime as _dt, timedelta as _td
+        from data.mlb_api import MLBDataAPI
+        base = _dt.strptime(date_str, "%Y-%m-%d")
+        api = MLBDataAPI()
+        try:
+            for offset in range(1, 15):
+                probe = (base + _td(days=offset)).strftime("%Y-%m-%d")
+                probe_games = await api.get_games_for_date(probe)
+                # Skip All-Star Game (participants are 'AL'/'NL', no teams)
+                real = [g for g in probe_games
+                        if g.get("away_team") and g.get("home_team")]
+                if len(real) >= 5:  # a real regular-season slate
+                    card["next_slate_hint"] = {
+                        "date": probe, "count": len(real),
+                    }
+                    break
+        finally:
+            await type(api).close()
+
     # Save to disk under a tagged filename so each fire keeps its own record
     # and grade_cards.py can grade them separately. Old convention
     # `card_<date>.json` is still readable by the grader for backward compat.
@@ -359,6 +409,9 @@ async def main_async(date_str: str, dry_run: bool) -> int:
 
     html = render_email_html(card)
     subject = f"MLB v3 daily card — {date_str} ({subject_tag})"
+    # For zero-game days, mark the subject so it doesn't read like an error
+    if card.get("total_games", 0) == 0:
+        subject = f"MLB v3 daily card — {date_str} (no games)"
 
     if dry_run:
         print("--- DRY RUN: HTML preview (first 1200 chars) ---")
