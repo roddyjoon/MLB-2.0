@@ -15,7 +15,6 @@ name: Daily MLB v3 Emails
 on:
   schedule:
     - cron: "0 15 * * *"    # 08:00 PDT — card forecast (daily)
-    - cron: "5 15 * * *"    # 08:05 PDT — MC report (daily)
     - cron: "10 15 * * *"   # 08:10 PDT — grading report (daily)
     - cron: "30 18 * * 0,6" # 11:30 PDT — midday card refresh (Sat + Sun only)
     - cron: "0 22 * * *"    # 15:00 PDT — card refresh (daily)
@@ -28,7 +27,6 @@ on:
         default: card
         options:
           - card
-          - mc
           - grade
 
 permissions:
@@ -64,10 +62,8 @@ jobs:
           SCHEDULE_CRON: ${{ github.event.schedule }}
         run: |
           # Route to the right script based on manual input or cron minute.
-          if [ "$MANUAL_JOB" = "mc" ] || [ "$SCHEDULE_CRON" = "5 15 * * *" ]; then
-            echo "script=scripts/send_mc_report.py" >> "$GITHUB_OUTPUT"
-            echo "label=MC report" >> "$GITHUB_OUTPUT"
-          elif [ "$MANUAL_JOB" = "grade" ] || [ "$SCHEDULE_CRON" = "10 15 * * *" ]; then
+          # (MC report was retired 2026-07-18 — no longer scheduled.)
+          if [ "$MANUAL_JOB" = "grade" ] || [ "$SCHEDULE_CRON" = "10 15 * * *" ]; then
             echo "script=scripts/send_grade_report.py" >> "$GITHUB_OUTPUT"
             echo "label=grading report" >> "$GITHUB_OUTPUT"
           else
