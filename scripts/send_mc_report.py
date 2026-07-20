@@ -292,8 +292,8 @@ async def send_via_resend(api_key: str, to: str, subject: str,
                           html: str, attachment_bytes: bytes = None,
                           attachment_name: str = None) -> Dict:
     payload = {
-        "from": os.environ.get("CARD_FROM_EMAIL",
-                                "MLB v3 <onboarding@resend.dev>"),
+        "from": (os.environ.get("CARD_FROM_EMAIL")
+                 or "MLB v3 <onboarding@resend.dev>"),
         "to": _parse_recipients(to),
         "subject": subject,
         "html": html,

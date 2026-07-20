@@ -368,9 +368,12 @@ async def send_via_resend(api_key: str, to: str, subject: str,
                           csv_name: str) -> Dict:
     """Send via Resend with retry on transient broken-pipe / 5xx errors
     (matches send_daily_card.py pattern). 4xx is non-retryable."""
+    # `os.environ.get('X', default)` returns '' if the env var is set but
+    # empty — which happens in GitHub Actions when a secret isn't defined.
+    # `or` handles both cases.
     payload = {
-        "from": os.environ.get("CARD_FROM_EMAIL",
-                                "MLB v3 <onboarding@resend.dev>"),
+        "from": (os.environ.get("CARD_FROM_EMAIL")
+                 or "MLB v3 <onboarding@resend.dev>"),
         "to": _parse_recipients(to),
         "subject": subject,
         "html": html,

@@ -244,9 +244,12 @@ async def send_via_resend(api_key: str, to: str, subject: str,
     Retry up to 4 times with exponential backoff: 0, 2, 6, 18 seconds.
     HTTP 4xx (auth, validation) is non-retryable.
     """
+    # GitHub Actions sets missing-secret env vars to '' (empty string), not
+    # unset — so `os.environ.get('X', default)` returns '' rather than the
+    # default. Use `or` to fall through on empty too.
     payload = {
-        "from": os.environ.get("CARD_FROM_EMAIL",
-                               "MLB v3 <onboarding@resend.dev>"),
+        "from": (os.environ.get("CARD_FROM_EMAIL")
+                 or "MLB v3 <onboarding@resend.dev>"),
         "to": _parse_recipients(to),
         "subject": subject,
         "html": html,
