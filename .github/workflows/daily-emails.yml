@@ -32,6 +32,12 @@ on:
 permissions:
   contents: write  # needed to commit card/MC JSON back to the repo
 
+# Workflow-level TZ so datetime.now() in every Python script sees PT time,
+# not the runner's default UTC. Without this the script tagged 8:00 AM PT
+# fires (15:00 UTC) as 'late' because it saw hour=15.
+env:
+  TZ: America/Los_Angeles
+
 jobs:
   send-email:
     runs-on: ubuntu-latest
