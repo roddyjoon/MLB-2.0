@@ -132,40 +132,83 @@ def render_email(end_date: str, grading: Dict) -> str:
 
     yesterday_html = ""
     if yesterday_plays:
-        rows_html = ""
+        y_wins_total = sum(1 for r in yesterday_plays if r["outcome"] == "WIN")
+        y_losses_total = sum(1 for r in yesterday_plays if r["outcome"] == "LOSS")
+        y_pnl_total = sum(r["unit_pnl"] for r in yesterday_plays)
+
+        # Break yesterday's plays out by fire so we can see which card
+        # called each pick (and which fires were actually correct).
+        fire_meta = {
+            "am":     ("8 AM (forecast)",         "#2563eb", "#eff6ff"),
+            "midday": ("11:30 AM (midday refresh)", "#a855f7", "#faf5ff"),
+            "pm":     ("3 PM (refresh)",          "#16a34a", "#f0fdf4"),
+            "late":   ("late",                     "#f59e0b", "#fffbeb"),
+            "legacy": ("legacy (pre-per-fire split)", "#6b7280", "#f9fafb"),
+        }
+        fire_order = ["am", "midday", "pm", "late", "legacy"]
+        y_by_fire: Dict[str, List[Dict]] = {}
         for r in yesterday_plays:
-            outcome = r["outcome"]
-            color = ("#15803d" if outcome == "WIN" else
-                     "#b91c1c" if outcome == "LOSS" else "#6b7280")
-            rows_html += f"""<tr>
-              <td>{r.get('matchup','?')}</td>
-              <td><strong>{r.get('label','?')}</strong></td>
-              <td style="text-align:right">{r['odds']:+d}</td>
-              <td style="text-align:right">{(r['edge'] or 0)*100:.1f}%</td>
-              <td style="text-align:center;color:{color}">{outcome}</td>
-              <td style="text-align:right">{r.get('away_score','-')}-{r.get('home_score','-')}</td>
-              <td style="text-align:right">{_fmt_pnl(r['unit_pnl'])}</td>
-            </tr>"""
-        y_wins = sum(1 for r in yesterday_plays if r["outcome"] == "WIN")
-        y_losses = sum(1 for r in yesterday_plays if r["outcome"] == "LOSS")
-        y_pnl = sum(r["unit_pnl"] for r in yesterday_plays)
+            y_by_fire.setdefault(r.get("fire", "legacy"), []).append(r)
+
+        sections = ""
+        for fire in fire_order:
+            plays = y_by_fire.get(fire, [])
+            if not plays:
+                continue
+            label, accent, bg_tint = fire_meta[fire]
+            fw = sum(1 for r in plays if r["outcome"] == "WIN")
+            fl = sum(1 for r in plays if r["outcome"] == "LOSS")
+            fp = sum(1 for r in plays if r["outcome"] == "PUSH")
+            f_unit = sum(r["unit_pnl"] for r in plays)
+            fire_rec = f"{fw}-{fl}{'-'+str(fp)+'P' if fp else ''}"
+
+            rows_html = ""
+            for r in plays:
+                outcome = r["outcome"]
+                color = ("#15803d" if outcome == "WIN" else
+                         "#b91c1c" if outcome == "LOSS" else "#6b7280")
+                rows_html += f"""<tr>
+                  <td style="padding:4px 8px;">{r.get('matchup','?')}</td>
+                  <td style="padding:4px 8px;"><strong>{r.get('label','?')}</strong></td>
+                  <td style="text-align:right; padding:4px 8px;">{r['odds']:+d}</td>
+                  <td style="text-align:right; padding:4px 8px;">{(r['edge'] or 0)*100:.1f}%</td>
+                  <td style="text-align:center; padding:4px 8px; color:{color};"><strong>{outcome}</strong></td>
+                  <td style="text-align:right; padding:4px 8px;">{r.get('away_score','-')}-{r.get('home_score','-')}</td>
+                  <td style="text-align:right; padding:4px 8px;">{_fmt_pnl(r['unit_pnl'])}</td>
+                </tr>"""
+            sections += f"""
+<div style="margin-top:24px; border:2px solid {accent}; border-radius:6px;
+            overflow:hidden;">
+  <div style="background:{accent}; color:#fff; padding:8px 14px;
+              font-size:14px; font-weight:600;
+              font-variant-numeric:tabular-nums;">
+    {label} &mdash; {fire_rec} &middot; {_fmt_pnl(f_unit)} unit
+  </div>
+  <table style="border-collapse:collapse; width:100%; font-size:12px;
+                font-variant-numeric:tabular-nums; background:{bg_tint};">
+    <thead><tr style="background:#fff;">
+      <th style="text-align:left; padding:6px 8px; border-bottom:1px solid #e5e7eb;">Game</th>
+      <th style="text-align:left; padding:6px 8px; border-bottom:1px solid #e5e7eb;">Play</th>
+      <th style="text-align:right; padding:6px 8px; border-bottom:1px solid #e5e7eb;">Odds</th>
+      <th style="text-align:right; padding:6px 8px; border-bottom:1px solid #e5e7eb;">Edge</th>
+      <th style="text-align:center; padding:6px 8px; border-bottom:1px solid #e5e7eb;">Result</th>
+      <th style="text-align:right; padding:6px 8px; border-bottom:1px solid #e5e7eb;">Score</th>
+      <th style="text-align:right; padding:6px 8px; border-bottom:1px solid #e5e7eb;">Unit P&L</th>
+    </tr></thead>
+    <tbody>{rows_html}</tbody>
+  </table>
+</div>"""
+
         yesterday_html = f"""
 <h3 style="border-bottom:2px solid #2563eb; padding-bottom:4px; margin-top:24px;">
-  Yesterday ({yesterday_str}): {y_wins}-{y_losses} &middot; {_fmt_pnl(y_pnl)} unit
+  Yesterday ({yesterday_str}) &mdash; {y_wins_total}-{y_losses_total} combined &middot; {_fmt_pnl(y_pnl_total)} unit
 </h3>
-<table style="border-collapse:collapse; width:100%; font-size:12px;
-              font-variant-numeric:tabular-nums;">
-  <thead><tr style="background:#f3f4f6;">
-    <th style="text-align:left; padding:4px 8px;">Game</th>
-    <th style="text-align:left; padding:4px 8px;">Play</th>
-    <th style="text-align:right; padding:4px 8px;">Odds</th>
-    <th style="text-align:right; padding:4px 8px;">Edge</th>
-    <th style="text-align:center; padding:4px 8px;">Result</th>
-    <th style="text-align:right; padding:4px 8px;">Score</th>
-    <th style="text-align:right; padding:4px 8px;">Unit P&L</th>
-  </tr></thead>
-  <tbody>{rows_html}</tbody>
-</table>"""
+<div style="color:#666; font-size:12px; margin-top:-4px; margin-bottom:8px;">
+  Each fire is its own boxed section below. When a game appears in multiple
+  fires, each fire's row shows that fire's own odds/edge/outcome &mdash; so you
+  can see which card was actually right.
+</div>
+{sections}"""
 
     # Day-by-day rolling table (last 14 days, most recent first)
     daily_html = "<table style='border-collapse:collapse; font-size:12px; " \

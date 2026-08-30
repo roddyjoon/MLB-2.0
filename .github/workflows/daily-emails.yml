@@ -18,6 +18,8 @@ on:
     - cron: "10 15 * * *"   # 08:10 PDT — grading report (daily)
     - cron: "30 18 * * 0,6" # 11:30 PDT — midday card refresh (Sat + Sun only)
     - cron: "0 22 * * *"    # 15:00 PDT — card refresh (daily)
+    - cron: "30 1 * * 6"    # 18:30 PDT Friday — weekly bucket analytics
+                            # (01:30 UTC Sat = 18:30 PDT Fri; off top-of-hour)
   workflow_dispatch:
     inputs:
       job:
@@ -28,6 +30,7 @@ on:
         options:
           - card
           - grade
+          - weekly-analytics
 
 permissions:
   contents: write  # needed to commit card/MC JSON back to the repo
@@ -69,7 +72,10 @@ jobs:
         run: |
           # Route to the right script based on manual input or cron minute.
           # (MC report was retired 2026-07-18 — no longer scheduled.)
-          if [ "$MANUAL_JOB" = "grade" ] || [ "$SCHEDULE_CRON" = "10 15 * * *" ]; then
+          if [ "$MANUAL_JOB" = "weekly-analytics" ] || [ "$SCHEDULE_CRON" = "30 1 * * 6" ]; then
+            echo "script=scripts/send_bucket_update.py" >> "$GITHUB_OUTPUT"
+            echo "label=weekly bucket analytics" >> "$GITHUB_OUTPUT"
+          elif [ "$MANUAL_JOB" = "grade" ] || [ "$SCHEDULE_CRON" = "10 15 * * *" ]; then
             echo "script=scripts/send_grade_report.py" >> "$GITHUB_OUTPUT"
             echo "label=grading report" >> "$GITHUB_OUTPUT"
           else
