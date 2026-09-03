@@ -1,0 +1,4603 @@
+{
+  "version": "v2.5",
+  "date": "2026-09-03",
+  "generated_at": "2026-09-03T16:45:59.009406",
+  "agents_used": 13,
+  "total_games": 3,
+  "primaries": [
+    {
+      "type": "away_ml",
+      "team": "STL",
+      "matchup": "STL @ LAD",
+      "label": "STL ML",
+      "odds": 225,
+      "model_wp": 0.435,
+      "implied_prob": 0.3076923076923077,
+      "edge": 0.1273,
+      "kelly_size": 220,
+      "kelly_adj": 1.0,
+      "tier": "primary",
+      "home_sp": "Tarik Skubal",
+      "away_sp": "Quinn Mathews",
+      "bvp_home_vs_away_sp": [],
+      "bvp_away_vs_home_sp": [],
+      "lineup_projected": false
+    },
+    {
+      "type": "under",
+      "matchup": "ATH @ SEA",
+      "label": "Under 7.5",
+      "odds": -120,
+      "model_wp": 0.65,
+      "projected_total": 4.9,
+      "edge": 0.1045,
+      "kelly_size": 220,
+      "kelly_adj": 1.0,
+      "tier": "primary",
+      "home_sp": "Kade Anderson",
+      "away_sp": "Jack Perkins",
+      "bvp_home_vs_away_sp": [
+        {
+          "name": "Randy Arozarena",
+          "ab": 4,
+          "h": 2,
+          "hr": 2,
+          "ba": 0.5,
+          "ops": 2.5,
+          "significance": "homer_history"
+        }
+      ],
+      "bvp_away_vs_home_sp": [],
+      "lineup_projected": false
+    },
+    {
+      "type": "home_ml",
+      "team": "TEX",
+      "matchup": "TB @ TEX",
+      "label": "TEX ML",
+      "odds": 105,
+      "model_wp": 0.591,
+      "implied_prob": 0.4878048780487805,
+      "edge": 0.1032,
+      "kelly_size": 220,
+      "kelly_adj": 1.0,
+      "tier": "primary",
+      "home_sp": "Cal Quantrill",
+      "away_sp": "Shane McClanahan",
+      "bvp_home_vs_away_sp": [
+        {
+          "name": "Jake Burger",
+          "ab": 6,
+          "h": 1,
+          "hr": 1,
+          "ba": 0.167,
+          "ops": 0.953,
+          "significance": "strong"
+        },
+        {
+          "name": "Ezequiel Duran",
+          "ab": 5,
+          "h": 1,
+          "hr": 1,
+          "ba": 0.2,
+          "ops": 1.229,
+          "significance": "elite"
+        }
+      ],
+      "bvp_away_vs_home_sp": [
+        {
+          "name": "Yandy D\u00edaz",
+          "ab": 11,
+          "h": 3,
+          "hr": 0,
+          "ba": 0.273,
+          "ops": 0.788,
+          "significance": "moderate"
+        },
+        {
+          "name": "Cedric Mullins",
+          "ab": 9,
+          "h": 2,
+          "hr": 1,
+          "ba": 0.222,
+          "ops": 0.856,
+          "significance": "strong"
+        }
+      ],
+      "lineup_projected": false
+    }
+  ],
+  "secondaries": [],
+  "passes": [],
+  "total_primary_risk": 660,
+  "game_details": [
+    {
+      "game": {
+        "game_id": "822853",
+        "home_team": "TEX",
+        "away_team": "TB",
+        "home_team_id": 140,
+        "away_team_id": 139,
+        "home_sp_name": "Cal Quantrill",
+        "away_sp_name": "Shane McClanahan",
+        "home_sp_id": "615698",
+        "away_sp_id": "663556",
+        "game_time": "2026-09-04T00:05:00Z",
+        "venue": "Globe Life Field",
+        "status": "Warmup",
+        "date": "2026-09-03"
+      },
+      "version": "v2.5",
+      "agents": {
+        "sp": {
+          "away_sp": {
+            "name": "Shane McClanahan",
+            "pitcher_id": "663556",
+            "era": 3.19,
+            "xera": null,
+            "fip": 0.0,
+            "xfip": 3.78,
+            "siera": 3.93,
+            "blend": 3.87,
+            "adjusted_blend": 3.67,
+            "road_home_adj": -0.2,
+            "xwoba": 0.315,
+            "ev": 89.1,
+            "hh_pct": 0.409,
+            "barrel_pct": 0.08800000000000001,
+            "k_pct": 0.22100000000000003,
+            "bb9": 3.03,
+            "ip": 113.0,
+            "arsenal": {},
+            "recent_form": {
+              "available": true,
+              "last_3_starts": [
+                {
+                  "date": "2026-08-28",
+                  "er": 3,
+                  "ip": 5.2,
+                  "hits": 3,
+                  "bb": 2,
+                  "k": 4,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-22",
+                  "er": 0,
+                  "ip": 5.0,
+                  "hits": 4,
+                  "bb": 1,
+                  "k": 5,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-17",
+                  "er": 3,
+                  "ip": 3.1,
+                  "hits": 4,
+                  "bb": 0,
+                  "k": 3,
+                  "opponent": ""
+                }
+              ],
+              "weighted_era": 3.76,
+              "trend": "average",
+              "consecutive_quality": 0
+            },
+            "splits": {
+              "vs_lhb": {
+                "ba": 0.14,
+                "ops": 0.518,
+                "era": 0.0
+              },
+              "vs_rhb": {
+                "ba": 0.225,
+                "ops": 0.615,
+                "era": 0.0
+              }
+            },
+            "comp": 61,
+            "flags": {
+              "walk_risk": false,
+              "bimodal": false,
+              "debut_flag": false,
+              "era_mirage": false,
+              "era_mirage_direction": null
+            },
+            "era_mirage_magnitude": 0.59
+          },
+          "home_sp": {
+            "name": "Cal Quantrill",
+            "pitcher_id": "615698",
+            "era": 3.01,
+            "xera": null,
+            "fip": 0.0,
+            "xfip": 3.77,
+            "siera": 3.92,
+            "blend": 3.86,
+            "adjusted_blend": 4.06,
+            "road_home_adj": 0.2,
+            "xwoba": 0.309,
+            "ev": 88.8,
+            "hh_pct": 0.35700000000000004,
+            "barrel_pct": 0.077,
+            "k_pct": 0.185,
+            "bb9": 2.22,
+            "ip": 89.2,
+            "arsenal": {},
+            "recent_form": {
+              "available": true,
+              "last_3_starts": [
+                {
+                  "date": "2026-08-29",
+                  "er": 3,
+                  "ip": 6.0,
+                  "hits": 4,
+                  "bb": 0,
+                  "k": 8,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-23",
+                  "er": 0,
+                  "ip": 6.0,
+                  "hits": 6,
+                  "bb": 0,
+                  "k": 6,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-18",
+                  "er": 0,
+                  "ip": 7.0,
+                  "hits": 4,
+                  "bb": 0,
+                  "k": 5,
+                  "opponent": ""
+                }
+              ],
+              "weighted_era": 2.19,
+              "trend": "hot",
+              "consecutive_quality": 3
+            },
+            "splits": {
+              "vs_lhb": {
+                "ba": 0.24,
+                "ops": 0.703,
+                "era": 0.0
+              },
+              "vs_rhb": {
+                "ba": 0.213,
+                "ops": 0.579,
+                "era": 0.0
+              }
+            },
+            "comp": 80,
+            "flags": {
+              "walk_risk": false,
+              "bimodal": false,
+              "debut_flag": false,
+              "era_mirage": false,
+              "era_mirage_direction": null
+            },
+            "era_mirage_magnitude": 0.76
+          },
+          "fip_gap": 0.39,
+          "fip_gap_favor": "home",
+          "primary_threshold_met": false,
+          "flags": {
+            "away_walk_risk": false,
+            "home_walk_risk": false,
+            "away_bimodal": false,
+            "home_bimodal": false,
+            "away_debut": false,
+            "home_debut": false,
+            "away_era_mirage": false,
+            "home_era_mirage": false
+          }
+        },
+        "lineup": {
+          "home": {
+            "team_wrc_plus": 113.7,
+            "ops": 0.715012339,
+            "obp": 0.317377931,
+            "slg": 0.397634408,
+            "ba": 0.242795698,
+            "rpg": 4.54,
+            "k_pct": 0.227151051,
+            "bb_pct": 0.087380497,
+            "hr_total": 157,
+            "streak": {
+              "type": "neutral",
+              "recent_ops": 0.72,
+              "recent_rpg": 4.5
+            },
+            "hot_bats": [],
+            "bvp_threats": [
+              {
+                "name": "Jake Burger",
+                "ab": 6,
+                "h": 1,
+                "hr": 1,
+                "ba": 0.167,
+                "ops": 0.953,
+                "significance": "strong"
+              },
+              {
+                "name": "Ezequiel Duran",
+                "ab": 5,
+                "h": 1,
+                "hr": 1,
+                "ba": 0.2,
+                "ops": 1.229,
+                "significance": "elite"
+              }
+            ],
+            "handedness": {
+              "lhb": 0,
+              "rhb": 0,
+              "switch": 0,
+              "lhb_pct": 0.0,
+              "rhb_pct": 0.0
+            },
+            "lineup_confirmed": true,
+            "lineup": [
+              {
+                "player_id": "677649",
+                "name": "Ezequiel Duran",
+                "position": "CF",
+                "bats": ""
+              },
+              {
+                "player_id": "608369",
+                "name": "Corey Seager",
+                "position": "SS",
+                "bats": ""
+              },
+              {
+                "player_id": "694671",
+                "name": "Wyatt Langford",
+                "position": "LF",
+                "bats": ""
+              },
+              {
+                "player_id": "607043",
+                "name": "Brandon Nimmo",
+                "position": "RF",
+                "bats": ""
+              },
+              {
+                "player_id": "679822",
+                "name": "Justin Foscue",
+                "position": "2B",
+                "bats": ""
+              },
+              {
+                "player_id": "669394",
+                "name": "Jake Burger",
+                "position": "1B",
+                "bats": ""
+              },
+              {
+                "player_id": "681351",
+                "name": "Logan O'Hoppe",
+                "position": "DH",
+                "bats": ""
+              },
+              {
+                "player_id": "683227",
+                "name": "Cody Freeman",
+                "position": "3B",
+                "bats": ""
+              },
+              {
+                "player_id": "553869",
+                "name": "Elias D\u00edaz",
+                "position": "C",
+                "bats": ""
+              }
+            ]
+          },
+          "away": {
+            "team_wrc_plus": 101.8,
+            "ops": 0.732402583,
+            "obp": 0.328848741,
+            "slg": 0.403553842,
+            "ba": 0.26054378,
+            "rpg": 4.53,
+            "k_pct": 0.184832317,
+            "bb_pct": 0.084603658,
+            "hr_total": 144,
+            "streak": {
+              "type": "neutral",
+              "recent_ops": 0.72,
+              "recent_rpg": 4.5
+            },
+            "hot_bats": [],
+            "bvp_threats": [
+              {
+                "name": "Yandy D\u00edaz",
+                "ab": 11,
+                "h": 3,
+                "hr": 0,
+                "ba": 0.273,
+                "ops": 0.788,
+                "significance": "moderate"
+              },
+              {
+                "name": "Cedric Mullins",
+                "ab": 9,
+                "h": 2,
+                "hr": 1,
+                "ba": 0.222,
+                "ops": 0.856,
+                "significance": "strong"
+              }
+            ],
+            "handedness": {
+              "lhb": 0,
+              "rhb": 0,
+              "switch": 0,
+              "lhb_pct": 0.0,
+              "rhb_pct": 0.0
+            },
+            "lineup_confirmed": true,
+            "lineup": [
+              {
+                "player_id": "650490",
+                "name": "Yandy D\u00edaz",
+                "position": "DH",
+                "bats": ""
+              },
+              {
+                "player_id": "802415",
+                "name": "Chandler Simpson",
+                "position": "LF",
+                "bats": ""
+              },
+              {
+                "player_id": "691406",
+                "name": "Junior Caminero",
+                "position": "3B",
+                "bats": ""
+              },
+              {
+                "player_id": "666018",
+                "name": "Jonathan Aranda",
+                "position": "1B",
+                "bats": ""
+              },
+              {
+                "player_id": "676356",
+                "name": "Jonny DeLuca",
+                "position": "RF",
+                "bats": ""
+              },
+              {
+                "player_id": "656775",
+                "name": "Cedric Mullins",
+                "position": "CF",
+                "bats": ""
+              },
+              {
+                "player_id": "622761",
+                "name": "Jorge Mateo",
+                "position": "SS",
+                "bats": ""
+              },
+              {
+                "player_id": "680700",
+                "name": "Richie Palacios",
+                "position": "2B",
+                "bats": ""
+              },
+              {
+                "player_id": "663743",
+                "name": "Nick Fortes",
+                "position": "C",
+                "bats": ""
+              }
+            ]
+          },
+          "wrc_gap": 11.9,
+          "wrc_gap_favor": "home",
+          "wrc_wp_impact": 0.024
+        },
+        "trends": {
+          "home_trends": {
+            "split_key": "home",
+            "record": "",
+            "win_pct": 0.559,
+            "over_pct": 0.5,
+            "under_pct": 0.5,
+            "current_streak": 0,
+            "streak_type": "W",
+            "last_10": "5-5",
+            "last_10_wins": 5,
+            "run_differential": 0,
+            "run_diff_per_game": 0.0,
+            "overachieving": false,
+            "structural_over": false,
+            "structural_under": false,
+            "dominant_home": false,
+            "brutal_road": false
+          },
+          "away_trends": {
+            "split_key": "road",
+            "record": "",
+            "win_pct": 0.5,
+            "over_pct": 0.5,
+            "under_pct": 0.5,
+            "current_streak": 0,
+            "streak_type": "W",
+            "last_10": "7-3",
+            "last_10_wins": 7,
+            "run_differential": 0,
+            "run_diff_per_game": 0.0,
+            "overachieving": false,
+            "structural_over": false,
+            "structural_under": false,
+            "dominant_home": false,
+            "brutal_road": false
+          },
+          "series_momentum": {
+            "available": true,
+            "home_wins": 2,
+            "away_wins": 1,
+            "momentum_home_cap": 1.0,
+            "momentum_away_cap": 1.0,
+            "lesson_30_active": false,
+            "bounce_back_team": null,
+            "recent_results": [
+              {
+                "winner": "away",
+                "margin": 3,
+                "blowout": false,
+                "large_win": false
+              },
+              {
+                "winner": "home",
+                "margin": 3,
+                "blowout": false,
+                "large_win": false
+              },
+              {
+                "winner": "home",
+                "margin": 1,
+                "blowout": false,
+                "large_win": false
+              }
+            ],
+            "sweep_attempt": true
+          },
+          "h2h_trends": {
+            "available": true,
+            "games_played": 9,
+            "avg_total": 6.6,
+            "overs": 2,
+            "unders": 7,
+            "over_pct": 0.22,
+            "structural_over": false,
+            "structural_under": true
+          },
+          "situational_flags": {
+            "lesson_30_active": false,
+            "bounce_back_team": null,
+            "momentum_home_cap": 1.0,
+            "momentum_away_cap": 1.0,
+            "sweep_attempt": true,
+            "structural_over_h2h": false,
+            "structural_under_h2h": true,
+            "h2h_avg_total": 6.6,
+            "home_dominant_at_home": false,
+            "away_brutal_road": false,
+            "home_structural_over": false,
+            "away_structural_over": false,
+            "home_overachieving": false,
+            "away_overachieving": false,
+            "home_streak": {
+              "count": 0,
+              "type": "W"
+            },
+            "away_streak": {
+              "count": 0,
+              "type": "W"
+            }
+          }
+        },
+        "injuries": {
+          "home_il": [
+            {
+              "name": "Adam Macko",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Ben Peoples",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Brandon Nimmo",
+              "position": "RF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cal Quantrill",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cam Cauley",
+              "position": "CF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Chase Silseth",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cody Bradford",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cody Freeman",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Corey Seager",
+              "position": "SS",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Danny Jansen",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Elias D\u00edaz",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Evan Carter",
+              "position": "CF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Ezequiel Duran",
+              "position": "SS",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jacob Latz",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jacob deGrom",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jake Burger",
+              "position": "1B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jakob Junis",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Joc Pederson",
+              "position": "DH",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jordan Montgomery",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Justin Foscue",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Kumar Rocker",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Logan O'Hoppe",
+              "position": "DH",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "MacKenzie Gore",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Nicky Lopez",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Robby Ahlstrom",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Trevor Williams",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Tyler Alexander",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Wyatt Langford",
+              "position": "LF",
+              "status": "Active",
+              "il_type": "IL"
+            }
+          ],
+          "away_il": [
+            {
+              "name": "Bryan Baker",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cam Booser",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Casey Legumina",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cedric Mullins",
+              "position": "CF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Chandler Simpson",
+              "position": "LF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Drew Rasmussen",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Freddy Peralta",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Garrett Cleavinger",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Griffin Jax",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Ian Seymour",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jonathan Aranda",
+              "position": "1B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jonny DeLuca",
+              "position": "RF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jorge Mateo",
+              "position": "SS",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Junior Caminero",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Kenny Piper",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Kevin Kelly",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Liam Hicks",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Manuel Rodr\u00edguez",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Nick Fortes",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Nick Martinez",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Richie Palacios",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Ryan Vilade",
+              "position": "RF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Shane McClanahan",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Steven Matz",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Taylor Walls",
+              "position": "SS",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Tyler Wells",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Victor Mesa Jr.",
+              "position": "RF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Yandy D\u00edaz",
+              "position": "DH",
+              "status": "Active",
+              "il_type": "IL"
+            }
+          ],
+          "home_dtd": [],
+          "away_dtd": [],
+          "home_impact": {
+            "total_impact": 38,
+            "key_missing": [
+              {
+                "name": "Danny Jansen",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Elias D\u00edaz",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Cam Cauley",
+                "position": "CF",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Corey Seager",
+                "position": "SS",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Evan Carter",
+                "position": "CF",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Ezequiel Duran",
+                "position": "SS",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Justin Foscue",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Nicky Lopez",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              }
+            ],
+            "wp_adj": -0.038,
+            "severity": "severe"
+          },
+          "away_impact": {
+            "total_impact": 38,
+            "key_missing": [
+              {
+                "name": "Kenny Piper",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Liam Hicks",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Nick Fortes",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Cedric Mullins",
+                "position": "CF",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Jorge Mateo",
+                "position": "SS",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Richie Palacios",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Taylor Walls",
+                "position": "SS",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              }
+            ],
+            "wp_adj": -0.038,
+            "severity": "severe"
+          },
+          "sp_confirmation": {
+            "home_sp_name": "Cal Quantrill",
+            "home_sp_id": "615698",
+            "away_sp_name": "Shane McClanahan",
+            "away_sp_id": "663556"
+          },
+          "sp_changes": {
+            "changes_detected": false,
+            "changes": {},
+            "away_confirmed": "",
+            "home_confirmed": "",
+            "recalculate_required": false
+          },
+          "home_closer": {
+            "available": true
+          },
+          "away_closer": {
+            "available": true
+          },
+          "home_framing_adj": 0.0,
+          "away_framing_adj": 0.0,
+          "alerts": [
+            {
+              "type": "HOME_INJURIES",
+              "severity": "HIGH",
+              "message": "Home team injuries: severe",
+              "key_missing": [
+                {
+                  "name": "Danny Jansen",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Elias D\u00edaz",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Cam Cauley",
+                  "position": "CF",
+                  "status": "Active",
+                  "impact": 2,
+                  "il_type": "IL"
+                }
+              ]
+            },
+            {
+              "type": "AWAY_INJURIES",
+              "severity": "HIGH",
+              "message": "Away team injuries: severe",
+              "key_missing": [
+                {
+                  "name": "Kenny Piper",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Liam Hicks",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Nick Fortes",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                }
+              ]
+            }
+          ]
+        },
+        "park": {
+          "park": {
+            "runs": 1.02,
+            "hr": 1.05,
+            "name": "Globe Life Field",
+            "dome": true
+          },
+          "weather": {},
+          "environment": {
+            "base_park_factor": 1.02,
+            "hr_park_factor": 1.05,
+            "wind_adj": 0.0,
+            "temp_adj": 0.0,
+            "total_adj": 0.0,
+            "over_lean": 0.02,
+            "environment_type": "neutral",
+            "run_proj_adj": 0.18,
+            "dome": true,
+            "wind_speed": 0,
+            "wind_direction": "N/A",
+            "temperature": 70,
+            "humidity": 50,
+            "precip_pct": 0
+          },
+          "coors_active": false,
+          "coors_rules": {},
+          "rain_concern": false,
+          "rain_hold": false
+        },
+        "metrics": {
+          "platoon": {
+            "home_lineup_vs_away_sp": {
+              "wp_adj": 0,
+              "note": "lineup unknown"
+            },
+            "away_lineup_vs_home_sp": {
+              "wp_adj": 0,
+              "note": "lineup unknown"
+            },
+            "home_platoon_wp": 0,
+            "away_platoon_wp": 0
+          },
+          "away_era_mirage": {
+            "active": false
+          },
+          "home_era_mirage": {
+            "active": false
+          },
+          "away_walk_risk": {
+            "active": false,
+            "kelly_adj": 1.0
+          },
+          "home_walk_risk": {
+            "active": false,
+            "kelly_adj": 1.0
+          },
+          "away_manager": {
+            "hook_threshold": 95,
+            "quick_hook": false,
+            "name": "Unknown"
+          },
+          "home_manager": {
+            "hook_threshold": 95,
+            "quick_hook": false,
+            "name": "Unknown"
+          },
+          "first_exposure": {
+            "home_lineup_first_exposure": false,
+            "away_lineup_first_exposure": false,
+            "away_sp_debut": false,
+            "home_sp_debut": false,
+            "home_first_exp_wp_adj": 0,
+            "away_first_exp_wp_adj": 0
+          },
+          "ou_structure": {
+            "combined_siera": 9.0,
+            "both_below_average": true,
+            "has_elite_anchor": false,
+            "has_above_avg_anchor": false,
+            "both_bad": false,
+            "structural_lean": "over",
+            "under_confidence": "low"
+          },
+          "combined_wp_adjustments": {
+            "home_platoon": 0,
+            "away_platoon": 0,
+            "home_first_exp": 0,
+            "away_first_exp": 0
+          }
+        },
+        "bullpen": {
+          "home_bp": {
+            "team": "TEX",
+            "season_era": 4.443490455658083,
+            "last_7_era": 4.443490455658083,
+            "xfip": 4.420950542487224,
+            "k9": 7.95902306515464,
+            "bb9": 3.461996579910314,
+            "hr9": 1.1777926508973233,
+            "save_pct": 0.7358490566037735,
+            "blown_saves": 14,
+            "tier": "below_avg",
+            "closer": {
+              "name": "Unknown",
+              "era": 3.5,
+              "xfip": 3.8,
+              "available": true,
+              "elite": false
+            },
+            "high_leverage": [],
+            "depleted": false,
+            "unavailable": [],
+            "quality_score": 48
+          },
+          "away_bp": {
+            "team": "TB",
+            "season_era": 4.05326932458633,
+            "last_7_era": 4.05326932458633,
+            "xfip": 4.151075942180733,
+            "k9": 8.335352240076725,
+            "bb9": 3.056295821361466,
+            "hr9": 1.356537717502683,
+            "save_pct": 0.782608695652174,
+            "blown_saves": 15,
+            "tier": "average",
+            "closer": {
+              "name": "Unknown",
+              "era": 3.5,
+              "xfip": 3.8,
+              "available": true,
+              "elite": false
+            },
+            "high_leverage": [],
+            "depleted": false,
+            "unavailable": [],
+            "quality_score": 52
+          },
+          "home_bp_wp_adj": -0.015,
+          "away_bp_wp_adj": 0.0,
+          "home_hold_prob": 0.686,
+          "away_hold_prob": 0.783,
+          "home_bp_runs_saved": -0.08,
+          "away_bp_runs_saved": 0.05,
+          "total_proj_adj": 0.03,
+          "matchup_notes": []
+        },
+        "umpire": {
+          "umpire_name": "Lance Barksdale",
+          "umpire_data": {
+            "k_adj": 0.0,
+            "runs_adj": 0.0,
+            "over_pct": 0.5,
+            "squeeze": false,
+            "name": "Lance Barksdale",
+            "found": false
+          },
+          "impact": {
+            "runs_adj": 0.0,
+            "k_adj": 0.0,
+            "over_pct": 0.5,
+            "over_lean": 0.0,
+            "walk_risk_amplifier": 1.0,
+            "sp_depth_adj": 0.0,
+            "squeeze": false,
+            "total_impact_label": "Neutral"
+          },
+          "total_proj_adj": 0.0,
+          "over_lean": 0.0,
+          "walk_risk_amplifier": 1.0,
+          "squeeze_note": "Umpire Lance Barksdale not in database \u2014 using league average"
+        },
+        "arsenal": {
+          "home_vs_away_sp": {
+            "score": 0.32,
+            "confidence": "low",
+            "details": {}
+          },
+          "away_vs_home_sp": {
+            "score": 0.32,
+            "confidence": "low",
+            "details": {}
+          },
+          "home_lineup_exploits": [],
+          "away_lineup_exploits": [],
+          "home_arsenal_summary": {},
+          "away_arsenal_summary": {},
+          "wp_adjustments": {
+            "home_wp_adj": 0.0,
+            "total_proj_adj": 0.0,
+            "home_offense_adj": 0.0,
+            "away_offense_adj": 0.0
+          }
+        },
+        "platoon": {
+          "home_team_split": {
+            "team": "TEX",
+            "sp_throws": "R",
+            "wrc_plus": 82,
+            "k_rate": 0.24,
+            "same_side_disadvantage": false,
+            "strong_advantage": false
+          },
+          "away_team_split": {
+            "team": "TB",
+            "sp_throws": "R",
+            "wrc_plus": 90,
+            "k_rate": 0.24,
+            "same_side_disadvantage": false,
+            "strong_advantage": false
+          },
+          "home_sp_splits": {
+            "vs_lhb_era": 0.0,
+            "vs_rhb_era": 0.0,
+            "vs_lhb_ops": 0.703,
+            "vs_rhb_ops": 0.579,
+            "vs_lhb_ba": 0.24,
+            "vs_rhb_ba": 0.213,
+            "platoon_split": 0.0
+          },
+          "away_sp_splits": {
+            "vs_lhb_era": 0.0,
+            "vs_rhb_era": 0.0,
+            "vs_lhb_ops": 0.518,
+            "vs_rhb_ops": 0.615,
+            "vs_lhb_ba": 0.14,
+            "vs_rhb_ba": 0.225,
+            "platoon_split": 0.0
+          },
+          "home_platoon_advantage": {
+            "team_wrc_vs_sp_hand": 82,
+            "platoon_advantage": true,
+            "same_side_disadvantage": false,
+            "strong_advantage": false,
+            "wp_adj": -0.005,
+            "label": "Neutral"
+          },
+          "away_platoon_advantage": {
+            "team_wrc_vs_sp_hand": 90,
+            "platoon_advantage": true,
+            "same_side_disadvantage": false,
+            "strong_advantage": false,
+            "wp_adj": -0.003,
+            "label": "Neutral"
+          },
+          "structural_flags": {
+            "flags": [],
+            "total_wp_adj": 0,
+            "has_major_flag": false
+          },
+          "wp_impact": {
+            "net_home_wp_adj": -0.002,
+            "home_batting_adj": -0.005,
+            "away_batting_adj": -0.003
+          },
+          "summary": "No significant platoon advantages"
+        },
+        "regression": {
+          "home_sp_regression": {
+            "available": false
+          },
+          "away_sp_regression": {
+            "available": false
+          },
+          "home_lineup_regression": {
+            "available": false
+          },
+          "away_lineup_regression": {
+            "available": false
+          },
+          "home_team_regression": {
+            "available": false
+          },
+          "away_team_regression": {
+            "available": false
+          },
+          "all_signals": [],
+          "wp_adjustments": {
+            "home_wp_adj": 0,
+            "away_wp_adj": 0,
+            "net_home_wp": 0
+          },
+          "key_flags": []
+        },
+        "first_inning": {
+          "home_first_inning": {
+            "sp_name": "cal quantrill",
+            "f1_era": null,
+            "slow_start": false,
+            "wp_adj": 0.0,
+            "note": "No first inning data"
+          },
+          "away_first_inning": {
+            "sp_name": "shane mcclanahan",
+            "f1_era": null,
+            "slow_start": false,
+            "wp_adj": 0.0,
+            "note": "No first inning data"
+          },
+          "home_catcher": {
+            "name": "Elias D\u00edaz",
+            "team": "TEX"
+          },
+          "away_catcher": {
+            "name": "Nick Fortes",
+            "team": "TB"
+          },
+          "home_framing": {
+            "name": "Elias D\u00edaz",
+            "tier": 3,
+            "runs_saved": 0.0,
+            "label": "Average framer (unknown)"
+          },
+          "away_framing": {
+            "name": "Nick Fortes",
+            "tier": 3,
+            "runs_saved": 0.0,
+            "label": "Average framer (unknown)"
+          },
+          "f5_projection": {
+            "f5_projection": 4.7,
+            "f5_base": 4.675000000000001,
+            "adjustments": 0.0,
+            "f5_over_lean": false,
+            "f5_under_lean": false
+          },
+          "wp_adjustments": {
+            "framing_wp_adj": 0.0,
+            "f1_wp_adj": 0.0,
+            "total_wp_adj": 0.0
+          },
+          "total_framing_adj": 0.0,
+          "notes": []
+        },
+        "line_movement": {
+          "available": true,
+          "opening": {
+            "home_ml_odds": 105,
+            "away_ml_odds": -130,
+            "total_line": 8,
+            "over_odds": 100,
+            "under_odds": -120,
+            "home_implied": 0.4878,
+            "away_implied": 0.5652,
+            "spread_home": 1.5,
+            "spread_away": -1.5,
+            "book_id": 75,
+            "source": "action_network"
+          },
+          "current": {
+            "home_ml_odds": 105,
+            "away_ml_odds": -130,
+            "total_line": 8,
+            "over_odds": 100,
+            "under_odds": -120,
+            "home_implied": 0.4878,
+            "away_implied": 0.5652,
+            "spread_home": 1.5,
+            "spread_away": -1.5,
+            "book_id": 75,
+            "source": "action_network"
+          },
+          "ml_movement": {
+            "movement": 0,
+            "direction": "none",
+            "sharp": false
+          },
+          "total_movement": {
+            "open_total": 8,
+            "current_total": 8,
+            "line_move": 0,
+            "juice_move": 0,
+            "direction": "none",
+            "sharp": false,
+            "magnitude": 0
+          },
+          "public_pcts": {
+            "home_ml_pct": 0.5,
+            "away_ml_pct": 0.5,
+            "over_pct": 0.5,
+            "under_pct": 0.5
+          },
+          "reverse_line_movement": {
+            "detected": false,
+            "sharp_side": null,
+            "public_pct_home": 0.5,
+            "ml_direction": "none",
+            "note": "No RLM detected"
+          },
+          "sharp_signals": [],
+          "kelly_adjustments": {
+            "home_ml_adj": 1.0,
+            "away_ml_adj": 1.0,
+            "over_adj": 1.0,
+            "under_adj": 1.0,
+            "note": "No sizing adjustments"
+          }
+        }
+      },
+      "wp_result": {
+        "home_wp": 0.591,
+        "away_wp": 0.409,
+        "total_projection": 7.9,
+        "under_wp": 0.5,
+        "over_wp": 0.5,
+        "reasoning": {
+          "home_field_base": 0.54,
+          "sp_gap": 0.019500000000000003,
+          "recency": 0.025,
+          "framing_tier": 0.0,
+          "walk_risk": 0,
+          "bullpen": -0.015,
+          "arsenal": 0.0,
+          "platoon_splits": -0.002,
+          "regression": 0,
+          "first_inning": 0.0,
+          "wrc_gap": 0.023800000000000012,
+          "injuries": 0.0,
+          "park": 0.02,
+          "final_home_wp": 0.591,
+          "final_away_wp": 0.409
+        },
+        "version": "v2.5"
+      },
+      "market": {
+        "home_ml_odds": 105,
+        "away_ml_odds": -130,
+        "total_line": 8,
+        "over_odds": 100,
+        "under_odds": -120,
+        "home_implied": 0.4878,
+        "away_implied": 0.5652,
+        "spread_home": 1.5,
+        "spread_away": -1.5,
+        "book_id": 75,
+        "source": "action_network"
+      },
+      "edges": {
+        "home_ml_edge": 0.1032,
+        "away_ml_edge": -0.1562,
+        "over_edge": -0.0133,
+        "under_edge": -0.0322,
+        "home_implied": 0.4878,
+        "away_implied": 0.5652,
+        "over_implied": 0.5,
+        "under_implied": 0.5455,
+        "over_wp": 0.4867,
+        "under_wp": 0.5133,
+        "total_projection": 7.9,
+        "total_line": 8,
+        "total_cushion": -0.1
+      },
+      "best_play": {
+        "type": "home_ml",
+        "team": "TEX",
+        "matchup": "TB @ TEX",
+        "label": "TEX ML",
+        "odds": 105,
+        "model_wp": 0.591,
+        "implied_prob": 0.4878048780487805,
+        "edge": 0.1032,
+        "kelly_size": 220,
+        "kelly_adj": 1.0,
+        "tier": "primary",
+        "home_sp": "Cal Quantrill",
+        "away_sp": "Shane McClanahan",
+        "bvp_home_vs_away_sp": [
+          {
+            "name": "Jake Burger",
+            "ab": 6,
+            "h": 1,
+            "hr": 1,
+            "ba": 0.167,
+            "ops": 0.953,
+            "significance": "strong"
+          },
+          {
+            "name": "Ezequiel Duran",
+            "ab": 5,
+            "h": 1,
+            "hr": 1,
+            "ba": 0.2,
+            "ops": 1.229,
+            "significance": "elite"
+          }
+        ],
+        "bvp_away_vs_home_sp": [
+          {
+            "name": "Yandy D\u00edaz",
+            "ab": 11,
+            "h": 3,
+            "hr": 0,
+            "ba": 0.273,
+            "ops": 0.788,
+            "significance": "moderate"
+          },
+          {
+            "name": "Cedric Mullins",
+            "ab": 9,
+            "h": 2,
+            "hr": 1,
+            "ba": 0.222,
+            "ops": 0.856,
+            "significance": "strong"
+          }
+        ],
+        "lineup_projected": false
+      },
+      "sharp_signals": []
+    },
+    {
+      "game": {
+        "game_id": "823095",
+        "home_team": "SEA",
+        "away_team": "ATH",
+        "home_team_id": 136,
+        "away_team_id": 133,
+        "home_sp_name": "Kade Anderson",
+        "away_sp_name": "Jack Perkins",
+        "home_sp_id": "807739",
+        "away_sp_id": "678022",
+        "game_time": "2026-09-04T01:40:00Z",
+        "venue": "T-Mobile Park",
+        "status": "Pre-Game",
+        "date": "2026-09-03"
+      },
+      "version": "v2.5",
+      "agents": {
+        "sp": {
+          "away_sp": {
+            "name": "Jack Perkins",
+            "pitcher_id": "678022",
+            "era": 6.42,
+            "xera": null,
+            "fip": 0.0,
+            "xfip": 3.63,
+            "siera": 3.78,
+            "blend": 3.72,
+            "adjusted_blend": 3.52,
+            "road_home_adj": -0.2,
+            "xwoba": 0.309,
+            "ev": 88.8,
+            "hh_pct": 0.373,
+            "barrel_pct": 0.08800000000000001,
+            "k_pct": 0.252,
+            "bb9": 3.97,
+            "ip": 95.1,
+            "arsenal": {},
+            "recent_form": {
+              "available": true,
+              "last_3_starts": [
+                {
+                  "date": "2026-08-29",
+                  "er": 1,
+                  "ip": 5.0,
+                  "hits": 4,
+                  "bb": 4,
+                  "k": 5,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-23",
+                  "er": 1,
+                  "ip": 5.0,
+                  "hits": 3,
+                  "bb": 5,
+                  "k": 6,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-18",
+                  "er": 0,
+                  "ip": 3.2,
+                  "hits": 1,
+                  "bb": 1,
+                  "k": 4,
+                  "opponent": ""
+                }
+              ],
+              "weighted_era": 1.6,
+              "trend": "hot",
+              "consecutive_quality": 0
+            },
+            "splits": {
+              "vs_lhb": {
+                "ba": 0.263,
+                "ops": 0.829,
+                "era": 0.0
+              },
+              "vs_rhb": {
+                "ba": 0.266,
+                "ops": 0.805,
+                "era": 0.0
+              }
+            },
+            "comp": 75,
+            "flags": {
+              "walk_risk": false,
+              "bimodal": true,
+              "debut_flag": false,
+              "era_mirage": true,
+              "era_mirage_direction": "positive"
+            },
+            "era_mirage_magnitude": 2.79
+          },
+          "home_sp": {
+            "name": "Kade Anderson",
+            "pitcher_id": "807739",
+            "era": 4.5,
+            "xera": null,
+            "fip": 0.0,
+            "xfip": 4.18,
+            "siera": 4.33,
+            "blend": 4.18,
+            "adjusted_blend": 4.38,
+            "road_home_adj": 0.2,
+            "xwoba": 0.235,
+            "ev": 85.8,
+            "hh_pct": 0.321,
+            "barrel_pct": 0.071,
+            "k_pct": 0.195,
+            "bb9": 4.5,
+            "ip": 10.0,
+            "arsenal": {},
+            "recent_form": {
+              "available": true,
+              "last_3_starts": [
+                {
+                  "date": "2026-08-29",
+                  "er": 2,
+                  "ip": 4.1,
+                  "hits": 3,
+                  "bb": 3,
+                  "k": 3,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-22",
+                  "er": 3,
+                  "ip": 5.2,
+                  "hits": 5,
+                  "bb": 2,
+                  "k": 5,
+                  "opponent": ""
+                }
+              ],
+              "weighted_era": 4.76,
+              "trend": "average",
+              "consecutive_quality": 0
+            },
+            "splits": {
+              "vs_lhb": {
+                "ba": 0.25,
+                "ops": 1.083,
+                "era": 0.0
+              },
+              "vs_rhb": {
+                "ba": 0.222,
+                "ops": 0.683,
+                "era": 0.0
+              }
+            },
+            "comp": 70,
+            "flags": {
+              "walk_risk": false,
+              "bimodal": false,
+              "debut_flag": true,
+              "era_mirage": false,
+              "era_mirage_direction": null
+            },
+            "era_mirage_magnitude": 0.32
+          },
+          "fip_gap": 0.86,
+          "fip_gap_favor": "home",
+          "primary_threshold_met": false,
+          "flags": {
+            "away_walk_risk": false,
+            "home_walk_risk": false,
+            "away_bimodal": true,
+            "home_bimodal": false,
+            "away_debut": false,
+            "home_debut": true,
+            "away_era_mirage": true,
+            "home_era_mirage": false
+          }
+        },
+        "lineup": {
+          "home": {
+            "team_wrc_plus": 101.5,
+            "ops": 0.685511756,
+            "obp": 0.309459977,
+            "slg": 0.376051779,
+            "ba": 0.228910463,
+            "rpg": 4.16,
+            "k_pct": 0.23251815,
+            "bb_pct": 0.090179594,
+            "hr_total": 162,
+            "streak": {
+              "type": "neutral",
+              "recent_ops": 0.72,
+              "recent_rpg": 4.5
+            },
+            "hot_bats": [],
+            "bvp_threats": [
+              {
+                "name": "Randy Arozarena",
+                "ab": 4,
+                "h": 2,
+                "hr": 2,
+                "ba": 0.5,
+                "ops": 2.5,
+                "significance": "homer_history"
+              }
+            ],
+            "handedness": {
+              "lhb": 0,
+              "rhb": 0,
+              "switch": 0,
+              "lhb_pct": 0.0,
+              "rhb_pct": 0.0
+            },
+            "lineup_confirmed": true,
+            "lineup": [
+              {
+                "player_id": "668227",
+                "name": "Randy Arozarena",
+                "position": "LF",
+                "bats": ""
+              },
+              {
+                "player_id": "686527",
+                "name": "Dominic Canzone",
+                "position": "DH",
+                "bats": ""
+              },
+              {
+                "player_id": "677594",
+                "name": "Julio Rodr\u00edguez",
+                "position": "CF",
+                "bats": ""
+              },
+              {
+                "player_id": "663728",
+                "name": "Cal Raleigh",
+                "position": "C",
+                "bats": ""
+              },
+              {
+                "player_id": "647304",
+                "name": "Josh Naylor",
+                "position": "1B",
+                "bats": ""
+              },
+              {
+                "player_id": "702284",
+                "name": "Cole Young",
+                "position": "2B",
+                "bats": ""
+              },
+              {
+                "player_id": "703155",
+                "name": "Lazaro Montes",
+                "position": "RF",
+                "bats": ""
+              },
+              {
+                "player_id": "641487",
+                "name": "J.P. Crawford",
+                "position": "SS",
+                "bats": ""
+              },
+              {
+                "player_id": "801126",
+                "name": "Brock Rodden",
+                "position": "3B",
+                "bats": ""
+              }
+            ]
+          },
+          "away": {
+            "team_wrc_plus": 101.3,
+            "ops": 0.722686185,
+            "obp": 0.320203543,
+            "slg": 0.402482642,
+            "ba": 0.246370713,
+            "rpg": 4.51,
+            "k_pct": 0.224892059,
+            "bb_pct": 0.087103435,
+            "hr_total": 166,
+            "streak": {
+              "type": "neutral",
+              "recent_ops": 0.72,
+              "recent_rpg": 4.5
+            },
+            "hot_bats": [],
+            "bvp_threats": [],
+            "handedness": {
+              "lhb": 0,
+              "rhb": 0,
+              "switch": 0,
+              "lhb_pct": 0.0,
+              "rhb_pct": 0.0
+            },
+            "lineup_confirmed": true,
+            "lineup": [
+              {
+                "player_id": "703607",
+                "name": "Henry Bolte",
+                "position": "CF",
+                "bats": ""
+              },
+              {
+                "player_id": "680869",
+                "name": "Zack Gelof",
+                "position": "LF",
+                "bats": ""
+              },
+              {
+                "player_id": "671732",
+                "name": "Lawrence Butler",
+                "position": "RF",
+                "bats": ""
+              },
+              {
+                "player_id": "641680",
+                "name": "Jonah Heim",
+                "position": "DH",
+                "bats": ""
+              },
+              {
+                "player_id": "643446",
+                "name": "Jeff McNeil",
+                "position": "1B",
+                "bats": ""
+              },
+              {
+                "player_id": "683021",
+                "name": "Michael Stefanic",
+                "position": "2B",
+                "bats": ""
+              },
+              {
+                "player_id": "661531",
+                "name": "Brian Serven",
+                "position": "C",
+                "bats": ""
+              },
+              {
+                "player_id": "675961",
+                "name": "Alika Williams",
+                "position": "SS",
+                "bats": ""
+              },
+              {
+                "player_id": "691777",
+                "name": "Max Muncy",
+                "position": "3B",
+                "bats": ""
+              }
+            ]
+          },
+          "wrc_gap": 0.2,
+          "wrc_gap_favor": "home",
+          "wrc_wp_impact": 0.0
+        },
+        "trends": {
+          "home_trends": {
+            "split_key": "home",
+            "record": "",
+            "win_pct": 0.544,
+            "over_pct": 0.5,
+            "under_pct": 0.5,
+            "current_streak": 0,
+            "streak_type": "W",
+            "last_10": "4-6",
+            "last_10_wins": 4,
+            "run_differential": 0,
+            "run_diff_per_game": 0.0,
+            "overachieving": false,
+            "structural_over": false,
+            "structural_under": false,
+            "dominant_home": false,
+            "brutal_road": false
+          },
+          "away_trends": {
+            "split_key": "road",
+            "record": "",
+            "win_pct": 0.5,
+            "over_pct": 0.5,
+            "under_pct": 0.5,
+            "current_streak": 0,
+            "streak_type": "W",
+            "last_10": "4-6",
+            "last_10_wins": 4,
+            "run_differential": 0,
+            "run_diff_per_game": 0.0,
+            "overachieving": false,
+            "structural_over": false,
+            "structural_under": false,
+            "dominant_home": false,
+            "brutal_road": false
+          },
+          "series_momentum": {
+            "available": true,
+            "home_wins": 0,
+            "away_wins": 3,
+            "momentum_home_cap": 1.0,
+            "momentum_away_cap": 0.5,
+            "lesson_30_active": false,
+            "bounce_back_team": null,
+            "recent_results": [
+              {
+                "winner": "away",
+                "margin": 7,
+                "blowout": false,
+                "large_win": true
+              },
+              {
+                "winner": "away",
+                "margin": 3,
+                "blowout": false,
+                "large_win": false
+              },
+              {
+                "winner": "away",
+                "margin": 8,
+                "blowout": false,
+                "large_win": true
+              }
+            ],
+            "sweep_attempt": true
+          },
+          "h2h_trends": {
+            "available": true,
+            "games_played": 10,
+            "avg_total": 8.5,
+            "overs": 6,
+            "unders": 4,
+            "over_pct": 0.6,
+            "structural_over": false,
+            "structural_under": false
+          },
+          "situational_flags": {
+            "lesson_30_active": false,
+            "bounce_back_team": null,
+            "momentum_home_cap": 1.0,
+            "momentum_away_cap": 0.5,
+            "sweep_attempt": true,
+            "structural_over_h2h": false,
+            "structural_under_h2h": false,
+            "h2h_avg_total": 8.5,
+            "home_dominant_at_home": false,
+            "away_brutal_road": false,
+            "home_structural_over": false,
+            "away_structural_over": false,
+            "home_overachieving": false,
+            "away_overachieving": false,
+            "home_streak": {
+              "count": 0,
+              "type": "W"
+            },
+            "away_streak": {
+              "count": 0,
+              "type": "W"
+            }
+          }
+        },
+        "injuries": {
+          "home_il": [
+            {
+              "name": "Andr\u00e9s Mu\u00f1oz",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Brock Rodden",
+              "position": "SS",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Bryan Woo",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Bryce Miller",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cal Raleigh",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Carlos Vargas",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cole Young",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cooper Criswell",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Dominic Canzone",
+              "position": "DH",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Eduard Bazardo",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Gabe Speier",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "George Kirby",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Hoby Milner",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "J.P. Crawford",
+              "position": "SS",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jhonny Pereda",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jos\u00e9 A. Ferrer",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Josh Naylor",
+              "position": "1B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Julio Rodr\u00edguez",
+              "position": "CF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Kade Anderson",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Lazaro Montes",
+              "position": "RF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Logan Gilbert",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Michael Rucker",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Patrick Wisdom",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Randy Arozarena",
+              "position": "LF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Seranthony Dom\u00ednguez",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Stuart Fairchild",
+              "position": "CF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Taylor Ward",
+              "position": "DH",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Weston Wilson",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            }
+          ],
+          "away_il": [
+            {
+              "name": "Alika Williams",
+              "position": "SS",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Brady Basso",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Brian Serven",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Carlos Cortes",
+              "position": "RF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Chris Roycroft",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Darell Hernaiz",
+              "position": "SS",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Denzel Clarke",
+              "position": "CF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Donovan Walton",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Elvis Alvarado",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Gage Jump",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Geoff Hartlieb",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Henry Bolte",
+              "position": "CF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Hogan Harris",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "J.T. Ginn",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jack Perkins",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jacob Lopez",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jeff McNeil",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jeffrey Springs",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jonah Heim",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Kade Morris",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Lawrence Butler",
+              "position": "RF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Luis Medina",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Max Muncy",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Michael Stefanic",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Scott Blewett",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Tommy White",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Yunior Tur",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Zack Gelof",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            }
+          ],
+          "home_dtd": [],
+          "away_dtd": [],
+          "home_impact": {
+            "total_impact": 37,
+            "key_missing": [
+              {
+                "name": "Cal Raleigh",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Jhonny Pereda",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Brock Rodden",
+                "position": "SS",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Cole Young",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "J.P. Crawford",
+                "position": "SS",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Julio Rodr\u00edguez",
+                "position": "CF",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Stuart Fairchild",
+                "position": "CF",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              }
+            ],
+            "wp_adj": -0.037,
+            "severity": "severe"
+          },
+          "away_impact": {
+            "total_impact": 39,
+            "key_missing": [
+              {
+                "name": "Brian Serven",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Jonah Heim",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Alika Williams",
+                "position": "SS",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Darell Hernaiz",
+                "position": "SS",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Denzel Clarke",
+                "position": "CF",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Donovan Walton",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Henry Bolte",
+                "position": "CF",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Jeff McNeil",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Michael Stefanic",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              }
+            ],
+            "wp_adj": -0.039,
+            "severity": "severe"
+          },
+          "sp_confirmation": {
+            "home_sp_name": "Kade Anderson",
+            "home_sp_id": "807739",
+            "away_sp_name": "Jack Perkins",
+            "away_sp_id": "678022"
+          },
+          "sp_changes": {
+            "changes_detected": false,
+            "changes": {},
+            "away_confirmed": "",
+            "home_confirmed": "",
+            "recalculate_required": false
+          },
+          "home_closer": {
+            "available": true
+          },
+          "away_closer": {
+            "available": true
+          },
+          "home_framing_adj": -1.2,
+          "away_framing_adj": 0.0,
+          "alerts": [
+            {
+              "type": "HOME_INJURIES",
+              "severity": "HIGH",
+              "message": "Home team injuries: severe",
+              "key_missing": [
+                {
+                  "name": "Cal Raleigh",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Jhonny Pereda",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Brock Rodden",
+                  "position": "SS",
+                  "status": "Active",
+                  "impact": 2,
+                  "il_type": "IL"
+                }
+              ]
+            },
+            {
+              "type": "AWAY_INJURIES",
+              "severity": "HIGH",
+              "message": "Away team injuries: severe",
+              "key_missing": [
+                {
+                  "name": "Brian Serven",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Jonah Heim",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Alika Williams",
+                  "position": "SS",
+                  "status": "Active",
+                  "impact": 2,
+                  "il_type": "IL"
+                }
+              ]
+            }
+          ]
+        },
+        "park": {
+          "park": {
+            "runs": 0.85,
+            "hr": 0.9,
+            "name": "T-Mobile Park",
+            "dome": true
+          },
+          "weather": {},
+          "environment": {
+            "base_park_factor": 0.85,
+            "hr_park_factor": 0.9,
+            "wind_adj": 0.0,
+            "temp_adj": 0.0,
+            "total_adj": 0.0,
+            "over_lean": -0.15,
+            "environment_type": "extreme_under",
+            "run_proj_adj": -1.35,
+            "dome": true,
+            "wind_speed": 0,
+            "wind_direction": "N/A",
+            "temperature": 70,
+            "humidity": 50,
+            "precip_pct": 0
+          },
+          "coors_active": false,
+          "coors_rules": {},
+          "rain_concern": false,
+          "rain_hold": false
+        },
+        "metrics": {
+          "platoon": {
+            "home_lineup_vs_away_sp": {
+              "wp_adj": 0,
+              "note": "lineup unknown"
+            },
+            "away_lineup_vs_home_sp": {
+              "wp_adj": 0,
+              "note": "lineup unknown"
+            },
+            "home_platoon_wp": 0,
+            "away_platoon_wp": 0
+          },
+          "away_era_mirage": {
+            "active": false
+          },
+          "home_era_mirage": {
+            "active": false
+          },
+          "away_walk_risk": {
+            "active": false,
+            "kelly_adj": 1.0
+          },
+          "home_walk_risk": {
+            "active": false,
+            "kelly_adj": 1.0
+          },
+          "away_manager": {
+            "hook_threshold": 95,
+            "quick_hook": false,
+            "name": "Unknown"
+          },
+          "home_manager": {
+            "hook_threshold": 95,
+            "quick_hook": false,
+            "name": "Unknown"
+          },
+          "first_exposure": {
+            "home_lineup_first_exposure": false,
+            "away_lineup_first_exposure": false,
+            "away_sp_debut": false,
+            "home_sp_debut": false,
+            "home_first_exp_wp_adj": 0,
+            "away_first_exp_wp_adj": 0
+          },
+          "ou_structure": {
+            "combined_siera": 9.0,
+            "both_below_average": true,
+            "has_elite_anchor": false,
+            "has_above_avg_anchor": false,
+            "both_bad": false,
+            "structural_lean": "over",
+            "under_confidence": "low"
+          },
+          "combined_wp_adjustments": {
+            "home_platoon": 0,
+            "away_platoon": 0,
+            "home_first_exp": 0,
+            "away_first_exp": 0
+          }
+        },
+        "bullpen": {
+          "home_bp": {
+            "team": "SEA",
+            "season_era": 4.486466864108697,
+            "last_7_era": 4.486466864108697,
+            "xfip": 3.9708581877877385,
+            "k9": 8.830828442928883,
+            "bb9": 3.4308276019654738,
+            "hr9": 1.0759400171844387,
+            "save_pct": 0.5660377358490566,
+            "blown_saves": 23,
+            "tier": "average",
+            "closer": {
+              "name": "Unknown",
+              "era": 3.5,
+              "xfip": 3.8,
+              "available": true,
+              "elite": false
+            },
+            "high_leverage": [],
+            "depleted": false,
+            "unavailable": [],
+            "quality_score": 47
+          },
+          "away_bp": {
+            "team": "ATH",
+            "season_era": 5.560238424079533,
+            "last_7_era": 5.560238424079533,
+            "xfip": 4.459106621101565,
+            "k9": 8.797034279019204,
+            "bb9": 4.03798294774652,
+            "hr9": 1.2818993484909587,
+            "save_pct": 0.5666666666666667,
+            "blown_saves": 26,
+            "tier": "below_avg",
+            "closer": {
+              "name": "Unknown",
+              "era": 3.5,
+              "xfip": 3.8,
+              "available": true,
+              "elite": false
+            },
+            "high_leverage": [],
+            "depleted": false,
+            "unavailable": [],
+            "quality_score": 22
+          },
+          "home_bp_wp_adj": 0.0,
+          "away_bp_wp_adj": -0.015,
+          "home_hold_prob": 0.566,
+          "away_hold_prob": 0.517,
+          "home_bp_runs_saved": -0.1,
+          "away_bp_runs_saved": -0.45,
+          "total_proj_adj": 0.55,
+          "matchup_notes": []
+        },
+        "umpire": {
+          "umpire_name": "James Hoye",
+          "umpire_data": {
+            "k_adj": 0.0,
+            "runs_adj": 0.0,
+            "over_pct": 0.5,
+            "squeeze": false,
+            "name": "James Hoye",
+            "found": false
+          },
+          "impact": {
+            "runs_adj": 0.0,
+            "k_adj": 0.0,
+            "over_pct": 0.5,
+            "over_lean": 0.0,
+            "walk_risk_amplifier": 1.0,
+            "sp_depth_adj": 0.0,
+            "squeeze": false,
+            "total_impact_label": "Neutral"
+          },
+          "total_proj_adj": 0.0,
+          "over_lean": 0.0,
+          "walk_risk_amplifier": 1.0,
+          "squeeze_note": "Umpire James Hoye not in database \u2014 using league average"
+        },
+        "arsenal": {
+          "home_vs_away_sp": {
+            "score": 0.32,
+            "confidence": "low",
+            "details": {}
+          },
+          "away_vs_home_sp": {
+            "score": 0.32,
+            "confidence": "low",
+            "details": {}
+          },
+          "home_lineup_exploits": [],
+          "away_lineup_exploits": [],
+          "home_arsenal_summary": {},
+          "away_arsenal_summary": {},
+          "wp_adjustments": {
+            "home_wp_adj": 0.0,
+            "total_proj_adj": 0.0,
+            "home_offense_adj": 0.0,
+            "away_offense_adj": 0.0
+          }
+        },
+        "platoon": {
+          "home_team_split": {
+            "team": "SEA",
+            "sp_throws": "R",
+            "wrc_plus": 88,
+            "k_rate": 0.23,
+            "same_side_disadvantage": false,
+            "strong_advantage": false
+          },
+          "away_team_split": {
+            "team": "ATH",
+            "sp_throws": "R",
+            "wrc_plus": 104,
+            "k_rate": 0.2,
+            "same_side_disadvantage": false,
+            "strong_advantage": false
+          },
+          "home_sp_splits": {
+            "vs_lhb_era": 0.0,
+            "vs_rhb_era": 0.0,
+            "vs_lhb_ops": 1.083,
+            "vs_rhb_ops": 0.683,
+            "vs_lhb_ba": 0.25,
+            "vs_rhb_ba": 0.222,
+            "platoon_split": 0.0
+          },
+          "away_sp_splits": {
+            "vs_lhb_era": 0.0,
+            "vs_rhb_era": 0.0,
+            "vs_lhb_ops": 0.829,
+            "vs_rhb_ops": 0.805,
+            "vs_lhb_ba": 0.263,
+            "vs_rhb_ba": 0.266,
+            "platoon_split": 0.0
+          },
+          "home_platoon_advantage": {
+            "team_wrc_vs_sp_hand": 88,
+            "platoon_advantage": true,
+            "same_side_disadvantage": false,
+            "strong_advantage": false,
+            "wp_adj": -0.004,
+            "label": "Neutral"
+          },
+          "away_platoon_advantage": {
+            "team_wrc_vs_sp_hand": 104,
+            "platoon_advantage": true,
+            "same_side_disadvantage": false,
+            "strong_advantage": false,
+            "wp_adj": 0.001,
+            "label": "Neutral"
+          },
+          "structural_flags": {
+            "flags": [],
+            "total_wp_adj": 0,
+            "has_major_flag": false
+          },
+          "wp_impact": {
+            "net_home_wp_adj": -0.005,
+            "home_batting_adj": -0.004,
+            "away_batting_adj": 0.001
+          },
+          "summary": "No significant platoon advantages"
+        },
+        "regression": {
+          "home_sp_regression": {
+            "available": false
+          },
+          "away_sp_regression": {
+            "available": false
+          },
+          "home_lineup_regression": {
+            "available": false
+          },
+          "away_lineup_regression": {
+            "available": false
+          },
+          "home_team_regression": {
+            "available": false
+          },
+          "away_team_regression": {
+            "available": false
+          },
+          "all_signals": [],
+          "wp_adjustments": {
+            "home_wp_adj": 0,
+            "away_wp_adj": 0,
+            "net_home_wp": 0
+          },
+          "key_flags": []
+        },
+        "first_inning": {
+          "home_first_inning": {
+            "sp_name": "kade anderson",
+            "f1_era": null,
+            "slow_start": false,
+            "wp_adj": 0.0,
+            "note": "No first inning data"
+          },
+          "away_first_inning": {
+            "sp_name": "jack perkins",
+            "f1_era": null,
+            "slow_start": false,
+            "wp_adj": 0.0,
+            "note": "No first inning data"
+          },
+          "home_catcher": {
+            "name": "Cal Raleigh",
+            "team": "SEA"
+          },
+          "away_catcher": {
+            "name": "Brian Serven",
+            "team": "ATH"
+          },
+          "home_framing": {
+            "name": "Cal Raleigh",
+            "tier": 1,
+            "runs_saved": 1.2,
+            "label": "\ud83d\udd25 Elite framer"
+          },
+          "away_framing": {
+            "name": "Brian Serven",
+            "tier": 3,
+            "runs_saved": 0.0,
+            "label": "Average framer (unknown)"
+          },
+          "f5_projection": {
+            "f5_projection": 5.3,
+            "f5_base": 4.675000000000001,
+            "adjustments": 0.67,
+            "f5_over_lean": true,
+            "f5_under_lean": false
+          },
+          "wp_adjustments": {
+            "framing_wp_adj": 0.01,
+            "f1_wp_adj": 0.0,
+            "total_wp_adj": 0.01
+          },
+          "total_framing_adj": 1.2,
+          "notes": [
+            "\ud83d\udd25 SEA: Cal Raleigh elite framer (+1.2 runs saved)"
+          ]
+        },
+        "line_movement": {
+          "available": true,
+          "opening": {
+            "home_ml_odds": -220,
+            "away_ml_odds": 180,
+            "total_line": 7.5,
+            "over_odds": 100,
+            "under_odds": -120,
+            "home_implied": 0.6875,
+            "away_implied": 0.3571,
+            "spread_home": -1.5,
+            "spread_away": 1.5,
+            "book_id": 75,
+            "source": "action_network"
+          },
+          "current": {
+            "home_ml_odds": -220,
+            "away_ml_odds": 180,
+            "total_line": 7.5,
+            "over_odds": 100,
+            "under_odds": -120,
+            "home_implied": 0.6875,
+            "away_implied": 0.3571,
+            "spread_home": -1.5,
+            "spread_away": 1.5,
+            "book_id": 75,
+            "source": "action_network"
+          },
+          "ml_movement": {
+            "movement": 0,
+            "direction": "none",
+            "sharp": false
+          },
+          "total_movement": {
+            "open_total": 7.5,
+            "current_total": 7.5,
+            "line_move": 0.0,
+            "juice_move": 0,
+            "direction": "none",
+            "sharp": false,
+            "magnitude": 0.0
+          },
+          "public_pcts": {
+            "home_ml_pct": 0.5,
+            "away_ml_pct": 0.5,
+            "over_pct": 0.5,
+            "under_pct": 0.5
+          },
+          "reverse_line_movement": {
+            "detected": false,
+            "sharp_side": null,
+            "public_pct_home": 0.5,
+            "ml_direction": "none",
+            "note": "No RLM detected"
+          },
+          "sharp_signals": [],
+          "kelly_adjustments": {
+            "home_ml_adj": 1.0,
+            "away_ml_adj": 1.0,
+            "over_adj": 1.0,
+            "under_adj": 1.0,
+            "note": "No sizing adjustments"
+          }
+        }
+      },
+      "wp_result": {
+        "home_wp": 0.595,
+        "away_wp": 0.405,
+        "total_projection": 4.9,
+        "under_wp": 0.5,
+        "over_wp": 0.5,
+        "reasoning": {
+          "home_field_base": 0.54,
+          "sp_gap": 0.043000000000000003,
+          "recency": -0.025,
+          "framing_tier": 0.01,
+          "walk_risk": 0,
+          "bullpen": 0.015,
+          "arsenal": 0.0,
+          "platoon_splits": -0.005,
+          "regression": 0,
+          "first_inning": 0.0,
+          "wrc_gap": 0.0004000000000000057,
+          "injuries": 0.0020000000000000018,
+          "park": -0.15,
+          "final_home_wp": 0.595,
+          "final_away_wp": 0.405
+        },
+        "version": "v2.5"
+      },
+      "market": {
+        "home_ml_odds": -220,
+        "away_ml_odds": 180,
+        "total_line": 7.5,
+        "over_odds": 100,
+        "under_odds": -120,
+        "home_implied": 0.6875,
+        "away_implied": 0.3571,
+        "spread_home": -1.5,
+        "spread_away": 1.5,
+        "book_id": 75,
+        "source": "action_network"
+      },
+      "edges": {
+        "home_ml_edge": -0.0925,
+        "away_ml_edge": 0.0479,
+        "over_edge": -0.15,
+        "under_edge": 0.1045,
+        "home_implied": 0.6875,
+        "away_implied": 0.3571,
+        "over_implied": 0.5,
+        "under_implied": 0.5455,
+        "over_wp": 0.35,
+        "under_wp": 0.65,
+        "total_projection": 4.9,
+        "total_line": 7.5,
+        "total_cushion": -2.6
+      },
+      "best_play": {
+        "type": "under",
+        "matchup": "ATH @ SEA",
+        "label": "Under 7.5",
+        "odds": -120,
+        "model_wp": 0.65,
+        "projected_total": 4.9,
+        "edge": 0.1045,
+        "kelly_size": 220,
+        "kelly_adj": 1.0,
+        "tier": "primary",
+        "home_sp": "Kade Anderson",
+        "away_sp": "Jack Perkins",
+        "bvp_home_vs_away_sp": [
+          {
+            "name": "Randy Arozarena",
+            "ab": 4,
+            "h": 2,
+            "hr": 2,
+            "ba": 0.5,
+            "ops": 2.5,
+            "significance": "homer_history"
+          }
+        ],
+        "bvp_away_vs_home_sp": [],
+        "lineup_projected": false
+      },
+      "sharp_signals": []
+    },
+    {
+      "game": {
+        "game_id": "823907",
+        "home_team": "LAD",
+        "away_team": "STL",
+        "home_team_id": 119,
+        "away_team_id": 138,
+        "home_sp_name": "Tarik Skubal",
+        "away_sp_name": "Quinn Mathews",
+        "home_sp_id": "669373",
+        "away_sp_id": "687273",
+        "game_time": "2026-09-04T02:10:00Z",
+        "venue": "UNIQLO Field at Dodger Stadium",
+        "status": "Pre-Game",
+        "date": "2026-09-03"
+      },
+      "version": "v2.5",
+      "agents": {
+        "sp": {
+          "away_sp": {
+            "name": "Quinn Mathews",
+            "pitcher_id": "687273",
+            "era": 5.03,
+            "xera": null,
+            "fip": 0.0,
+            "xfip": 3.62,
+            "siera": 3.77,
+            "blend": 3.62,
+            "adjusted_blend": 3.42,
+            "road_home_adj": -0.2,
+            "xwoba": 0.283,
+            "ev": 88.1,
+            "hh_pct": 0.33299999999999996,
+            "barrel_pct": 0.017,
+            "k_pct": 0.225,
+            "bb9": 3.75,
+            "ip": 19.2,
+            "arsenal": {},
+            "recent_form": {
+              "available": true,
+              "last_3_starts": [
+                {
+                  "date": "2026-08-28",
+                  "er": 1,
+                  "ip": 5.2,
+                  "hits": 5,
+                  "bb": 1,
+                  "k": 7,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-22",
+                  "er": 7,
+                  "ip": 5.0,
+                  "hits": 10,
+                  "bb": 1,
+                  "k": 3,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-17",
+                  "er": 1,
+                  "ip": 4.0,
+                  "hits": 2,
+                  "bb": 3,
+                  "k": 7,
+                  "opponent": ""
+                }
+              ],
+              "weighted_era": 5.47,
+              "trend": "cold",
+              "consecutive_quality": 0
+            },
+            "splits": {
+              "vs_lhb": {
+                "ba": 0.286,
+                "ops": 0.619,
+                "era": 0.0
+              },
+              "vs_rhb": {
+                "ba": 0.297,
+                "ops": 0.756,
+                "era": 0.0
+              }
+            },
+            "comp": 61,
+            "flags": {
+              "walk_risk": false,
+              "bimodal": false,
+              "debut_flag": true,
+              "era_mirage": false,
+              "era_mirage_direction": null
+            },
+            "era_mirage_magnitude": 1.41
+          },
+          "home_sp": {
+            "name": "Tarik Skubal",
+            "pitcher_id": "669373",
+            "era": 2.84,
+            "xera": null,
+            "fip": 0.0,
+            "xfip": 1.62,
+            "siera": 1.77,
+            "blend": 1.71,
+            "adjusted_blend": 1.91,
+            "road_home_adj": 0.2,
+            "xwoba": 0.267,
+            "ev": 87.2,
+            "hh_pct": 0.36100000000000004,
+            "barrel_pct": 0.076,
+            "k_pct": 0.309,
+            "bb9": 1.5,
+            "ip": 126.2,
+            "arsenal": {},
+            "recent_form": {
+              "available": true,
+              "last_3_starts": [
+                {
+                  "date": "2026-08-28",
+                  "er": 1,
+                  "ip": 6.0,
+                  "hits": 4,
+                  "bb": 0,
+                  "k": 7,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-22",
+                  "er": 3,
+                  "ip": 7.0,
+                  "hits": 5,
+                  "bb": 1,
+                  "k": 11,
+                  "opponent": ""
+                },
+                {
+                  "date": "2026-08-16",
+                  "er": 1,
+                  "ip": 6.0,
+                  "hits": 7,
+                  "bb": 2,
+                  "k": 7,
+                  "opponent": ""
+                }
+              ],
+              "weighted_era": 2.37,
+              "trend": "hot",
+              "consecutive_quality": 3
+            },
+            "splits": {
+              "vs_lhb": {
+                "ba": 0.278,
+                "ops": 0.758,
+                "era": 0.0
+              },
+              "vs_rhb": {
+                "ba": 0.189,
+                "ops": 0.549,
+                "era": 0.0
+              }
+            },
+            "comp": 100,
+            "flags": {
+              "walk_risk": false,
+              "bimodal": false,
+              "debut_flag": false,
+              "era_mirage": false,
+              "era_mirage_direction": null
+            },
+            "era_mirage_magnitude": 1.22
+          },
+          "fip_gap": -1.51,
+          "fip_gap_favor": "away",
+          "primary_threshold_met": true,
+          "flags": {
+            "away_walk_risk": false,
+            "home_walk_risk": false,
+            "away_bimodal": false,
+            "home_bimodal": false,
+            "away_debut": true,
+            "home_debut": false,
+            "away_era_mirage": false,
+            "home_era_mirage": false
+          }
+        },
+        "lineup": {
+          "home": {
+            "team_wrc_plus": 105.4,
+            "ops": 0.75802651,
+            "obp": 0.336031626,
+            "slg": 0.421994884,
+            "ba": 0.257672634,
+            "rpg": 4.52,
+            "k_pct": 0.205667104,
+            "bb_pct": 0.097766935,
+            "hr_total": 171,
+            "streak": {
+              "type": "neutral",
+              "recent_ops": 0.72,
+              "recent_rpg": 4.5
+            },
+            "hot_bats": [],
+            "bvp_threats": [],
+            "handedness": {
+              "lhb": 0,
+              "rhb": 0,
+              "switch": 0,
+              "lhb_pct": 0.0,
+              "rhb_pct": 0.0
+            },
+            "lineup_confirmed": true,
+            "lineup": [
+              {
+                "player_id": "669242",
+                "name": "Tommy Edman",
+                "position": "CF",
+                "bats": ""
+              },
+              {
+                "player_id": "605141",
+                "name": "Mookie Betts",
+                "position": "SS",
+                "bats": ""
+              },
+              {
+                "player_id": "606192",
+                "name": "Teoscar Hern\u00e1ndez",
+                "position": "LF",
+                "bats": ""
+              },
+              {
+                "player_id": "518692",
+                "name": "Freddie Freeman",
+                "position": "1B",
+                "bats": ""
+              },
+              {
+                "player_id": "669257",
+                "name": "Will Smith",
+                "position": "C",
+                "bats": ""
+              },
+              {
+                "player_id": "500743",
+                "name": "Miguel Rojas",
+                "position": "2B",
+                "bats": ""
+              },
+              {
+                "player_id": "663656",
+                "name": "Kyle Tucker",
+                "position": "RF",
+                "bats": ""
+              },
+              {
+                "player_id": "669743",
+                "name": "Alex Call",
+                "position": "DH",
+                "bats": ""
+              },
+              {
+                "player_id": "571771",
+                "name": "Enrique Hern\u00e1ndez",
+                "position": "3B",
+                "bats": ""
+              }
+            ]
+          },
+          "away": {
+            "team_wrc_plus": 96.0,
+            "ops": 0.699921189,
+            "obp": 0.315322123,
+            "slg": 0.384599066,
+            "ba": 0.241196436,
+            "rpg": 4.82,
+            "k_pct": 0.207000376,
+            "bb_pct": 0.083929243,
+            "hr_total": 150,
+            "streak": {
+              "type": "neutral",
+              "recent_ops": 0.72,
+              "recent_rpg": 4.5
+            },
+            "hot_bats": [],
+            "bvp_threats": [],
+            "handedness": {
+              "lhb": 0,
+              "rhb": 0,
+              "switch": 0,
+              "lhb_pct": 0.0,
+              "rhb_pct": 0.0
+            },
+            "lineup_confirmed": true,
+            "lineup": [
+              {
+                "player_id": "665877",
+                "name": "Jos\u00e9 Ferm\u00edn",
+                "position": "2B",
+                "bats": ""
+              },
+              {
+                "player_id": "671056",
+                "name": "Iv\u00e1n Herrera",
+                "position": "DH",
+                "bats": ""
+              },
+              {
+                "player_id": "691023",
+                "name": "Jordan Walker",
+                "position": "RF",
+                "bats": ""
+              },
+              {
+                "player_id": "695491",
+                "name": "Joshua B\u00e1ez",
+                "position": "LF",
+                "bats": ""
+              },
+              {
+                "player_id": "699024",
+                "name": "Leo Bernal",
+                "position": "1B",
+                "bats": ""
+              },
+              {
+                "player_id": "602104",
+                "name": "Ram\u00f3n Ur\u00edas",
+                "position": "3B",
+                "bats": ""
+              },
+              {
+                "player_id": "695336",
+                "name": "Thomas Saggese",
+                "position": "SS",
+                "bats": ""
+              },
+              {
+                "player_id": "701675",
+                "name": "Nathan Church",
+                "position": "CF",
+                "bats": ""
+              },
+              {
+                "player_id": "686780",
+                "name": "Pedro Pag\u00e9s",
+                "position": "C",
+                "bats": ""
+              }
+            ]
+          },
+          "wrc_gap": 9.4,
+          "wrc_gap_favor": "home",
+          "wrc_wp_impact": 0.019
+        },
+        "trends": {
+          "home_trends": {
+            "split_key": "home",
+            "record": "",
+            "win_pct": 0.588,
+            "over_pct": 0.5,
+            "under_pct": 0.5,
+            "current_streak": 0,
+            "streak_type": "W",
+            "last_10": "4-6",
+            "last_10_wins": 4,
+            "run_differential": 0,
+            "run_diff_per_game": 0.0,
+            "overachieving": false,
+            "structural_over": false,
+            "structural_under": false,
+            "dominant_home": false,
+            "brutal_road": false
+          },
+          "away_trends": {
+            "split_key": "road",
+            "record": "",
+            "win_pct": 0.5,
+            "over_pct": 0.5,
+            "under_pct": 0.5,
+            "current_streak": 0,
+            "streak_type": "W",
+            "last_10": "4-6",
+            "last_10_wins": 4,
+            "run_differential": 0,
+            "run_diff_per_game": 0.0,
+            "overachieving": false,
+            "structural_over": false,
+            "structural_under": false,
+            "dominant_home": false,
+            "brutal_road": false
+          },
+          "series_momentum": {
+            "available": true,
+            "home_wins": 0,
+            "away_wins": 3,
+            "momentum_home_cap": 1.0,
+            "momentum_away_cap": 0.5,
+            "lesson_30_active": false,
+            "bounce_back_team": null,
+            "recent_results": [
+              {
+                "winner": "away",
+                "margin": 3,
+                "blowout": false,
+                "large_win": false
+              },
+              {
+                "winner": "away",
+                "margin": 5,
+                "blowout": false,
+                "large_win": true
+              },
+              {
+                "winner": "away",
+                "margin": 2,
+                "blowout": false,
+                "large_win": false
+              }
+            ],
+            "sweep_attempt": true
+          },
+          "h2h_trends": {
+            "available": true,
+            "games_played": 10,
+            "avg_total": 9.8,
+            "overs": 5,
+            "unders": 5,
+            "over_pct": 0.5,
+            "structural_over": false,
+            "structural_under": false
+          },
+          "situational_flags": {
+            "lesson_30_active": false,
+            "bounce_back_team": null,
+            "momentum_home_cap": 1.0,
+            "momentum_away_cap": 0.5,
+            "sweep_attempt": true,
+            "structural_over_h2h": false,
+            "structural_under_h2h": false,
+            "h2h_avg_total": 9.8,
+            "home_dominant_at_home": false,
+            "away_brutal_road": false,
+            "home_structural_over": false,
+            "away_structural_over": false,
+            "home_overachieving": false,
+            "away_overachieving": false,
+            "home_streak": {
+              "count": 0,
+              "type": "W"
+            },
+            "away_streak": {
+              "count": 0,
+              "type": "W"
+            }
+          }
+        },
+        "injuries": {
+          "home_il": [
+            {
+              "name": "Alex Call",
+              "position": "LF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Alex Freeland",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Alex Vesia",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Blake Snell",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Blake Treinen",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Brock Stewart",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Dalton Rushing",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Edgardo Henriquez",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Enrique Hern\u00e1ndez",
+              "position": "1B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Evan Phillips",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Freddie Freeman",
+              "position": "1B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Hunter Feduccia",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jack Dreyer",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Justin Wrobleski",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Kyle Hurt",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Kyle Tucker",
+              "position": "RF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Max Muncy",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Miguel Rojas",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Mookie Betts",
+              "position": "SS",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Seth Halvorsen",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Shohei Ohtani",
+              "position": "TWP",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Tanner Scott",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Tarik Skubal",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Teoscar Hern\u00e1ndez",
+              "position": "LF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Tommy Edman",
+              "position": "2B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Tyler Glasnow",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Will Smith",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Yoshinobu Yamamoto",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            }
+          ],
+          "away_il": [
+            {
+              "name": "Alec Burleson",
+              "position": "1B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Bryan Torres",
+              "position": "LF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Brycen Mautz",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Cade Winquest",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "C\u00e9sar Prieto",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "George Soriano",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Gordon Graceffo",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Hancel Rincon",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Iv\u00e1n Herrera",
+              "position": "DH",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jordan Walker",
+              "position": "RF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Jos\u00e9 Ferm\u00edn",
+              "position": "LF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Joshua B\u00e1ez",
+              "position": "LF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Justin Bruihl",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Kyle Leahy",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Leo Bernal",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Luis Gastelum",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Matthew Liberatore",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Michael McGreevy",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Nathan Church",
+              "position": "CF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Nolan Gorman",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Pedro Pag\u00e9s",
+              "position": "C",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Quinn Mathews",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Ram\u00f3n Ur\u00edas",
+              "position": "3B",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Riley O'Brien",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Ryan Fernandez",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Ryne Stanek",
+              "position": "P",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Thomas Saggese",
+              "position": "LF",
+              "status": "Active",
+              "il_type": "IL"
+            },
+            {
+              "name": "Victor Scott II",
+              "position": "CF",
+              "status": "Active",
+              "il_type": "IL"
+            }
+          ],
+          "home_dtd": [],
+          "away_dtd": [],
+          "home_impact": {
+            "total_impact": 38,
+            "key_missing": [
+              {
+                "name": "Dalton Rushing",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Hunter Feduccia",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Will Smith",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Alex Freeland",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Miguel Rojas",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Mookie Betts",
+                "position": "SS",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Tommy Edman",
+                "position": "2B",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              }
+            ],
+            "wp_adj": -0.038,
+            "severity": "severe"
+          },
+          "away_impact": {
+            "total_impact": 34,
+            "key_missing": [
+              {
+                "name": "Leo Bernal",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Pedro Pag\u00e9s",
+                "position": "C",
+                "status": "Active",
+                "impact": 3,
+                "il_type": "IL"
+              },
+              {
+                "name": "Nathan Church",
+                "position": "CF",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              },
+              {
+                "name": "Victor Scott II",
+                "position": "CF",
+                "status": "Active",
+                "impact": 2,
+                "il_type": "IL"
+              }
+            ],
+            "wp_adj": -0.034,
+            "severity": "severe"
+          },
+          "sp_confirmation": {
+            "home_sp_name": "Tarik Skubal",
+            "home_sp_id": "669373",
+            "away_sp_name": "Quinn Mathews",
+            "away_sp_id": "687273"
+          },
+          "sp_changes": {
+            "changes_detected": false,
+            "changes": {},
+            "away_confirmed": "",
+            "home_confirmed": "",
+            "recalculate_required": false
+          },
+          "home_closer": {
+            "available": true
+          },
+          "away_closer": {
+            "available": true
+          },
+          "home_framing_adj": 0.0,
+          "away_framing_adj": 0.0,
+          "alerts": [
+            {
+              "type": "HOME_INJURIES",
+              "severity": "HIGH",
+              "message": "Home team injuries: severe",
+              "key_missing": [
+                {
+                  "name": "Dalton Rushing",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Hunter Feduccia",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Will Smith",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                }
+              ]
+            },
+            {
+              "type": "AWAY_INJURIES",
+              "severity": "HIGH",
+              "message": "Away team injuries: severe",
+              "key_missing": [
+                {
+                  "name": "Leo Bernal",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Pedro Pag\u00e9s",
+                  "position": "C",
+                  "status": "Active",
+                  "impact": 3,
+                  "il_type": "IL"
+                },
+                {
+                  "name": "Nathan Church",
+                  "position": "CF",
+                  "status": "Active",
+                  "impact": 2,
+                  "il_type": "IL"
+                }
+              ]
+            }
+          ]
+        },
+        "park": {
+          "park": {
+            "runs": 0.96,
+            "hr": 0.92,
+            "name": "Dodger Stadium",
+            "dome": false
+          },
+          "weather": {
+            "temperature": 68,
+            "wind_speed": 10,
+            "wind_direction": "SW",
+            "humidity": 71,
+            "precip_pct": 0.0,
+            "short_forecast": "Mostly Clear",
+            "indoor": false
+          },
+          "environment": {
+            "base_park_factor": 0.96,
+            "hr_park_factor": 0.92,
+            "wind_adj": 0.0,
+            "temp_adj": 0.0,
+            "total_adj": 0.0,
+            "over_lean": -0.04,
+            "environment_type": "slight_under",
+            "run_proj_adj": -0.36,
+            "dome": false,
+            "wind_speed": 10,
+            "wind_direction": "SW",
+            "temperature": 68,
+            "humidity": 71,
+            "precip_pct": 0.0
+          },
+          "coors_active": false,
+          "coors_rules": {},
+          "rain_concern": false,
+          "rain_hold": false
+        },
+        "metrics": {
+          "platoon": {
+            "home_lineup_vs_away_sp": {
+              "wp_adj": 0,
+              "note": "lineup unknown"
+            },
+            "away_lineup_vs_home_sp": {
+              "wp_adj": 0,
+              "note": "lineup unknown"
+            },
+            "home_platoon_wp": 0,
+            "away_platoon_wp": 0
+          },
+          "away_era_mirage": {
+            "active": false
+          },
+          "home_era_mirage": {
+            "active": false
+          },
+          "away_walk_risk": {
+            "active": false,
+            "kelly_adj": 1.0
+          },
+          "home_walk_risk": {
+            "active": false,
+            "kelly_adj": 1.0
+          },
+          "away_manager": {
+            "hook_threshold": 95,
+            "quick_hook": false,
+            "name": "Unknown"
+          },
+          "home_manager": {
+            "hook_threshold": 85,
+            "quick_hook": true
+          },
+          "first_exposure": {
+            "home_lineup_first_exposure": false,
+            "away_lineup_first_exposure": false,
+            "away_sp_debut": false,
+            "home_sp_debut": false,
+            "home_first_exp_wp_adj": 0,
+            "away_first_exp_wp_adj": 0
+          },
+          "ou_structure": {
+            "combined_siera": 9.0,
+            "both_below_average": true,
+            "has_elite_anchor": false,
+            "has_above_avg_anchor": false,
+            "both_bad": false,
+            "structural_lean": "over",
+            "under_confidence": "low"
+          },
+          "combined_wp_adjustments": {
+            "home_platoon": 0,
+            "away_platoon": 0,
+            "home_first_exp": 0,
+            "away_first_exp": 0
+          }
+        },
+        "bullpen": {
+          "home_bp": {
+            "team": "LAD",
+            "season_era": 3.979152341452824,
+            "last_7_era": 3.979152341452824,
+            "xfip": 4.0659382877222745,
+            "k9": 9.72466011252617,
+            "bb9": 4.115025836039018,
+            "hr9": 1.0287564590097544,
+            "save_pct": 0.6551724137931034,
+            "blown_saves": 20,
+            "tier": "average",
+            "closer": {
+              "name": "Unknown",
+              "era": 3.5,
+              "xfip": 3.8,
+              "available": true,
+              "elite": false
+            },
+            "high_leverage": [],
+            "depleted": false,
+            "unavailable": [],
+            "quality_score": 48
+          },
+          "away_bp": {
+            "team": "STL",
+            "season_era": 4.448864415811496,
+            "last_7_era": 4.448864415811496,
+            "xfip": 4.44164926768935,
+            "k9": 8.14772870022182,
+            "bb9": 4.14204618023829,
+            "hr9": 0.9886365368469991,
+            "save_pct": 0.6307692307692307,
+            "blown_saves": 24,
+            "tier": "below_avg",
+            "closer": {
+              "name": "Unknown",
+              "era": 3.5,
+              "xfip": 3.8,
+              "available": true,
+              "elite": false
+            },
+            "high_leverage": [],
+            "depleted": false,
+            "unavailable": [],
+            "quality_score": 48
+          },
+          "home_bp_wp_adj": 0.0,
+          "away_bp_wp_adj": -0.015,
+          "home_hold_prob": 0.655,
+          "away_hold_prob": 0.581,
+          "home_bp_runs_saved": 0.07,
+          "away_bp_runs_saved": -0.08,
+          "total_proj_adj": 0.009999999999999995,
+          "matchup_notes": []
+        },
+        "umpire": {
+          "umpire_name": "Jim Wolf",
+          "umpire_data": {
+            "k_adj": 0.0,
+            "runs_adj": 0.1,
+            "over_pct": 0.5,
+            "squeeze": false,
+            "name": "Jim Wolf",
+            "found": true
+          },
+          "impact": {
+            "runs_adj": 0.1,
+            "k_adj": 0.0,
+            "over_pct": 0.5,
+            "over_lean": 0.011,
+            "walk_risk_amplifier": 1.0,
+            "sp_depth_adj": 0.0,
+            "squeeze": false,
+            "total_impact_label": "Neutral"
+          },
+          "total_proj_adj": 0.1,
+          "over_lean": 0.011,
+          "walk_risk_amplifier": 1.0,
+          "squeeze_note": "Jim Wolf \u2014 neutral umpire, no adjustment"
+        },
+        "arsenal": {
+          "home_vs_away_sp": {
+            "score": 0.32,
+            "confidence": "low",
+            "details": {}
+          },
+          "away_vs_home_sp": {
+            "score": 0.32,
+            "confidence": "low",
+            "details": {}
+          },
+          "home_lineup_exploits": [],
+          "away_lineup_exploits": [],
+          "home_arsenal_summary": {},
+          "away_arsenal_summary": {},
+          "wp_adjustments": {
+            "home_wp_adj": 0.0,
+            "total_proj_adj": 0.0,
+            "home_offense_adj": 0.0,
+            "away_offense_adj": 0.0
+          }
+        },
+        "platoon": {
+          "home_team_split": {
+            "team": "LAD",
+            "sp_throws": "R",
+            "wrc_plus": 128,
+            "k_rate": 0.2,
+            "same_side_disadvantage": false,
+            "strong_advantage": true
+          },
+          "away_team_split": {
+            "team": "STL",
+            "sp_throws": "R",
+            "wrc_plus": 106,
+            "k_rate": 0.21,
+            "same_side_disadvantage": false,
+            "strong_advantage": false
+          },
+          "home_sp_splits": {
+            "vs_lhb_era": 0.0,
+            "vs_rhb_era": 0.0,
+            "vs_lhb_ops": 0.758,
+            "vs_rhb_ops": 0.549,
+            "vs_lhb_ba": 0.278,
+            "vs_rhb_ba": 0.189,
+            "platoon_split": 0.0
+          },
+          "away_sp_splits": {
+            "vs_lhb_era": 0.0,
+            "vs_rhb_era": 0.0,
+            "vs_lhb_ops": 0.619,
+            "vs_rhb_ops": 0.756,
+            "vs_lhb_ba": 0.286,
+            "vs_rhb_ba": 0.297,
+            "platoon_split": 0.0
+          },
+          "home_platoon_advantage": {
+            "team_wrc_vs_sp_hand": 128,
+            "platoon_advantage": true,
+            "same_side_disadvantage": false,
+            "strong_advantage": true,
+            "wp_adj": 0.023,
+            "label": "\ud83d\udd25 Strong advantage"
+          },
+          "away_platoon_advantage": {
+            "team_wrc_vs_sp_hand": 106,
+            "platoon_advantage": true,
+            "same_side_disadvantage": false,
+            "strong_advantage": false,
+            "wp_adj": 0.002,
+            "label": "Neutral"
+          },
+          "structural_flags": {
+            "flags": [],
+            "total_wp_adj": 0,
+            "has_major_flag": false
+          },
+          "wp_impact": {
+            "net_home_wp_adj": 0.021,
+            "home_batting_adj": 0.023,
+            "away_batting_adj": 0.002
+          },
+          "summary": "LAD batting: \ud83d\udd25 Strong advantage"
+        },
+        "regression": {
+          "home_sp_regression": {
+            "available": false
+          },
+          "away_sp_regression": {
+            "available": false
+          },
+          "home_lineup_regression": {
+            "available": false
+          },
+          "away_lineup_regression": {
+            "available": false
+          },
+          "home_team_regression": {
+            "available": false
+          },
+          "away_team_regression": {
+            "available": false
+          },
+          "all_signals": [],
+          "wp_adjustments": {
+            "home_wp_adj": 0,
+            "away_wp_adj": 0,
+            "net_home_wp": 0
+          },
+          "key_flags": []
+        },
+        "first_inning": {
+          "home_first_inning": {
+            "sp_name": "tarik skubal",
+            "f1_era": 1.2,
+            "season_era": 2.1,
+            "era_delta": -0.9,
+            "slow_start": false,
+            "wp_adj": 0.0,
+            "note": "Normal first inning tendencies"
+          },
+          "away_first_inning": {
+            "sp_name": "quinn mathews",
+            "f1_era": null,
+            "slow_start": false,
+            "wp_adj": 0.0,
+            "note": "No first inning data"
+          },
+          "home_catcher": {
+            "name": "Will Smith",
+            "team": "LAD"
+          },
+          "away_catcher": {
+            "name": "Pedro Pag\u00e9s",
+            "team": "STL"
+          },
+          "home_framing": {
+            "name": "Will Smith",
+            "tier": 3,
+            "runs_saved": 0.0,
+            "label": "Average framer (unknown)"
+          },
+          "away_framing": {
+            "name": "Pedro Pag\u00e9s",
+            "tier": 3,
+            "runs_saved": 0.0,
+            "label": "Average framer (unknown)"
+          },
+          "f5_projection": {
+            "f5_projection": 4.7,
+            "f5_base": 4.675000000000001,
+            "adjustments": 0.0,
+            "f5_over_lean": false,
+            "f5_under_lean": false
+          },
+          "wp_adjustments": {
+            "framing_wp_adj": 0.0,
+            "f1_wp_adj": 0.0,
+            "total_wp_adj": 0.0
+          },
+          "total_framing_adj": 0.0,
+          "notes": []
+        },
+        "line_movement": {
+          "available": true,
+          "opening": {
+            "home_ml_odds": -285,
+            "away_ml_odds": 225,
+            "total_line": 7.5,
+            "over_odds": -102,
+            "under_odds": -118,
+            "home_implied": 0.7403,
+            "away_implied": 0.3077,
+            "spread_home": -1.5,
+            "spread_away": 1.5,
+            "book_id": 75,
+            "source": "action_network"
+          },
+          "current": {
+            "home_ml_odds": -285,
+            "away_ml_odds": 225,
+            "total_line": 7.5,
+            "over_odds": -102,
+            "under_odds": -118,
+            "home_implied": 0.7403,
+            "away_implied": 0.3077,
+            "spread_home": -1.5,
+            "spread_away": 1.5,
+            "book_id": 75,
+            "source": "action_network"
+          },
+          "ml_movement": {
+            "movement": 0,
+            "direction": "none",
+            "sharp": false
+          },
+          "total_movement": {
+            "open_total": 7.5,
+            "current_total": 7.5,
+            "line_move": 0.0,
+            "juice_move": 0,
+            "direction": "none",
+            "sharp": false,
+            "magnitude": 0.0
+          },
+          "public_pcts": {
+            "home_ml_pct": 0.5,
+            "away_ml_pct": 0.5,
+            "over_pct": 0.5,
+            "under_pct": 0.5
+          },
+          "reverse_line_movement": {
+            "detected": false,
+            "sharp_side": null,
+            "public_pct_home": 0.5,
+            "ml_direction": "none",
+            "note": "No RLM detected"
+          },
+          "sharp_signals": [],
+          "kelly_adjustments": {
+            "home_ml_adj": 1.0,
+            "away_ml_adj": 1.0,
+            "over_adj": 1.0,
+            "under_adj": 1.0,
+            "note": "No sizing adjustments"
+          }
+        }
+      },
+      "wp_result": {
+        "home_wp": 0.565,
+        "away_wp": 0.435,
+        "total_projection": 6.5,
+        "under_wp": 0.5,
+        "over_wp": 0.5,
+        "reasoning": {
+          "home_field_base": 0.54,
+          "sp_gap": -0.07550000000000001,
+          "recency": 0.05,
+          "framing_tier": 0.0,
+          "walk_risk": 0,
+          "bullpen": 0.015,
+          "arsenal": 0.0,
+          "platoon_splits": 0.021,
+          "regression": 0,
+          "first_inning": 0.0,
+          "wrc_gap": 0.01880000000000001,
+          "injuries": -0.003999999999999997,
+          "park": -0.04,
+          "final_home_wp": 0.565,
+          "final_away_wp": 0.435
+        },
+        "version": "v2.5"
+      },
+      "market": {
+        "home_ml_odds": -285,
+        "away_ml_odds": 225,
+        "total_line": 7.5,
+        "over_odds": -102,
+        "under_odds": -118,
+        "home_implied": 0.7403,
+        "away_implied": 0.3077,
+        "spread_home": -1.5,
+        "spread_away": 1.5,
+        "book_id": 75,
+        "source": "action_network"
+      },
+      "edges": {
+        "home_ml_edge": -0.1753,
+        "away_ml_edge": 0.1273,
+        "over_edge": -0.1355,
+        "under_edge": 0.0893,
+        "home_implied": 0.7403,
+        "away_implied": 0.3077,
+        "over_implied": 0.505,
+        "under_implied": 0.5413,
+        "over_wp": 0.3694,
+        "under_wp": 0.6306,
+        "total_projection": 6.5,
+        "total_line": 7.5,
+        "total_cushion": -1.0
+      },
+      "best_play": {
+        "type": "away_ml",
+        "team": "STL",
+        "matchup": "STL @ LAD",
+        "label": "STL ML",
+        "odds": 225,
+        "model_wp": 0.435,
+        "implied_prob": 0.3076923076923077,
+        "edge": 0.1273,
+        "kelly_size": 220,
+        "kelly_adj": 1.0,
+        "tier": "primary",
+        "home_sp": "Tarik Skubal",
+        "away_sp": "Quinn Mathews",
+        "bvp_home_vs_away_sp": [],
+        "bvp_away_vs_home_sp": [],
+        "lineup_projected": false
+      },
+      "sharp_signals": []
+    }
+  ],
+  "fire": "pm",
+  "refresh_filtered": {
+    "removed_primaries": 3,
+    "removed_secondaries": 3
+  }
+}
