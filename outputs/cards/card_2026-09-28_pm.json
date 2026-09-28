@@ -1,0 +1,17 @@
+{
+  "version": "v2.5",
+  "date": "2026-09-28",
+  "generated_at": "2026-09-28T14:09:31.598571",
+  "agents_used": 13,
+  "total_games": 0,
+  "primaries": [],
+  "secondaries": [],
+  "passes": [],
+  "total_primary_risk": 0,
+  "game_details": [],
+  "fire": "pm",
+  "refresh_filtered": {
+    "removed_primaries": 0,
+    "removed_secondaries": 0
+  }
+}
